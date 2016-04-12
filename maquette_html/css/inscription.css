@@ -1307,7 +1307,12 @@ ul.labels-demo li {
 
 .sky-form .input input {
 	height: 34px;
-	padding: 6px 12px;
+	padding: 0px 12px;
+}
+#uploadFile{
+	
+	height: 34px;
+	padding: 0px 0px;
 }
 
 .sky-form .input input,
