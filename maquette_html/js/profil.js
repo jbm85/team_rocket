@@ -1,20 +1,33 @@
 $(document).ready(function(){
 
+	// Affichage du menu de navigation en format smartphone :
+    $('.fa-bars').click(function(event){
+        event.preventDefault();
+
+        	$('#nav_hide').toggle();
+        	$('.logout_mobile').show();
+        
+    });
+
+    // Affichage des événements que le membre a ajouté
 	$('.list-add-events').click(function(e){
 		e.preventDefault();
 		$('.add-events').slideToggle();
 	});
 
+	// Affichage des événements dont le membre a participé
 	$('.list-past-events').click(function(e){
 		e.preventDefault();
 		$('.past-events').slideToggle();
 	});
 
+	// Ouverture d'une fenêtre pour afficher le tableau des événements
 	$('table').fancybox({
 		openEffect	: 'none',
 		closeEffect	: 'none'
 	});
 
+	// Preview des photo profil télécharger avent de sauvegarder
 	$(".well-sm").on("change", function()
     {
         var files = !!this.files ? this.files : [];
