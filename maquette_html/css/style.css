@@ -1370,6 +1370,10 @@ Resolution d'ecran à 320px minimum
 	#sandbox-container label{
 		width: 100%;
 	}
+	.sky-form .input .icon-append + input,
+	.sky-form .textarea .icon-append + textarea {
+	font-size: 1rem;
+}
 
 
 }
