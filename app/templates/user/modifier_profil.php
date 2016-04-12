@@ -1,42 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Events</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="fancybox/jquery.fancybox.css">
-  <link rel="stylesheet" type="text/css" href="css/style.css">
-</head>
+<?php $this->layout('layout', ['title' => 'Events - Modifier Profil',
+    'id' => 'profil_modif']) ?>
 
-<body>
-<header>
-
-  <!-- Menu de navigation pour le format smartphone -->
-  <nav id="mobile_nav">
-    <h1><a href="#" title="Nom du site">Events</a></h1>
-    <a href="#" title="Menu de navigation"><i class="fa fa-bars"></i></a>
-
-    <ul id="nav_hide">
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="derniers_evenements.html">Derniers évènements</a></li>
-      <li><a href="recherche.html">Recherche</a></li>
-    </ul>
-    <input class="btn logout_mobile" value="Déconnexion" type="reset">
-  </nav>
-
-  <!-- Menu de navigation pour les formats tablette/desktop -->
-  <nav id="main_nav">
-    <h1><a href="#">Events</a></h1>
-    <ul>
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="derniers_evenements.html">Derniers évènements</a></li>
-      <li><a href="recherche.html">Recherche</a></li>
-    </ul>
-    <input class="btn logout" value="Déconnexion" type="reset">
-  </nav>
-</header>
-
-<main id="profil">
+<?php $this->start('principal') ?>
 <div class="container" style="padding-top: 60px;">
   
   <div class="row">
@@ -114,29 +79,5 @@
     <input class="btn btn-primary" value="Ajouter un événement" type="button">
   </div>
 </div>
-</main>
 
-<footer>
-  <ul>
-    <li><a href="#">Mentions légales</a></li>
-    <li><a href="#">Conditions Générales de Vente</a></li>
-    <li><a href="#">Plan du site</a></li>
-    <li><a href="#">Imprimer la page</a></li>
-    <li><a href="#">Contact</a></li>
-  </ul>
-  <em>Copyright Events - Jean-Baptiste - Jeremy - Mathias - Fabrice</em>
-</footer>
-
-<!-- jQuery -->
-
-<script src="https://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
-<!--<script src="http://code.jquery.com/jquery-1.10.2.js"></script>-->
-<script type="text/javascript" src="fancybox/jquery.fancybox.pack.js"></script>
-
-<!-- JS -->
-
-<!--<script type="text/javascript" src="js/script.js" ></script>-->
-<script type="text/javascript" src="js/profil.js" ></script>
-
-</body>
-</html>
+<?php $this->stop('principal') ?>

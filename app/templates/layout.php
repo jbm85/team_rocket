@@ -3,7 +3,11 @@
 <head>
 	<meta charset="utf-8">
 	<title><?= $this->e($title) ?></title>
+	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" type="text/css" href="<?= $this->assetUrl('css/inscription.css') ?>">
 	<link rel="stylesheet" type="text/css" href="<?= $this->assetUrl('css/style.css') ?>">
 </head>
 
@@ -16,10 +20,10 @@
 
 		<ul id="nav_hide">
 			<li><a href="<?= $this->url('accueil') ?>">Accueil</a></li>
-			<li><a href="derniers_evenements.html">Derniers évènements</a></li>
-			<li><a href="inscription.php">Inscription</a></li>
-			<li><a href="connexion.html">Connexion</a></li>
-			<li><a href="recherche.html">Recherche</a></li>
+			<li><a href="<?= $this->url('derniers_evenements') ?>">Derniers évènements</a></li>
+			<li><a href="<?= $this->url('inscription') ?>">Inscription</a></li>
+			<li><a href="<?= $this->url('connexion') ?>">Connexion</a></li>
+			<li><a href="<?= $this->url('recherche') ?>">Recherche</a></li>
 		</ul>
 	</nav>
 
@@ -27,11 +31,11 @@
 	<nav id="main_nav">
 		<h1><?= $this->e($title) ?></h1>
 		<ul>
-			<li><a href="index.html">Accueil</a></li>
-			<li><a href="derniers_evenements.html">Derniers évènements</a></li>
-			<li><a href="inscription.php">Inscription</a></li>
-			<li><a href="connexion.html">Connexion</a></li>
-			<li><a href="recherche.html">Recherche</a></li>
+			<li><a href="<?= $this->url('accueil') ?>">Accueil</a></li>
+			<li><a href="<?= $this->url('derniers_evenements') ?>">Derniers évènements</a></li>
+			<li><a href="<?= $this->url('inscription') ?>">Inscription</a></li>
+			<li><a href="<?= $this->url('connexion') ?>">Connexion</a></li>
+			<li><a href="<?= $this->url('recherche') ?>">Recherche</a></li>
 
 		</ul>
 	</nav>
@@ -40,7 +44,6 @@
 
 <!-- Contenu principal -->
 <main id="<?= $this->e($id) ?>">
-	<h2><?= $this->e($h2) ?></h2>
 
 	<?= $this->section('principal') ?>
 
@@ -48,20 +51,71 @@
 
 <!--Pied de page-->
 <footer>
-
 	<ul>
 		<li><a href="#">Mentions légales</a></li>
 		<li><a href="#">Conditions Générales de Vente</a></li>
 		<li><a href="#">Plan du site</a></li>
 		<li><a href="#">Imprimer la page</a></li>
-		<li><a href="#">Contact</a></li>
+		<li><a href="#" data-toggle="modal" data-target="#myModal">Contact</a></li>
 	</ul>
 	<em>Copyright Events - Jean-Baptiste - Jeremy - Mathias - Fabrice</em>
+
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content" >
+				<div class="modal-header" >
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">Contactez Nous</h4>
+				</div>
+				<div class="modal-body">
+					<section id="contactSection">
+
+						<!-- Formulaire de contact -->
+
+
+
+						<form method="post">
+							<div class="form-group">
+								<label for="Email">Votre adresse email</label>
+								<input type="email" class="form-control" id="Email" name="yourEmail" placeholder="Email">
+							</div>
+							<div class="form-group">
+								<label for="Nom">Nom</label>
+								<input type="text" class="form-control" id="Nom" name="yourName" placeholder="Nom">
+							</div>
+							<div class="form-group">
+								<label for="msg">Votre demande</label>
+								<textarea name="msg" required placeholder="Votre message ici..."></textarea>
+							</div>
+
+							<button type="submit" name="send" class="btn btn-default">Envoyer</button>
+						</form>
+
+						<!-- Palier 9 -->
+
+
+
+						<span id="helpForm"></span>
+						</form>
+					</section>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+
+				</div>
+			</div>
+		</div>
+	</div>
 </footer>
+
 
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 <!-- JS -->
+<script type="text/javascript" src="<?= $this->assetUrl('fancybox/jquery.fancybox.pack.js') ?>" ></script>
+<script type="text/javascript" src="<?= $this->assetUrl('js/profil.js') ?>" ></script>
+<script type="text/javascript" src="<?= $this->assetUrl('js/bootstrap-datepicker.js') ?>" ></script>
 <script type="text/javascript" src="<?= $this->assetUrl('js/script.js') ?>" ></script>
 </body>
 </html>

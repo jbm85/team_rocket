@@ -35,8 +35,6 @@ $(document).ready(function(){
     });
 
     // Detection de scroll :
-    if ($(window).scrollTop()>200){ //TODO: A revoir
-        alert('detection scroll');
-    }
 
-})
+
+});
