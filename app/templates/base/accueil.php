@@ -1,8 +1,8 @@
 <?php $this->layout('layout', ['title' => 'Events',
-								'id' => 'index_page',
-								'h2' => 'Créer un évènement n\'a jamais été aussi simple !']) ?>
+								'id' => 'index_page',]) ?>
 <?php $this->start('principal') ?>
 <!--Presentation des evenements-->
+<h2>Créer un évènement n'a jamais été aussi simple !</h2>
 <section>
 	<h3>Titre de l'évenement 1</h3>
 	<div class="index_img"><img src="<?= $this->assetUrl('img/evenement1_img1.jpg') ?>" alt="description de l'evenement"></div>

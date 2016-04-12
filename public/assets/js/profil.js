@@ -22,7 +22,7 @@ $(document).ready(function(){
 	});
 
 	// Ouverture d'une fenêtre pour afficher le tableau des événements
-	$('table').fancybox({
+	$('#profil table').fancybox({
 		openEffect	: 'none',
 		closeEffect	: 'none'
 	});

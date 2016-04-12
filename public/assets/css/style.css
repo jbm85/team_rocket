@@ -1061,15 +1061,15 @@ footer em{
     background-color: aliceblue;
 }
 
-h2 {
+#profil_modif h2 {
     margin-top: 2rem;
 }
 
-.form-group {
+#profil_modif .form-group {
     padding: 0.3rem;
 }
 
-.list-add-events, .list-past-events {
+#profil_modif .list-add-events, .list-past-events {
 	cursor: pointer;
     border: 0.1rem solid white;
     padding: 1rem 0;
@@ -1078,18 +1078,18 @@ h2 {
     width: 60%;
 }
 
-.add-events, .past-events {
+#profil_modif .add-events, .past-events {
     width: 80%;
     margin: 1rem auto;
     display: none;
 }
 
-table, th, td {
+#profil_modif table,#profil_modif th,#profil_modif td {
     border: 1px solid black;
     border-collapse: collapse;
 
 }
-th, td {
+#profil_modif th,#profil_modif td {
     padding: 5px;
 }
 
