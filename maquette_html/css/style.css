@@ -181,6 +181,13 @@ footer em{
 	font-size: 1rem;
 }
 
+#backTop{
+	font-size: 1rem;
+	background-color: rgba(0, 0, 0, .8);
+	border-radius: .2rem;
+	padding: .5rem;
+}
+
 /* Format TABLETTE */
 
 @media screen and (min-width: 700px){
@@ -1061,7 +1068,7 @@ footer em{
     background-color: aliceblue;
 }
 
-h2 {
+#profil h2 {
     margin-top: 2rem;
 }
 
@@ -1084,12 +1091,12 @@ h2 {
     display: none;
 }
 
-table, th, td {
+#profil table, #profil th, #profil td {
     border: 1px solid black;
     border-collapse: collapse;
-
 }
-th, td {
+
+#profil th, #profil td {
     padding: 5px;
 }
 
@@ -1149,63 +1156,25 @@ th, td {
 		border-collapse: collapse;
 		border-spacing: 0;
 		width: 90%;
-		margin:0 auto 2rem auto;
+		margin: auto;
 	}
 
 	#manage_member_page th, #manage_member_page td{
 		font-size: 1rem;
+		width: 10rem;
 	}
 
-	.table > thead > tr > th,
-	.table > tbody > tr > th,
-	.table > thead > tr > td,
 	.table > tbody > tr > td {
 		padding-top: .5rem;
 		padding-bottom: .5rem;
-		vertical-align: top;
 		border-top: .1rem solid rgba(0, 0, 0, .8);
 	}
 	.table > thead > tr > th {
-		vertical-align: bottom;
 		border-bottom: .2rem solid rgba(0, 0, 0, .8);
 	}
 
-	.table > thead > tr:first-child > th,
-	.table > thead > tr:first-child > th,
-	.table > thead:first-child > tr:first-child > th,
-	.table > thead > tr:first-child > td,
-	.table > thead > tr:first-child > td,
-	.table > thead:first-child > tr:first-child > td {
-		border-top: 0;
-	}
-
-	.table > tbody + tbody {
-		border-top: .2rem solid rgba(0, 0, 0, .8);
-	}
-
-	#manage_member_page table td[class*="col-"],
-	#manage_member_page table th[class*="col-"] {
-		position: static;
-		float: none;
-		display: table-cell;
-	}
-
-	#manage_member_page td[colspan="4"]{
-		text-align: left;
-		border-top: .2rem solid black;
-	}
-
-	#manage_member_page td[colspan="4"]~td{
-		border-top: .2rem solid black;
-	}
-
-	#manage_member_page input{
-		display: block;
-		margin: 1rem auto;
-		padding: .5rem;
+	.fa-pencil, .fa-trash{
 		font-size: 1.2rem;
-		border: none;
-		border-radius: .2rem;
 	}
 
 }
@@ -1216,9 +1185,10 @@ th, td {
 
 	#manage_member_page th, #manage_member_page td{
 		font-size: 1.6rem;
+		width: 12rem;
 	}
 
-	#manage_member_page input{
+	.fa-pencil, .fa-trash{
 		font-size: 1.4rem;
 	}
 
@@ -1270,13 +1240,13 @@ th, td {
 }
 .datepicker table tr td span{
 	display: block;
-width: 23%;
-height: 54px;
-line-height: 54px;
-float: left;
-margin: 1%;
-cursor: pointer;
-border-radius: 4px;
+	width: 23%;
+	height: 54px;
+	line-height: 54px;
+	float: left;
+	margin: 1%;
+	cursor: pointer;
+	border-radius: 4px;
 }
 #sectionPhotoProfil{
     width: 180px;
@@ -1320,7 +1290,7 @@ left: 0;
     border-radius: 15px;
 }
 
- #contactSection .modal-header,.modal-footer{
+#contactSection .modal-header,.modal-footer{
     background-color: #5f5c5c;
 }
 
@@ -1339,34 +1309,37 @@ Resolution d'ecran à 320px minimum
 @media screen and (max-width:320px) {
 	
 	#sky-form4{
-	background-color: white;
-	width: 100%;
-	margin: auto;
+		background-color: white;
+		width: 100%;
+		margin: auto;
 	}
+
 	#sectionPhotoProfil {
-    position: relative;
-    width: 16rem;
-    height: 13rem;
+		position: relative;
+		width: 16rem;
+		height: 13rem;
 	}
+
 	#sandbox-container label{
 		width: 16rem;
 	}
-
 
 }
 
 @media screen and (min-width:320px) {
 	
 	#sky-form4{
-	background-color: white;
-	width: 100%;
-	margin: auto;
+		background-color: white;
+		width: 100%;
+		margin: auto;
 	}
+
 	#sectionPhotoProfil {
-    position: relative;
-    width: 16rem;
-    height: 13rem;
+		position: relative;
+		width: 16rem;
+		height: 13rem;
 	}
+
 	#sandbox-container label{
 		width: 100%;
 	}
@@ -1376,19 +1349,20 @@ Resolution d'ecran à 320px minimum
 @media screen and (min-width:700px) {
 	
 	#sky-form4{
-	background-color: white;
-	width: 50%;
-	margin: auto;
+		background-color: white;
+		width: 50%;
+		margin: auto;
 	}
+
 	#sectionPhotoProfil {
-    position: relative;
-    width: 16rem;
-    height: 13rem;
+		position: relative;
+		width: 16rem;
+		height: 13rem;
 	}
+
 	#sandbox-container label{
 		width: 100%;
 	}
-
 
 }
 
