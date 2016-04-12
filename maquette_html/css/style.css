@@ -1043,6 +1043,10 @@ footer em{
 /*
 									Page PROFIL
 */
+.logout_mobile {
+	display: none;
+}
+
 #previewImage {
     width: 180px;
     height: 180px;
@@ -1052,13 +1056,19 @@ footer em{
     display: inline-block;
 }
 
+#profil, #previewImage, p{
+	margin-top: 1rem;
+    font-size: 0.8rem;
+}
+
 
 .well-sm {
     border: 0.1rem solid aliceblue;
-    margin: 0.2rem;
-    padding: 0.3rem;
+    margin: 0.2rem auto;
+    padding: 0.3rem 1rem;
     border-radius: 4%;
     background-color: aliceblue;
+    display: block;
 }
 
 h2 {
