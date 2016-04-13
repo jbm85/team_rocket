@@ -1,14 +1,5 @@
 $(document).ready(function(){
 
-	// Affichage du menu de navigation en format smartphone :
-    $('.fa-bars').click(function(event){
-        event.preventDefault();
-
-        	$('#nav_hide').toggle();
-        	$('.logout_mobile').show();
-        
-    });
-
     // Affichage des événements que le membre a ajouté
 	$('.list-add-events').click(function(e){
 		e.preventDefault();
@@ -20,13 +11,7 @@ $(document).ready(function(){
 		e.preventDefault();
 		$('.past-events').slideToggle();
 	});
-
-	// Ouverture d'une fenêtre pour afficher le tableau des événements
-	$('#profil table').fancybox({
-		openEffect	: 'none',
-		closeEffect	: 'none'
-	});
-
+    
 	// Preview des photo profil télécharger avent de sauvegarder
 	$(".well-sm").on("change", function()
     {
