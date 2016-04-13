@@ -14,8 +14,8 @@
 <body>
 <header>
 	<!-- Menu de navigation pour le format smartphone -->
-	<nav id="mobile_nav">
-		<h1><?= $this->e($title) ?></h1>
+	<nav id="main_nav">
+		<h1>Events</h1>
 		<a href="#" title="Menu de navigation"><i class="fa fa-bars"></i></a>
 
 		<ul id="nav_hide">
@@ -27,18 +27,6 @@
 		</ul>
 	</nav>
 
-	<!-- Menu de navigation pour les formats tablette/desktop -->
-	<nav id="main_nav">
-		<h1><?= $this->e($title) ?></h1>
-		<ul>
-			<li><a href="<?= $this->url('accueil') ?>">Accueil</a></li>
-			<li><a href="<?= $this->url('derniers_evenements') ?>">Derniers évènements</a></li>
-			<li><a href="<?= $this->url('inscription') ?>">Inscription</a></li>
-			<li><a href="<?= $this->url('connexion') ?>">Connexion</a></li>
-			<li><a href="<?= $this->url('recherche') ?>">Recherche</a></li>
-
-		</ul>
-	</nav>
 	<p>Bienvenue sur le site de Events. Si vous aussi vous souhaitez créer un évènement, inscrivez-vous dès maintenant !</p>
 </header>
 

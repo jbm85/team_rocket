@@ -1,5 +1,4 @@
-<?php $this->layout('layout', ['title' => 'Events - Modifier Profil',
-    'id' => 'profil_modif']) ?>
+<?php $this->layout('layout', ['title' => 'Events - Connexion', 'id' => 'profil_modif']) ?>
 
 <?php $this->start('principal') ?>
 <div class="container" style="padding-top: 60px;">

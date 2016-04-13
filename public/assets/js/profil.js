@@ -3,8 +3,6 @@ $(document).ready(function(){
 	// Affichage du menu de navigation en format smartphone :
     $('.fa-bars').click(function(event){
         event.preventDefault();
-
-        	$('#nav_hide').toggle();
         	$('.logout_mobile').show();
         
     });

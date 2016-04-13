@@ -22,9 +22,9 @@
         <!--Presentation des evenements-->
         <section>
             <h3>Titre de l'évenement 1</h3>
-            <div class="search_img"><img src="img/evenement1_img1.jpg" alt="description de l'evenement"></div>
-            <div class="search_img"><img src="img/evenement1_img2.jpg" alt="description de l'evenement"></div>
-            <div class="search_img"><img src="img/evenement1_img3.jpg" alt="description de l'evenement"></div>
+            <div class="search_img"><img src="<?= $this->assetUrl('img/evenement1_img1.jpg') ?>" alt="description de l'evenement"></div>
+            <div class="search_img"><img src="<?= $this->assetUrl('img/evenement1_img2.jpg') ?>" alt="description de l'evenement"></div>
+            <div class="search_img"><img src="<?= $this->assetUrl('img/evenement1_img3.jpg') ?>" alt="description de l'evenement"></div>
             <p>Date</p>
             <p>Capacite</p>
             <p>Description</p>
@@ -35,9 +35,9 @@
 
         <section>
             <h3>Titre de l'évenement 2</h3>
-            <div class="search_img"><img src="img/evenement2_img1.jpg" alt="description de l'evenement"></div>
-            <div class="search_img"><img src="img/evenement2_img2.jpg" alt="description de l'evenement"></div>
-            <div class="search_img"><img src="img/evenement2_img3.jpg" alt="description de l'evenement"></div>
+            <div class="search_img"><img src="<?= $this->assetUrl('img/evenement2_img1.jpg') ?>" alt="description de l'evenement"></div>
+            <div class="search_img"><img src="<?= $this->assetUrl('img/evenement2_img2.jpg') ?>" alt="description de l'evenement"></div>
+            <div class="search_img"><img src="<?= $this->assetUrl('img/evenement2_img3.jpg') ?>" alt="description de l'evenement"></div>
             <p>Date</p>
             <p>Capacite</p>
             <p>Description</p>
@@ -48,9 +48,9 @@
 
         <section>
             <h3>Titre de l'évenement 3</h3>
-            <div class="search_img"><img src="img/evenement1_img1.jpg" alt="description de l'evenement"></div>
-            <div class="search_img"><img src="img/evenement1_img2.jpg" alt="description de l'evenement"></div>
-            <div class="search_img"><img src="img/evenement1_img3.jpg" alt="description de l'evenement"></div>
+            <div class="search_img"><img src="<?= $this->assetUrl('img/evenement1_img1.jpg') ?>" alt="description de l'evenement"></div>
+            <div class="search_img"><img src="<?= $this->assetUrl('img/evenement1_img2.jpg') ?>" alt="description de l'evenement"></div>
+            <div class="search_img"><img src="<?= $this->assetUrl('img/evenement1_img3.jpg') ?>" alt="description de l'evenement"></div>
             <p>Date</p>
             <p>Capacite</p>
             <p>Description</p>
@@ -61,9 +61,9 @@
 
         <section>
             <h3>Titre de l'évenement 4</h3>
-            <div class="search_img"><img src="img/evenement2_img1.jpg" alt="description de l'evenement"></div>
-            <div class="search_img"><img src="img/evenement2_img2.jpg" alt="description de l'evenement"></div>
-            <div class="search_img"><img src="img/evenement2_img3.jpg" alt="description de l'evenement"></div>
+            <div class="search_img"><img src="<?= $this->assetUrl('img/evenement2_img1.jpg') ?>" alt="description de l'evenement"></div>
+            <div class="search_img"><img src="<?= $this->assetUrl('img/evenement2_img2.jpg') ?>" alt="description de l'evenement"></div>
+            <div class="search_img"><img src="<?= $this->assetUrl('img/evenement2_img3.jpg') ?>" alt="description de l'evenement"></div>
             <p>Date</p>
             <p>Capacite</p>
             <p>Description</p>
@@ -72,5 +72,5 @@
                 href="#"><i class="fa fa-sign-in"></i><span>S'inscrire</span></a><a href="#"><i class="fa fa-check-circle"></i><span>Participer</span></a>
         </section>
 
-        <a href="recherche.html" title="nouvelle recherche">Nouvelle recherche</a>
+        <a href="<?= $this->url("recherche"); ?>" title="nouvelle recherche">Nouvelle recherche</a>
 <?php $this->stop('principal') ?>
