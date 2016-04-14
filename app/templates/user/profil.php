@@ -10,7 +10,7 @@
     <div class="col-md-4 col-sm-6 col-xs-12">
       <div class="info-profil">
         <div class="text-center" id="previewImage">
-          img src="" width="150px" height="150px" alt="photo profil">
+          <img src="" alt="photo profil" class="img-thumbnail">
         </div>
 
         <!-- Affichage des informations personnelles -->
@@ -24,7 +24,8 @@
             <li>Téléphone</li>
           </ul>
 
-          <input class="btn btn-primary" value="Modifier vos informations personnelles" type="button">
+          <a href="<?= $this->url('modifier_profil') ?>" class="btn btn-primary btn-lg active" role="button">Modifiez vos informations personnelles</a>
+
 
         </div>
       </div>
@@ -38,12 +39,14 @@
           <table class="add-events" data-toggle="modal" data-target="#profil-add-events">
             <tr>
               <th>Date</th>
+              <th>Lieu</th>
               <th>Capecité</th>
               <th>Description</th>
               <th>Nombre de participants</th>
             </tr>
             <tr>
               <td>01/01/2012</td>
+              <td>Paris</td>
               <td>100</td>
               <td>Spectacle</td>
               <td>70</td>
@@ -57,19 +60,21 @@
           <table class="past-events" data-toggle="modal" data-target="#profil-past-events">
             <tr>
               <th>Date</th>
+              <th>Lieu</th>
               <th>Capecité</th>
               <th>Description</th>
               <th>Nombre de participants</th>
             </tr>
             <tr>
               <td>01/01/2012</td>
+              <td>Paris</td>
               <td>100</td>
               <td>Spectacle</td>
               <td>70</td>
             </tr>
           </table>
 
-          <input class="btn btn-primary" value="Ajouter un événement" type="button">
+          <a href="<?= $this->url('creer_evenement') ?>" class="btn btn-primary btn-lg active" role="button">Ajouter un événement</a>
         </div>
       </div>
     </div>
@@ -86,12 +91,14 @@
               <table class="add-events">
                 <tr>
                   <th>Date</th>
+                  <th>Lieu</th>
                   <th>Capecité</th>
                   <th>Description</th>
                   <th>Nombre de participants</th>
                 </tr>
                 <tr>
                   <td>01/01/2012</td>
+                  <td>Paris</td>
                   <td>100</td>
                   <td>Spectacle</td>
                   <td>70</td>
@@ -118,12 +125,14 @@
                       <table class="past-events">
                         <tr>
                           <th>Date</th>
+                          <th>Lieu</th>
                           <th>Capecité</th>
                           <th>Description</th>
                           <th>Nombre de participants</th>
                         </tr>
                         <tr>
                           <td>01/01/2012</td>
+                          <td>Paris</td>
                           <td>100</td>
                           <td>Spectacle</td>
                           <td>70</td>

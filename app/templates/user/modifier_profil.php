@@ -8,7 +8,7 @@
     <!-- left column -->
     <div class="col-md-4 col-sm-6 col-xs-12">
       <div class="text-center" id="previewImage">
-        img src="" width="150px" height="150px" alt="photo profil">
+        <img src="" alt="photo profil" class="img-thumbnail">
       </div>
         <p>Modifier la photo profil</p>
         <input type="file" class="text-center center-block well well-sm">
@@ -51,7 +51,7 @@
           <div class="col-lg-8">
             <input class="form-control" placeholder="0123456789" type="text">
           </div>
-         </div>
+        </div>
 
         <div class="form-group">
           <label class="col-md-3 control-label">Pseudo:</label>
@@ -77,15 +77,15 @@
         <div class="form-group">
           <label class="col-md-3 control-label"></label>
           <div class="save-cancel">
-            <input class="btn btn-primary" value="Sauvegarder" type="button">
-            <input class="btn btn-default" value="Annuler" type="reset">
+            <a href="#" class="btn btn-primary btn-lg active" role="button">Sauvegarder</a>
+            <a href="#" class="btn btn-default btn-lg active" role="button">Annuler</a>
           </div>
         </div>
       </form>
     </div>
   </div>
 
-    <input class="btn btn-primary" value="Ajouter un événement" type="button">
+  <a href="<?= $this->url('creer_evenement') ?>" class="btn btn-primary btn-lg active" role="button">Ajouter un événement</a>
   </div>
 </div>
 
