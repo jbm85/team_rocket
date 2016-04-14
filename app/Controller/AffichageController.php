@@ -17,7 +17,7 @@ class AffichageController extends Controller
 
     public function afficherEvenement()
     {
-        $this->show('affichage/evenement');
+        $this->show('affichage/evenement_description');
     }
 
     public function afficherRecherche()
