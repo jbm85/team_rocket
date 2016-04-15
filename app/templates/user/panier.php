@@ -1,5 +1,4 @@
-<?php $this->layout('layout', ['title' => 'Events - Panier',
-    'id' => 'basket_page']) ?>
+<?php $this->layout('layout', ['title' => 'Events - Connexion', 'id' => 'basket_page']) ?>
 
 <?php $this->start('principal') ?>
 
@@ -50,8 +49,8 @@
                 </tr>
 
                 <tr>
-                    <td colspan="7">Total participatif :</td>
-                    <td>19€</td>
+                    <td colspan="7"><strong>Total participatif :</strong></td>
+                    <td><strong>19€</strong></td>
                 </tr>
             </tbody>
         </table>
