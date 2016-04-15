@@ -1324,6 +1324,129 @@ iframe~a{
 
 
 
+
+
+
+/*
+									Page PROFIL
+*/
+#previewImage {
+    width: 150px;
+    height: 150px;
+    background-position: center center;
+    background-size: cover;
+    -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .3);
+    display: inline-block;
+}
+
+#profil_modif ul {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+#profil_modif li {
+	font-size: 1rem;
+}
+
+#profil_modif h2 {
+    margin-top: 2rem;
+}
+
+#profil_modif .form-group {
+    padding: 0.3rem;
+}
+
+#profil_modif .list-add-events, #profil_modif .list-past-events {
+	cursor: pointer;
+	border: 0.1rem solid white;
+	padding: 1rem 0;
+	margin: 2rem auto;
+	background-color: aliceblue;
+	width: 77%;
+	font-size: 1rem;
+}
+
+#profil_modif .add-events, #profil_modif .past-events {
+    width: 80%;
+    margin: 1rem auto 2rem;
+    display: none;
+}
+
+#profil_modif table, #profil_modif th, #profil_modif td {
+    border: 1px solid black;
+    border-collapse: collapse;
+
+}
+#profil_modif th, #profil_modif td {
+    padding: 5px;
+}
+
+#profil_modif .btn-primary {
+	font-size: 1rem;
+	margin-bottom: 2rem;
+}
+
+@media screen and (min-width:700px){
+	#profil_modif .show-events, #profil_modif .info-profil{
+		display: inline-block;
+		width: 45%;
+	}
+
+	#profil_modif .col-sm-6 {
+		width: 100%;
+	}
+
+}
+
+@media screen and (min-width:1024px){
+	#profil_modif .show-events, #profil_modif .info-profil{
+		display: inline-block;
+		width: 45%;
+	}
+}
+
+
+
+
+/*
+									Page MODIFIER PROFIL
+*/
+
+
+#profil_modif .well-sm {
+	border: 0.1rem solid #337ab7;
+	padding: 0.5rem 0.5rem;
+	border-radius: 4%;
+	background-color: #337ab7;
+	font-size: 0.8rem;
+	color: white;
+}
+
+
+#profil_modif p {
+	margin: 1rem 0 10px;
+	font-size: 1rem;
+}
+
+.control-label {
+	font-size: 1rem;
+}
+
+#profil_modif .btn-default {
+	font-size: 1rem;
+	margin-bottom: 2rem;
+	color: #fff;
+	background-color: #337ab7;
+	border-color: #2e6da4;
+}
+
+
+
+
+
+
+
+
 /*
 									Page GESTION MEMBRE(Recuperation du code depuis Bootstrap)
 */
@@ -1452,73 +1575,6 @@ iframe~a{
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-									Page PROFIL
-*/
-#previewImage {
-    width: 180px;
-    height: 180px;
-    background-position: center center;
-    background-size: cover;
-    -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .3);
-    display: inline-block;
-}
-
-
-.well-sm {
-    border: 0.1rem solid aliceblue;
-    margin: 0.2rem;
-    padding: 0.3rem;
-    border-radius: 4%;
-    background-color: aliceblue;
-}
-
-#profil_modif h2 {
-    margin-top: 2rem;
-}
-
-#profil_modif .form-group {
-    padding: 0.3rem;
-}
-
-#profil_modif .list-add-events, .list-past-events {
-	cursor: pointer;
-    border: 0.1rem solid white;
-    padding: 1rem 0;
-    margin: 2rem auto;
-    background-color: aliceblue;
-    width: 60%;
-}
-
-#profil_modif .add-events, #profil_modif .past-events {
-    width: 80%;
-    margin: 1rem auto;
-    display: none;
-}
-
-#profil_modif table, #profil_modif th, #profil_modif td {
-    border: 1px solid black;
-    border-collapse: collapse;
-
-}
-#profil_modif th, #profil_modif td {
-	padding: 5px;
-}
-
-
-
 
 
 

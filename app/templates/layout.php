@@ -55,12 +55,11 @@
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 							<h4 class="modal-title" id="myModalLabel">Contactez Nous</h4>
 						</div>
+
 						<div class="modal-body">
 							<section id="contactSection">
 
 								<!-- Formulaire de contact -->
-
-
 
 								<form method="post">
 									<div class="form-group">
@@ -79,21 +78,19 @@
 									<button type="submit" name="send" class="btn btn-default">Envoyer</button>
 								</form>
 
-								<!-- Palier 9 -->
-
-
-
 								<span id="helpForm"></span>
-								</form>
+
 							</section>
 						</div>
+
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-
 						</div>
+						
 					</div>
 				</div>
 			</div>
+
 		</footer>
 
 
@@ -101,9 +98,9 @@
 		<script src="https://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 		<!-- JS -->
-		<script type="text/javascript" src="<?= $this->assetUrl('fancybox/jquery.fancybox.pack.js') ?>" ></script>
-		<script type="text/javascript" src="<?= $this->assetUrl('js/profil.js') ?>" ></script>
 		<script type="text/javascript" src="<?= $this->assetUrl('js/bootstrap-datepicker.js') ?>" ></script>
+		<script type="text/javascript" src="<?= $this->assetUrl('js/profil.js') ?>" ></script>
 		<script type="text/javascript" src="<?= $this->assetUrl('js/script.js') ?>" ></script>
 	</body>
+
 </html>
