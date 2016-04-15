@@ -7,7 +7,9 @@
 		['GET|POST', '/inscription', 'Membre#afficherInscription', 'inscription'],
 		['GET', '/modifier_profil', 'Membre#afficherModifierProfil', 'modifier_profil'],
 		['GET', '/panier', 'Membre#afficherPanier', 'panier'],
-		['GET', '/profil', 'Membre#afficherProfil', 'profil'],
+		['GET|POST', '/profil', 'Membre#afficherProfil', 'profil'],
+
+		
 		['GET', '/gestion_membre', 'Admin#afficherGestionMembre', 'gestion_membre'],
 		['GET', '/derniers_evenements', 'Affichage#afficherDerniersEvenements', 'derniers_evenements'],
 		['GET', '/evenement_description', 'Affichage#afficherEvenement', 'evenement_description'],
