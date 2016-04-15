@@ -15,69 +15,69 @@
     <!-- edit form column -->
     <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
       <p>Mettez à jour vos informations personnelles</p>
-      <form class="form-horizontal" role="form">
+      <form method="post" action="<?= $this->url('modifier_profil') ?>" class="form-horizontal" role="form">
 
         <div class="form-group">
           <label class="col-lg-3 control-label">Prénom:</label>
           <div class="col-lg-8">
-            <input class="form-control" placeholder="Barry" type="text">
+            <input class="form-control" name="prenom" placeholder="Barry" type="text">
           </div>
         </div>
 
         <div class="form-group">
           <label class="col-lg-3 control-label">Nom:</label>
           <div class="col-lg-8">
-            <input class="form-control" placeholder="Allen" type="text">
+            <input class="form-control" name="nom" placeholder="Allen" type="text">
           </div>
         </div>
 
         <div class="form-group">
           <label class="col-lg-3 control-label">Date de naissance:</label>
           <div class="col-lg-8">
-            <input class="form-control" placeholder="01/01/1990" type="date">
+            <input class="form-control" name="date_de_naissance" placeholder="01/01/1990" type="date">
           </div>
         </div>
 
         <div class="form-group">
           <label class="col-lg-3 control-label">Email:</label>
           <div class="col-lg-8">
-            <input class="form-control" placeholder="barryallen@mail.com" type="text">
+            <input class="form-control" name="email" placeholder="barryallen@mail.com" type="text">
           </div>
         </div>
 
         <div class="form-group">
           <label class="col-lg-3 control-label">Téléphone:</label>
           <div class="col-lg-8">
-            <input class="form-control" placeholder="0123456789" type="text">
+            <input class="form-control" name="telephone" placeholder="0123456789" type="text">
           </div>
         </div>
 
         <div class="form-group">
           <label class="col-md-3 control-label">Pseudo:</label>
           <div class="col-lg-8">
-            <input class="form-control" placeholder="theflash" type="text">
+            <input class="form-control" name="pseudo" placeholder="theflash" type="text">
           </div>
         </div>
 
         <div class="form-group">
           <label class="col-md-3 control-label">Mot de passe:</label>
           <div class="col-lg-8">
-            <input class="form-control" placeholder="" type="password">
+            <input class="form-control" name="mot_de_passe" placeholder="" type="password">
           </div>
         </div>
 
         <div class="form-group">
           <label class="col-md-3 control-label">Confirmer le mot de passe:</label>
           <div class="col-lg-8">
-            <input class="form-control" placeholder="" type="password">
+            <input class="form-control" name="confirmation" placeholder="" type="password">
           </div>
         </div>
 
         <div class="form-group">
           <label class="col-md-3 control-label"></label>
           <div class="save-cancel">
-            <a href="#" class="btn btn-primary btn-lg active" role="button">Sauvegarder</a>
-            <a href="#" class="btn btn-default btn-lg active" role="button">Annuler</a>
+            <a href="#" name="sauvegarder" class="btn btn-primary btn-lg active" role="button">Sauvegarder</a>
+            <a href="#" name="annuler" class="btn btn-default btn-lg active" role="button">Annuler</a>
           </div>
         </div>
       </form>

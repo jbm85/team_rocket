@@ -29,8 +29,9 @@
             <p>Capacite</p>
             <p>Description</p>
             <p>Nombre de participants</p>
-            <a href="<?= $this->url('evenement_description') ?>"><i class="fa fa-info-circle"></i><span>Plus de détails</span></a><a
-                href="#"><i class="fa fa-sign-in"></i><span>S'inscrire</span></a><a href="#"><i class="fa fa-check-circle"></i><span>Participer</span></a>
+            <a href="<?= $this->url('evenement_description') ?>"><i class="fa fa-info-circle"></i><span>Plus de détails</span></a>
+            <a href="<?= $this->url('inscription') ?>"><i class="fa fa-sign-in"></i><span>S'inscrire</span></a>
+            <a href="<?= $this->url ('panier') ?>"><i class="fa fa-check-circle"></i><span>Participer</span></a>
         </section>
 
         <section>
@@ -42,8 +43,9 @@
             <p>Capacite</p>
             <p>Description</p>
             <p>Nombre de participants</p>
-            <a href="<?= $this->url('evenement_description') ?>"><i class="fa fa-info-circle"></i><span>Plus de détails</span></a><a
-                href="#"><i class="fa fa-sign-in"></i><span>S'inscrire</span></a><a href="#"><i class="fa fa-check-circle"></i><span>Participer</span></a>
+            <a href="<?= $this->url('evenement_description') ?>"><i class="fa fa-info-circle"></i><span>Plus de détails</span></a>
+            <a href="<?= $this->url('inscription') ?>"><i class="fa fa-sign-in"></i><span>S'inscrire</span></a>
+            <a href="<?= $this->url ('panier') ?>"><i class="fa fa-check-circle"></i><span>Participer</span></a>
         </section>
 
         <section>
@@ -55,8 +57,9 @@
             <p>Capacite</p>
             <p>Description</p>
             <p>Nombre de participants</p>
-            <a href="<?= $this->url('evenement_description') ?>"><i class="fa fa-info-circle"></i><span>Plus de détails</span></a><a
-                href="#"><i class="fa fa-sign-in"></i><span>S'inscrire</span></a><a href="#"><i class="fa fa-check-circle"></i><span>Participer</span></a>
+            <a href="<?= $this->url('evenement_description') ?>"><i class="fa fa-info-circle"></i><span>Plus de détails</span></a>
+            <a href="<?= $this->url('inscription') ?>"><i class="fa fa-sign-in"></i><span>S'inscrire</span></a>
+            <a href="<?= $this->url ('panier') ?>"><i class="fa fa-check-circle"></i><span>Participer</span></a>
         </section>
 
         <section>
@@ -68,8 +71,9 @@
             <p>Capacite</p>
             <p>Description</p>
             <p>Nombre de participants</p>
-            <a href="<?= $this->url('evenement_description') ?>"><i class="fa fa-info-circle"></i><span>Plus de détails</span></a><a
-                href="#"><i class="fa fa-sign-in"></i><span>S'inscrire</span></a><a href="#"><i class="fa fa-check-circle"></i><span>Participer</span></a>
+            <a href="<?= $this->url('evenement_description') ?>"><i class="fa fa-info-circle"></i><span>Plus de détails</span></a>
+            <a href="<?= $this->url('inscription') ?>"><i class="fa fa-sign-in"></i><span>S'inscrire</span></a>
+            <a href="<?= $this->url ('panier') ?>"><i class="fa fa-check-circle"></i><span>Participer</span></a>
         </section>
 
         <a href="<?= $this->url("recherche"); ?>" title="nouvelle recherche" class="btn btn-primary active">Nouvelle recherche</a>

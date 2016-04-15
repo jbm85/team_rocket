@@ -23,7 +23,6 @@
             <li>Email</li>
             <li>Téléphone</li>
           </ul>
-
           <a href="<?= $this->url('modifier_profil') ?>" class="btn btn-primary btn-lg active" role="button">Modifiez vos informations personnelles</a>
 
 
