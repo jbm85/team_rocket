@@ -1646,7 +1646,12 @@ border-radius: 4px;
     -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .3);
     display: inline-block;
 }
+/*CONTACT*/
 
+#contactSection{
+	font-size: 2rem;
+	font-weight: none;
+}
 #inscription_page~footer{
 	position: relative;
 }
@@ -1655,21 +1660,6 @@ border-radius: 4px;
 	right: 1rem;
 	bottom: 103%;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-																CONTACT
-*/
 #contactSection form{
     color:black;
         margin-top: 70px;
@@ -1715,6 +1705,24 @@ left: 0;
     border-top-right-radius:10px; 
 }
 
+/*MODAL ML CGV*/
+
+#ml{
+	height: 40rem;
+	overflow: scroll;
+}
+#ml p{
+	text-align: left;
+	font-size: 2em;
+}
+#cgv{
+	height: 40rem;
+	overflow: scroll;
+}
+#cgv p{
+	text-align: left;
+	font-size: 2em;
+}
 /*
 Resolution d'ecran à 320px minimum
 */
@@ -1773,5 +1781,3 @@ Resolution d'ecran à 320px minimum
 
 
 }
-
-
