@@ -4,17 +4,21 @@ namespace Controller;
 
 use \W\Controller\Controller;
 use Manager\MembreManager;
+use W\Security\AuthentificationManager;
 
 class MembreController extends Controller
 {
     protected $membre;
+    protected $validator;
 
     public function __construct()
     {
         $this->membre = new MembreManager();
+        $this->validator = new AuthentificationManager();
     }
 
     /**
+     * Page d'accueil par défaut
      * Page d'accueil par défaut
      */
     public function afficherConnexion()
@@ -71,7 +75,15 @@ class MembreController extends Controller
 
     public function afficherProfil()
     {
-        $this->show('membre/profil');
+        if(isset($_POST['formulaireConnexionEtPasUnautre'])) {
+            // traitment si clçic sur bouton de connexion
+            $infos['coco'] = $_POST;
+            $this->show('membre/connexion', $infos);
+        }
+        else {
+            // traitement si saisi /profil directement dans l'url
+            $this->show('membre/profil');
+        }
     }
 
 }
