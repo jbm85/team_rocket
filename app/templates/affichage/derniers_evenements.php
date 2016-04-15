@@ -14,8 +14,8 @@
             <p>Description</p>
             <p>Nombre de participants</p>
             <p>Dernier avis</p>
-            <a href="#"><i class="fa fa-info-circle"></i><span>Plus de détails</span></a><a
-                href="#"><i class="fa fa-sign-in"></i><span>S'inscrire</span></a><a href="#"><i class="fa fa-commenting-o"></i><span>Commenter</span></a>
+            <a href="<?= $this->url('evenement_description') ?>"><i class="fa fa-info-circle"></i><span>Plus de détails</span></a><a
+                href="<?= $this->url('inscription') ?>"><i class="fa fa-sign-in"></i><span>S'inscrire</span></a><a href="#"><i class="fa fa-check-circle"></i><span>Participer</span></a>
         </section>
 
         <section>
@@ -28,8 +28,8 @@
             <p>Description</p>
             <p>Nombre de participants</p>
             <p>Dernier avis</p>
-            <a href="#"><i class="fa fa-info-circle"></i><span>Plus de détails</span></a><a
-                href="#"><i class="fa fa-sign-in"></i><span>S'inscrire</span></a><a href="#"><i class="fa fa-commenting-o"></i><span>Commenter</span></a>
+            <a href="<?= $this->url('evenement_description') ?>"><i class="fa fa-info-circle"></i><span>Plus de détails</span></a><a
+                href="#"><i class="fa fa-sign-in"></i><span>S'inscrire</span></a><a href="#"><i class="fa fa-check-circle"></i><span>Participer</span></a>
         </section>
 
         <section>
@@ -42,8 +42,8 @@
             <p>Description</p>
             <p>Nombre de participants</p>
             <p>Dernier avis</p>
-            <a href="#"><i class="fa fa-info-circle"></i><span>Plus de détails</span></a><a
-                href="#"><i class="fa fa-sign-in"></i><span>S'inscrire</span></a><a href="#"><i class="fa fa-commenting-o"></i><span>Commenter</span></a>
+            <a href="<?= $this->url('evenement_description') ?>"><i class="fa fa-info-circle"></i><span>Plus de détails</span></a><a
+                href="#"><i class="fa fa-sign-in"></i><span>S'inscrire</span></a><a href="#"><i class="fa fa-check-circle"></i><span>Participer</span></a>
         </section>
 
         <section>
