@@ -1,5 +1,5 @@
-<?php $this->layout('layout', ['title' => 'Events - Connexion',
-    'id' => 'connexion_page']) ?>
+<?php $this->layout('layout',
+                    ['title' => 'Events - Connexion', 'id' => 'connexion_page']) ?>
 
 <?php $this->start('principal') ?>
     <!--Contenu principal-->

@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+    
     // Affichage des événements que le membre a ajouté
 	$('.list-add-events').click(function(e){
 		e.preventDefault();

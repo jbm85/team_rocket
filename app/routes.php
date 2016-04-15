@@ -10,6 +10,6 @@
 		['GET', '/profil', 'User#afficherProfil', 'profil'],
 		['GET', '/gestion_membre', 'Admin#afficherGestionMembre', 'gestion_membre'],
 		['GET', '/derniers_evenements', 'Affichage#afficherDerniersEvenements', 'derniers_evenements'],
-		['GET', '/evenement', 'Affichage#afficherEvenement', 'evenement'],
+		['GET', '/evenement_description', 'Affichage#afficherEvenement', 'evenement_description'],
 		['GET', '/recherche', 'Affichage#afficherRecherche', 'recherche']
 	);
