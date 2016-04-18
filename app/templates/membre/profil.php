@@ -16,12 +16,12 @@
         <!-- Affichage des informations personnelles -->
         <div class="view-profil-info">
           <ul>
-            <li>Pseudo</li>
-            <li>Prénom</li>
-            <li>nom</li>
-            <li>Date de naissance</li>
-            <li>Email</li>
-            <li>Téléphone</li>
+            <li><?= $_SESSION['membre']['pseudo']; ?></li>
+            <li><?= $_SESSION['membre']['prenom']; ?></li>
+            <li><?= $_SESSION['membre']['nom']; ?></li>
+            <li><?= $_SESSION['membre']['date_de_naissance']; ?></li>
+            <li><?= $_SESSION['membre']['email']; ?></li>
+            <li><?= $_SESSION['membre']['telephone']; ?></li>
           </ul>
           <a href="<?= $this->url('modifier_profil') ?>" class="btn btn-primary btn-lg active" role="button">Modifiez vos informations personnelles</a>
 
