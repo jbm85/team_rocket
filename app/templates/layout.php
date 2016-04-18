@@ -100,6 +100,7 @@
 <!-- JS -->
 <script type="text/javascript" src="<?= $this->assetUrl('js/bootstrap-datepicker.js') ?>" ></script>
 <script type="text/javascript" src="<?= $this->assetUrl('js/profil.js') ?>" ></script>
+<script type="text/javascript" src="<?= $this->assetUrl('verification_formulaire.js') ?>"></script>
 <script type="text/javascript" src="<?= $this->assetUrl('js/script.js') ?>" ></script>
 </body>
 
