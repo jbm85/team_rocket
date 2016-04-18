@@ -78,12 +78,13 @@ class MembreController extends Controller
         if(isset($_POST['formulaireConnexionEtPasUnautre'])) {
             // traitment si clic sur bouton de connexion
             $infos['coco'] = $_POST;
-            $this->show('membre/connexion', $infos);
+            $this->validator->logUserIn('membre/');
+            $this->show('membre/profil', $infos);
         }
         else {
             // traitement si saisi /profil directement dans l'url
 
-            $this->show('membre/profil');
+            $this->show('membre/connexion');
         }
     }
 
