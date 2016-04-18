@@ -2,6 +2,11 @@
 
 <?php $this->start('principal') ?>
 <?php debug($utilisateur) ?>
+
+<?php if (isset($msg)) : ?>
+<div class="<?= $classe ?>"><?= $msg ?></div>
+<?php endif; ?>
+
     <form method="post" action="<?= $this->url('inscription') ?>" id="sky-form4" class="sky-form" >
         <h2>Formulaire d'inscription</h2>
 
@@ -88,7 +93,7 @@
 
         </fieldset>
         <section>
-            <button type="submit" name="submit" class="btn-u">Envoyer</button>
+            <button type="submit" name="envoi-inscription" class="btn-u">Envoyer</button>
         </section>
     </form>
 <?php $this->stop('principal') ?>

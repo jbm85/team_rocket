@@ -4,15 +4,22 @@ namespace Controller;
 
 use \W\Controller\Controller;
 
+use Manager\EvenementManager;
+
 class AffichageController extends Controller
 {
+    protected $derniers_evenements;
 
-    /**
-     * Page d'accueil par défaut
-     */
+    public function __construct()
+    {
+        $this->derniers_evenements = new EvenementManager();
+    }
+
     public function afficherDerniersEvenements()
     {
-        $this->show('affichage/derniers_evenements');
+
+        $infos['derniers_evenements'] = $this->derniers_evenements->findAll('date', 'DESC', 2, 0);
+        $this->show('affichage/derniers_evenements', $infos);
     }
 
     public function afficherEvenement()

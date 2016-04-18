@@ -6,6 +6,8 @@ use \W\Controller\Controller;
 // j'appelle le manager qui contient les fonctions (methodes) de requete vers la table "evenements" dans la BDD
 use Manager\EvenementManager;
 
+use Manager\EvenementManager;
+
 class BaseController extends Controller
 {
 	protected $evenement;
@@ -19,8 +21,10 @@ class BaseController extends Controller
 	/**
 	 * Page d'accueil par défaut
 	 */
+
 	public function afficherAccueil()
 	{
+		$infos['evenements'] = $this->evenement->findAll();
 		// je stock le resultat de SELECT * FROM evenements dans $infos['evenements']
 		$infos['evenements'] = $this->evenement->findAll();
 		foreach($infos['evenements'] as $key => $value) {
@@ -29,7 +33,7 @@ class BaseController extends Controller
 
 
 		// je transfert $infos au template. Et, du côté du template accueil.php, 'evenements' devient $evenements
-		// je demande à afficher le template base/accueil.php, qui contient tout le html 
+		// je demande à afficher le template base/accueil.php, qui contient tout le html
 		$this->show('base/accueil', $infos);
 	}
 
