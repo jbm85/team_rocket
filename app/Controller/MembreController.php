@@ -41,9 +41,14 @@ class MembreController extends Controller
         return $utilisateur; // on renvoi un tableau qui contient les posts
     }
 
+    
+
     public function remplirSession(array $data)
     {
         foreach($data as $key => $value) {
+            if($key == 'date_de_naissance') {
+                $value = ToolsController::dateEnFr($value);
+            }
             $_SESSION['membre'][$key] = $value;
         }
     }

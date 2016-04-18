@@ -3,7 +3,6 @@
 namespace Controller;
 
 use \W\Controller\Controller;
-
 // j'appelle le manager qui contient les fonctions (methodes) de requete vers la table "evenements" dans la BDD
 use Manager\EvenementManager;
 
@@ -24,6 +23,10 @@ class BaseController extends Controller
 	{
 		// je stock le resultat de SELECT * FROM evenements dans $infos['evenements']
 		$infos['evenements'] = $this->evenement->findAll();
+		foreach($infos['evenements'] as $key => $value) {
+			$infos['evenements'][$key]['date'] = ToolsController::dateHeureEnFr($value['date']);
+		}
+
 
 		// je transfert $infos au template. Et, du côté du template accueil.php, 'evenements' devient $evenements
 		// je demande à afficher le template base/accueil.php, qui contient tout le html 
