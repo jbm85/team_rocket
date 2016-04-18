@@ -76,12 +76,13 @@ class MembreController extends Controller
     public function afficherProfil()
     {
         if(isset($_POST['formulaireConnexionEtPasUnautre'])) {
-            // traitment si clçic sur bouton de connexion
+            // traitment si clic sur bouton de connexion
             $infos['coco'] = $_POST;
             $this->show('membre/connexion', $infos);
         }
         else {
             // traitement si saisi /profil directement dans l'url
+
             $this->show('membre/profil');
         }
     }
