@@ -41,9 +41,14 @@ class MembreController extends Controller
         return $utilisateur; // on renvoi un tableau qui contient les posts sinon on renvoi un tableau vide
     }
 
+    
+
     public function remplirSession(array $data)
     {
         foreach($data as $key => $value) {
+            if($key == 'date_de_naissance') {
+                $value = ToolsController::dateEnFr($value);
+            }
             $_SESSION['membre'][$key] = $value;
         }
     }
@@ -121,14 +126,21 @@ class MembreController extends Controller
 
     public function afficherProfil()
     {
+
         if(isset($_POST['envoi-connexion'])) {
             // traitment si clçic sur bouton de connexion
+
+        if(isset($_POST['formulaireConnexionEtPasUnautre'])) {
+            // traitment si clic sur bouton de connexion
+
             $infos['coco'] = $_POST;
-            $this->show('membre/connexion', $infos);
+            $this->validator->logUserIn('membre/');
+            $this->show('membre/profil', $infos);
         }
         else {
             // traitement si saisi /profil directement dans l'url
-            $this->show('membre/profil');
+
+            $this->show('membre/connexion');
         }
     }
 
