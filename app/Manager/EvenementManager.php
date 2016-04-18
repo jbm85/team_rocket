@@ -7,9 +7,9 @@
  */
 
 namespace Manager;
-use W\Manager\UserManager;
+use W\Manager\Manager;
 
-class MembreManager extends UserManager
+class EvenementManager extends Manager
 {
 
 }
