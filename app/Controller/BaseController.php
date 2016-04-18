@@ -6,7 +6,6 @@ use \W\Controller\Controller;
 // j'appelle le manager qui contient les fonctions (methodes) de requete vers la table "evenements" dans la BDD
 use Manager\EvenementManager;
 
-use Manager\EvenementManager;
 
 class BaseController extends Controller
 {
