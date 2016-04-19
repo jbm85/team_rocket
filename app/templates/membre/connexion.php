@@ -2,11 +2,10 @@
                     ['title' => 'Events - Connexion', 'id' => 'connexion_page']) ?>
 <?php $this->start('principal') ?>
 <!--Contenu principal-->
-
-<?php var_dump($coco); ?>
+<? debug($session_membre) ?>
 <!--Formulaire de connexion-->
-        <form action="<?= $this->url('profil') ?>" method="post">
-
+        <form action="" method="post">
+            
             <label for="email-user">Email :</label>
             <input type="text" id="email-user" name="email" onblur="checkEmail(this)">
 

@@ -1,4 +1,4 @@
-<?php $this->layout('layout', ['title' => 'Events - Connexion', 'id' => 'create_event_page']) ?>
+<?php $this->layout('layout', ['title' => 'Events - Créer un évènement', 'id' => 'create_event_page']) ?>
 
 <?php $this->start('principal') ?>
     <!--Contenu principal-->
