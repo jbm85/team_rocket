@@ -19,12 +19,8 @@ class MembreController extends Controller
 
     /**
      * Page d'accueil par défaut
-     * Page d'accueil par défaut
      */
-    public function afficherConnexion()
-    {
-        $this->show('membre/connexion');
-    }
+
 
     public function afficherCreerEvenement()
     {
@@ -35,7 +31,7 @@ class MembreController extends Controller
     {
         $utilisateur = array();
         foreach ($posts as $key => $value) {
-            if ($key !== 'envoi-inscription' && $key !== 'photo' && $key !== 'gender' && $key !== 'passwordConfirm')
+            if ($key !== 'envoi-inscription' && $key !== 'envoi-connexion' && $key !== 'photo_profil')
                 $utilisateur[$key] = !empty($value) ? trim($value) : '';
         }
         return $utilisateur; // on renvoi un tableau qui contient les posts sinon on renvoi un tableau vide
@@ -52,15 +48,15 @@ class MembreController extends Controller
         }
     }
 
+    // Fonction pour convertir la date au format francais en date anglaise(BDD MySQL) :
     public function convertDateUs($date_fr)
     {
-
         if (preg_match('/\//', $date_fr)) {
-            $date = explode("/", $date_fr);
+            $date = explode('/', $date_fr);
             $date_us = $date[2] . '-' . $date[1] . '-' . $date[0];
             return $date_us;
         } else if (preg_match('/-/', $date_fr)) {
-            $date = explode("-", $date_fr);
+            $date = explode('-', $date_fr);
             $date_us = $date[2] . '-' . $date[1] . '-' . $date[0];
             return $date_us;
         }
@@ -70,7 +66,6 @@ class MembreController extends Controller
 
     public function afficherInscription()
     {
-
         if (isset($_POST['envoi-inscription'])) {
 
             $utilisateur = $this->remplirLesPosts($_POST);
@@ -80,18 +75,18 @@ class MembreController extends Controller
                 $utilisateur['date_de_naissance'] = $this->convertDateUs($utilisateur['date_de_naissance']);
                 $utilisateur['admin'] = 'off';
                 if ($this->membre->emailExists($utilisateur['email']) && $this->membre->usernameExists($utilisateur['pseudo'])) {
-
                     $this->redirectToRoute('inscription_msg', ['msg' => 'error_email']);
-
                 } else {
-
-                    $utilisateur['mot_de_passe'] = password_hash($utilisateur['mot_de_passe'], PASSWORD_DEFAULT);
-//                            $info['debug']=$utilisateur;
-//                            $this->show('debug',$info);
-                    $sess_utilisateur = $this->membre->insert($utilisateur);
-                    $this->remplirSession($sess_utilisateur);
-                    $this->redirectToRoute('profil');
-
+                   if ($utilisateur['mot_de_passe'] === $utilisateur['password_confirm']){
+                        $utilisateur['mot_de_passe'] = password_hash($utilisateur['mot_de_passe'], PASSWORD_DEFAULT);
+                        $info['debug']=$utilisateur;
+                        $this->show('debug',$info);
+                        //$sess_utilisateur = $this->membre->insertNotPassword($utilisateur); //TODO: Voir comment tester les deux mots de pass
+                        //$this->remplirSession($sess_utilisateur);
+                        //$this->redirectToRoute('profil');
+                   }else {
+                       $this->redirectToRoute('inscription_msg', ['msg' => 'error_password']);
+                   }
                 }
             }
         }
@@ -106,10 +101,36 @@ class MembreController extends Controller
                 $infos['msg'] = 'Désolé cet email est déjà pris, essayez en un autre.';
                 $infos['classe'] = 'alert-danger';
                 break;
+            case 'error_password' :
+                $infos['msg'] = 'Désolé les deux mots de pass ne sont pas identiques';
+                $infos['classe'] = 'alert-danger';
+                break;
             default :
                 $infos['msg'] = '';
         }
         $this->show('membre/inscription', $infos);
+    }
+
+    public function afficherConnexion()
+    {
+        if (isset($_POST['envoi-connexion'])){
+            $membre = $this->remplirLesPosts($_POST);
+
+            //if (!empty($membre)){
+                //if ($this->validator->isValidLoginInfo($membre['email'], $membre['mdp'])){
+                    //$session_membre = $this->membre->getUserByUsernameOrEmail($membre['email']);
+
+//                    $info['debug'] = $membre;
+//                    $this->show('debug',$info);
+
+                    //$this->remplirSession($session_membre);
+                    //$this->validator->logUserIn($session_membre);
+                    //$this->show('membre/profil', $membre);
+                    //$this->redirectToRoute('profil');
+               // }
+            //}
+        }
+        $this->show('membre/connexion');
     }
 
     public function afficherModifierProfil()
@@ -124,21 +145,6 @@ class MembreController extends Controller
 
     public function afficherProfil()
     {
-
-        if (isset($_POST['envoi-connexion'])) {
-            // traitment si clçic sur bouton de connexion
-
-            if (isset($_POST['envoi-connexion'])) {
-                // traitment si clic sur bouton de connexion
-
-                $infos['coco'] = $_POST;
-                $this->validator->logUserIn('membre/');
-                $this->show('membre/profil', $infos);
-            } else {
-                // traitement si saisi /profil directement dans l'url
-                $this->show('membre/connexion');
-            }
-        }
-
+        $this->show('membre/profil');
     }
 }
