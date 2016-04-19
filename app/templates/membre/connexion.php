@@ -2,7 +2,7 @@
                     ['title' => 'Events - Connexion', 'id' => 'connexion_page']) ?>
 <?php $this->start('principal') ?>
 <!--Contenu principal-->
-<? debug($session_membre) ?>
+<? debug($membre) ?>
 <!--Formulaire de connexion-->
         <form action="" method="post">
             

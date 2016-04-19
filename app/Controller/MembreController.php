@@ -11,21 +11,21 @@ class MembreController extends Controller
     protected $membre;
     protected $validator;
 
+
+    /*
+     * Constructor
+     * */
+
     public function __construct()
     {
         $this->membre = new MembreManager();
         $this->validator = new AuthentificationManager();
     }
 
-    /**
-     * Page d'accueil par défaut
+
+    /*
+     * Récupérer les posts en dynamique
      */
-
-
-    public function afficherCreerEvenement()
-    {
-        $this->show('membre/creer_evenement');
-    }
 
     public function remplirLesPosts(array $posts)
     {
@@ -38,6 +38,10 @@ class MembreController extends Controller
     }
 
 
+    /*
+     * Créer une session
+     */
+
     public function remplirSession(array $data)
     {
         foreach ($data as $key => $value) {
@@ -48,7 +52,11 @@ class MembreController extends Controller
         }
     }
 
-    // Fonction pour convertir la date au format francais en date anglaise(BDD MySQL) :
+
+    /*
+     * Fonction pour convertir la date au format francais en date anglaise(BDD MySQL) :
+     */
+
     public function convertDateUs($date_fr)
     {
         if (preg_match('/\//', $date_fr)) {
@@ -64,6 +72,10 @@ class MembreController extends Controller
     }
 
 
+    /*
+     * Affichage de l'inscription :
+     */
+
     public function afficherInscription()
     {
         if (isset($_POST['envoi-inscription'])) {
@@ -73,14 +85,17 @@ class MembreController extends Controller
             if (!empty($utilisateur)) {
 
                 $utilisateur['date_de_naissance'] = $this->convertDateUs($utilisateur['date_de_naissance']);
+
                 $utilisateur['admin'] = 'off';
+
                 if ($this->membre->emailExists($utilisateur['email']) && $this->membre->usernameExists($utilisateur['pseudo'])) {
                     $this->redirectToRoute('inscription_msg', ['msg' => 'error_email']);
                 } else {
+
                    if ($utilisateur['mot_de_passe'] === $utilisateur['password_confirm']){
                         $utilisateur['mot_de_passe'] = password_hash($utilisateur['mot_de_passe'], PASSWORD_DEFAULT);
-                        $info['debug']=$utilisateur;
-                        $this->show('debug',$info);
+                        //$info['debug']=$utilisateur;
+                        //$this->show('debug',$info);
                         //$sess_utilisateur = $this->membre->insertNotPassword($utilisateur); //TODO: Voir comment tester les deux mots de pass
                         //$this->remplirSession($sess_utilisateur);
                         //$this->redirectToRoute('profil');
@@ -93,6 +108,11 @@ class MembreController extends Controller
 
         $this->show('membre/inscription');
     }
+
+
+    /*
+     * Afficher un message d'erreur à l'utilisateur :
+     */
 
     public function afficherInscriptionMsg($msg)
     {
@@ -111,17 +131,22 @@ class MembreController extends Controller
         $this->show('membre/inscription', $infos);
     }
 
-    public function afficherConnexion()
+
+    /*
+     * Affichage de la connexion :
+     */
+
+    public function afficherConnexion() //TODO:Problème de connexion
     {
         if (isset($_POST['envoi-connexion'])){
             $membre = $this->remplirLesPosts($_POST);
-
+                   //$info['debug'] = $membre;
+                    //$this->show('debug',$info);
             //if (!empty($membre)){
                 //if ($this->validator->isValidLoginInfo($membre['email'], $membre['mdp'])){
                     //$session_membre = $this->membre->getUserByUsernameOrEmail($membre['email']);
 
-//                    $info['debug'] = $membre;
-//                    $this->show('debug',$info);
+
 
                     //$this->remplirSession($session_membre);
                     //$this->validator->logUserIn($session_membre);
@@ -133,18 +158,42 @@ class MembreController extends Controller
         $this->show('membre/connexion');
     }
 
+
+    /*
+     * Affichage d'un formulaire pour modifier son profil
+     */
+
     public function afficherModifierProfil()
     {
         $this->show('membre/modifier_profil');
     }
 
+
+    /*
+     * Affichage du panier :
+     */
     public function afficherPanier()
     {
         $this->show('membre/panier');
     }
 
+
+    /*
+     * Affichage du profil
+     */
+
     public function afficherProfil()
     {
         $this->show('membre/profil');
+    }
+
+
+    /*
+     * Affichage du formulaire pour créer un évènement
+     */
+
+    public function afficherCreerEvenement()
+    {
+        $this->show('membre/creer_evenement');
     }
 }
