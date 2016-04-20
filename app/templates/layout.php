@@ -9,6 +9,8 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
 	<link rel="stylesheet" type="text/css" href="<?= $this->assetUrl('css/inscription.css') ?>">
+	<link rel="stylesheet" type="text/css" href="<?= $this->assetUrl('css/standalone.css') ?>">
+	<link rel="stylesheet" type="text/css" href="<?= $this->assetUrl('css/bootstrap-clockpicker.min.css') ?>">
 	<link rel="stylesheet" type="text/css" href="<?= $this->assetUrl('css/style.css') ?>">
 </head>
 
@@ -99,6 +101,7 @@
 <script src="https://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 <!-- JS -->
+<script type="text/javascript" src="<?= $this->assetUrl('js/bootstrap-clockpicker.min.js') ?>" ></script>
 <script type="text/javascript" src="<?= $this->assetUrl('js/bootstrap-datepicker.js') ?>" ></script>
 <script type="text/javascript" src="<?= $this->assetUrl('js/profil.js') ?>" ></script>
 <script type="text/javascript" src="<?= $this->assetUrl('verification_formulaire.js') ?>"></script>
