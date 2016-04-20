@@ -2,7 +2,6 @@
 
 <?php $this->start('principal') ?>
 
-
 <?php if (isset($msg)) : ?>
 <div class="<?= $classe ?>"><?= $msg ?></div>
 <?php endif; ?>
