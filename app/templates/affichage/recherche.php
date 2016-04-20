@@ -3,20 +3,46 @@
 <?php $this->start('principal') ?>
 
         <!--Formulaire de recherche-->
-        <form action="#" method="">
-            <label for="theme-search">Recherche par thème :</label>
-            <input type="text" id="theme-search" name="">
 
-            <label for="date-search">Recherche par date :</label>
-            <input type="text" id="date-search" name="">
+        <form method="post" action="" id="sky-form7" class="sky-form" >
+            <h2>Formulaire de Recherche</h2>
 
-            <label for="city-search">Recherche par ville :</label>
-            <input type="text" id="city-search" name="">
+            <fieldset>
+                <section>
+                    <label class="select">
+                        <select id="theme-search" name="theme-search">
+                            <option value="0" selected disabled>Recherche par thème</option>
+                            <option value="sport">Sport</option>
+                            <option value="musique">Musique</option>
+                            <option value="spectacle">Spectacle</option>
+                        </select>
+                        <i></i>
+                    </label>
+                </section>
 
-            <input type="submit" value="Rechercher">
 
-        </form>
 
+                <section>
+                    <label class="input">
+                        <i class="icon-append fa fa-building-o"></i>
+                        <input type="text" name="city-search" id="city-search" placeholder="Recherche par Ville">
+                        <b class="tooltip tooltip-bottom-right">Ex: Paris, Lille, Caen</b>
+                    </label>
+                </section>
+                <div class="row">
+                <section class="input-group date col col-6" id="sandbox-container">
+                    <label class="input">
+                        <input type="text"  id="date-search" name="date-search" class="form-control datepicker" placeholder="Recharche par date"></label><span class="input-group-addon"><i class="glyphicon glyphicon-th"  ></i></span>
+                </section>
+                    </div>
+                </fieldset>
+
+            <section>
+                    <button type="submit" name="envoi-inscription" class="btn-u">Envoyer</button>
+                </section>
+            </form>
+
+        <div id="search-result">
         <h2>Résultats de votre recherche :</h2>
         <em>Nous avons trouvé 4 correspondances pour votre recherche.</em>
         <!--Presentation des evenements-->
@@ -77,4 +103,5 @@
         </section>
 
         <a href="<?= $this->url("recherche"); ?>" title="nouvelle recherche" class="btn btn-primary active">Nouvelle recherche</a>
+        </div>
 <?php $this->stop('principal') ?>
