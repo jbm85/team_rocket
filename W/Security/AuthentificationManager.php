@@ -51,7 +51,7 @@ class AuthentificationManager
 	 */
 	public function logUserOut()
 	{
-		unset($_SESSION["user"]);
+		unset($_SESSION["membre"]);
 	}
 
 	/**
@@ -60,7 +60,7 @@ class AuthentificationManager
 	 */
 	public function getLoggedUser()
 	{
-		return (isset($_SESSION["user"])) ? $_SESSION['user'] : null;
+		return (isset($_SESSION["membre"])) ? $_SESSION['membre'] : null;
 	}
 
 	

@@ -31,7 +31,7 @@ class MembreController extends Controller
     {
         $utilisateur = array();
         foreach ($posts as $key => $value) {
-            if ($key !== 'envoi-inscription' && $key !== 'envoi-connexion' && $key !== 'photo_profil')
+            if ($key !== 'envoi-inscription' && $key !== 'connexion' && $key !== 'photo_profil')
                 $utilisateur[$key] = !empty($value) ? trim($value) : '';
         }
         return $utilisateur; // on renvoi un tableau qui contient les posts sinon on renvoi un tableau vide
@@ -70,6 +70,7 @@ class MembreController extends Controller
 
     public function afficherInscription()
     {
+        // SI le $_POST ['envoi-inscription'] existe
         if (isset($_POST['envoi-inscription'])) {
 
             $utilisateur = $this->remplirLesPosts($_POST);
@@ -79,7 +80,7 @@ class MembreController extends Controller
                 $utilisateur['date_de_naissance'] = $this->convertDateUs($utilisateur['date_de_naissance']);
                 $utilisateur['admin'] = 'off';
 
-                if (preg_match('/@/', $utilisateur['email'])) {
+                if (preg_match('/@/', $utilisateur['email']) && !empty($utilisateur['mot_de_passe'])) {
 
                     if ($this->membre->emailExists($utilisateur['email']) && $this->membre->usernameExists($utilisateur['pseudo'])) {
 
@@ -125,7 +126,7 @@ class MembreController extends Controller
                 $infos['classe'] = 'alert-danger';
                 break;
             case 'error_email_2' :
-                $infos['msg'] = 'Désolé l\'adresse email n\'est pas conforme';
+                $infos['msg'] = 'Veuillez vérifiez votre email et votre mot de passe';
                 $infos['classe'] = 'alert-danger';
                 break;
             default :
@@ -136,24 +137,33 @@ class MembreController extends Controller
 
     public function afficherConnexion()
     {
-        if (isset($_POST['envoi-connexion'])){ //TODO:non fonctionnel
+        if (isset($_POST['connexion'])){
             $membre = $this->remplirLesPosts($_POST);
 
             if (!empty($membre)){
                 if ($this->validator->isValidLoginInfo($membre['email'], $membre['mdp'])){
                     $session_membre = $this->membre->getUserByUsernameOrEmail($membre['email']);
 
-                    $info['debug'] = $membre;
-                    $this->show('debug',$info);
-
                     $this->remplirSession($session_membre);
                     $this->validator->logUserIn($session_membre);
-                    $this->show('membre/profil', $membre);
                     $this->redirectToRoute('profil');
+                }
+
+                else
+                {
+                    $this->redirectToRoute('connexionMsg', ['msg' => 'error_identifiant']);
                 }
             }
         }
         $this->show('membre/connexion');
+    }
+
+    public function connexionMsg($msg)
+    {
+        if ($msg == 'error_identifiant'){
+            $infos['msg'] = 'Désolé, vos identifiants sont incorrects!';
+        }
+        $this->show('membre/connexion',$infos);
     }
 
     public function afficherModifierProfil()
@@ -169,5 +179,11 @@ class MembreController extends Controller
     public function afficherProfil()
     {
         $this->show('membre/profil');
+    }
+    
+    public function deconnexion()
+    {
+        $this->validator->logUserOut();
+        $this->redirectToRoute('connexion');
     }
 }
