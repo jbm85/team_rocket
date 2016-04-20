@@ -2,10 +2,8 @@
                     ['title' => 'Events - Connexion', 'id' => 'connexion_page']) ?>
 <?php $this->start('principal') ?>
 <!--Contenu principal-->
-
-<?php var_dump($coco); ?>
+<? debug($session_membre) ?>
 <!--Formulaire de connexion-->
-
 
 <form method="post" action="<?= $this->url('profil') ?>" id="sky-form6" class="sky-form" >
     <h2>Connexion</h2>

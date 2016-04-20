@@ -45,7 +45,7 @@
             <section>
                 <label class="input">
                     <i class="icon-append fa fa-lock"></i>
-                    <input type="password" name="passwordConfirm" placeholder="Confirmer votre mot de passe">
+                    <input type="password" name="password_confirm" placeholder="Confirmer votre mot de passe">
                     <b class="tooltip tooltip-bottom-right">N'oubliez pas votre mot de passe</b>
                 </label>
             </section>
@@ -72,7 +72,7 @@
             
             <section>
                 <label class="select">
-                    <select name="gender">
+                    <select name="genre">
                         <option value="0" selected disabled>Genre</option>
                         <option value="1">Homme</option>
                         <option value="2">Femme</option>
@@ -84,7 +84,7 @@
             <section>
                 <label class="input" for="photo">
                     <i class="icon-append fa fa-camera"></i>
-                    <input type="file" id="uploadFile" name="photo" placeholder="Votre photo">
+                    <input type="file" id="uploadFile" name="photo_profil" placeholder="Votre photo">
                 </label>
             </section>
             <section id="sectionPhotoProfil" class="preview">

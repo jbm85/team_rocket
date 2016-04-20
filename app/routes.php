@@ -16,6 +16,6 @@
 		
 		['GET', '/gestion_membre', 'Admin#afficherGestionMembre', 'gestion_membre'],
 		['GET', '/derniers_evenements', 'Affichage#afficherDerniersEvenements', 'derniers_evenements'],
-		['GET', '/evenement_description', 'Affichage#afficherEvenement', 'evenement_description'],
+		['GET', '/evenement_description/[:id]', 'Affichage#afficherEvenement', 'evenement_description'],
 		['GET', '/recherche', 'Affichage#afficherRecherche', 'recherche']
 	);

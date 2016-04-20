@@ -4,7 +4,7 @@
 <?php $this->start('principal') ?>
 
 <div class="container" style="padding-top: 60px;">
-  <?php debug($_SESSION) ?>
+  
   <div class="row">
     <!-- left column -->
     <div class="col-md-4 col-sm-6 col-xs-12">
@@ -24,8 +24,6 @@
             <li><?= $_SESSION['membre']['telephone']; ?></li>
           </ul>
           <a href="<?= $this->url('modifier_profil') ?>" class="btn btn-primary btn-lg active" role="button">Modifiez vos informations personnelles</a>
-
-
         </div>
       </div>
 
