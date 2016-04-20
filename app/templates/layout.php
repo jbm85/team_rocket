@@ -24,8 +24,14 @@
 		<ul id="nav_hide">
 			<li><a href="<?= $this->url('accueil') ?>">Accueil</a></li>
 			<li><a href="<?= $this->url('derniers_evenements') ?>">Derniers évènements</a></li>
-			<li><a href="<?= $this->url('inscription') ?>">Inscription</a></li>
+
+
+			<?php if (!isset($_SESSION['user'])) : ?>
 			<li><a href="<?= $this->url('connexion') ?>">Connexion</a></li>
+				<li><a href="<?= $this->url('inscription') ?>">Inscription</a></li>
+			<?php else: ?>
+			<li><a href="<?= $this->url('deconnexion') ?>">Deconnexion</a></li>
+			<?php endif; ?>
 			<li><a href="<?= $this->url('recherche') ?>">Recherche</a></li>
 		</ul>
 	</nav>

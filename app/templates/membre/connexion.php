@@ -2,10 +2,10 @@
                     ['title' => 'Events - Connexion', 'id' => 'connexion_page']) ?>
 <?php $this->start('principal') ?>
 <!--Contenu principal-->
-<? debug($membre) ?>
+
 <!--Formulaire de connexion-->
 
-<form method="post" action="<?= $this->url('profil') ?>" id="sky-form6" class="sky-form" >
+<form method="post" action="" id="sky-form6" class="sky-form" >
     <h2>Connexion</h2>
 
     <fieldset>
@@ -26,7 +26,7 @@
         </section>
     </fieldset>
     <section>
-        <button type="submit" name="connexion" class="btn-u">Envoyer</button>
+        <button type="submit" name="envoi-connexion" class="btn-u">Envoyer</button>
     </section>
 </form>
 

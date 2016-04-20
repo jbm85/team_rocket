@@ -16,13 +16,13 @@ var_dump(unserialize('a:3:{i:0;s:10:"photo1.jpg";i:1;s:10:"photo2.jpg";i:2;s:10:
 	<section>
 
 		<h3><?php echo $value['titre']; ?></h3>
-		<div class="index_img"><img src="<?= $this->assetUrl('img/'. $value['photo_1']) ?>" alt="description de l'evenement"></div>
-		<div class="index_img"><img src="<?= $this->assetUrl('img/'. $value['photo_2']) ?>" alt="description de l'evenement"></div>
-		<div class="index_img"><img src="<?= $this->assetUrl('img/'. $value['photo_3']) ?>" alt="description de l'evenement"></div>
+		<?php if (!empty($value['photo_1'])) : ?><div class="index_img"><img src="<?= $this->assetUrl('img/'. $value['photo_1']) ?>" alt="description de l'evenement"></div><?php endif; ?>
+		<?php if (!empty($value['photo_2'])) : ?><div class="index_img"><img src="<?= $this->assetUrl('img/'. $value['photo_2']) ?>" alt="description de l'evenement"></div><?php endif; ?>
+		<?php if (!empty($value['photo_2'])) : ?><div class="index_img"><img src="<?= $this->assetUrl('img/'. $value['photo_3']) ?>" alt="description de l'evenement"></div><?php endif; ?>
 		<p><?php echo $value['date']; ?></p>
 		<p><?php echo $value['capacite'] ?> personne<?= ($value['capacite']) > 1 ? 's' : '' ?></p>
 		<p><?php echo $value['descriptif']; ?></p>
-		<p><?php echo $value['nb_participants'] ?> participant<?= ($value['nb_participants']) > 1 ? 's' : '' ?></p>
+		<p><?php echo $value['nb_participant'] ?> participant<?= ($value['nb_participant']) > 1 ? 's' : '' ?></p>
 
 		<a href="<?= $this->url('evenement_description',  ['id' => $value['id']]); ?>"><i class="fa fa-info-circle"></i><span>Plus de détails</span></a>
 		<a href="<?= $this->url('inscription') ?>"><i class="fa fa-sign-in"></i><span>S'inscrire</span></a>

@@ -28,8 +28,33 @@ class AffichageController extends Controller
         $this->show('affichage/evenement_description', $infos);
     }
 
-    public function afficherRecherche()
+    public function afficherRecherche() //TODO : Faire un count des recherches trouvées et afficher en dynamique
     {
+        if (isset($_POST['envoi-recherche'])){
+            $recherche = ToolsController::remplirLesPosts($_POST);
+
+            if (!empty($recherche['date'])){
+                $recherche['date'] = ToolsController::convertDateUs($recherche['date']);
+                $results_date = $this->evenements->findDate($recherche['date']);
+
+                $info['debug'] = $results_date;
+                $this->show('debug',$info);
+            }
+
+            else if (!empty($recherche['theme'])){
+                $results_theme = $this->evenements->findTheme($recherche['theme']);
+
+                $info['debug'] = $results_theme;
+                $this->show('debug',$info);
+            }
+
+            else if (!empty($recherche['ville'])){
+                $results_ville = $this->evenements->findCity($recherche['ville']);
+
+                $info['debug'] = $results_ville;
+                $this->show('debug',$info);
+            }
+        }
         $this->show('affichage/recherche');
     }
 

@@ -3,17 +3,17 @@
 <?php $this->start('principal') ?>
 
         <!--Formulaire de recherche-->
-        <form action="#" method="">
+        <form action="<?php $this->url('recherche') ?>" method="post">
             <label for="theme-search">Recherche par thème :</label>
-            <input type="text" id="theme-search" name="">
+            <input type="text" id="theme-search" name="theme">
 
             <label for="date-search">Recherche par date :</label>
-            <input type="text" id="date-search" name="">
+            <input type="text" id="date-search" name="date">
 
             <label for="city-search">Recherche par ville :</label>
-            <input type="text" id="city-search" name="">
+            <input type="text" id="city-search" name="ville">
 
-            <input type="submit" value="Rechercher">
+            <input type="submit" value="Rechercher" name="envoi-recherche">
 
         </form>
 
