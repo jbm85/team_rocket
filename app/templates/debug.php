@@ -1,1 +1,1 @@
-<?php debug($debug) ?>
+<?php var_dump($debug) ?>

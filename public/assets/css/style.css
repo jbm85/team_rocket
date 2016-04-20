@@ -159,6 +159,7 @@ footer{
 	margin-top: 3rem;
 	padding-bottom: 2rem;
 	width: 100%;
+	position: relative;
 }
 
 footer ul{
@@ -184,7 +185,7 @@ footer em{
 #backTop{
 	position: absolute;
 	font-size: 1.2rem;
-	bottom: 10rem;
+	bottom: 103%;
 	right: 2rem;
 	background-color: rgba(0, 0, 0, .4);
 	padding: .4rem;
@@ -306,15 +307,6 @@ footer em{
 
 .fa-info-circle, .fa-sign-in, .fa-check-circle, .fa-commenting-o{
 	font-size: 4.5rem;
-}
-
-#index_page~footer{
-	position: relative;
-}
-
-#index_page~footer #backTop{
-	right: 1rem;
-	bottom: 103%;
 }
 
 
@@ -495,14 +487,6 @@ footer em{
 	width: 20rem;
 }
 
-#search_page~footer{
-	position: relative;
-}
-
-#search_page~footer #backTop{
-	right: 1rem;
-	bottom: 103%;
-}
 
 /* Format TABLETTE */
 
@@ -677,14 +661,6 @@ footer em{
 	font-size: 1rem;
 }
 
-#last_events_page~footer{
-	position: relative;
-}
-
-#last_events_page~footer #backTop{
-	right: 1rem;
-	bottom: 103%;
-}
 
 /* Format TABLETTE */
 
@@ -749,7 +725,6 @@ footer em{
 		font-size: 1.6rem;
 	}
 
-
 }
 
 
@@ -802,16 +777,6 @@ footer em{
 
 iframe~a{
 	margin: 2rem auto;
-}
-
-#event_description_page~footer{
-	position: relative;
-	bottom: 0;
-}
-
-#event_description_page~footer #backTop{
-	right: 1rem;
-	bottom: 103%;
 }
 
 
@@ -988,16 +953,6 @@ Resolution d'ecran à 320px minimum
 
 }
 
-@media screen and (min-width:320px) {
-
-	#sky-form6{
-		background-color: white;
-		width: 100%;
-		margin: auto;
-	}
-
-
-}
 @media screen and (min-width:700px) {
 
 	#sky-form6{
@@ -1014,31 +969,6 @@ Resolution d'ecran à 320px minimum
 
 
 
-
-
-/*
-											Page CREER EVENEMENT
-*/
-
-
-#descriptionE{
-
-	border-bottom: 1px solid;
-}
-/* Format TABLETTE */
-
-@media screen and (min-width:700px) {
-
-
-}
-
-/* Format DESKTOP et PLUS */
-
-@media screen and (min-width:1024px) {
-
-
-
-}
 
 
 
@@ -1098,14 +1028,6 @@ Resolution d'ecran à 320px minimum
 	font-size: 1.2rem;
 }
 
-#basket_page~footer{
-	position: relative;
-}
-
-#basket_page~footer #backTop{
-	right: 1rem;
-	bottom: 103%;
-}
 
 /* Format TABLETTE */
 
@@ -1180,15 +1102,6 @@ Resolution d'ecran à 320px minimum
 		font-size: 1.4rem;
 		border: none;
 		border-radius: .2rem;
-	}
-
-	#basket_page~footer{
-		bottom: 0;
-	}
-
-	#basket_page~footer #backTop{
-		right: 1rem;
-		bottom: 103%;
 	}
 
 }
@@ -1444,16 +1357,6 @@ Resolution d'ecran à 320px minimum
 		vertical-align: middle;
 	}
 
-	#manage_member_page~footer{
-		position: absolute;
-		bottom: 0;
-	}
-
-	#manage_member_page~footer #backTop{
-		right: 1rem;
-		bottom: 103%;
-	}
-
 }
 
 /* Format DESKTOP et PLUS */
@@ -1519,16 +1422,18 @@ Resolution d'ecran à 320px minimum
 .prev,.next,.switch,.day,.month,.year{
 	cursor: pointer;
 }
+
 .datepicker table tr td span{
 	display: block;
-width: 23%;
-height: 54px;
-line-height: 54px;
-float: left;
-margin: 1%;
-cursor: pointer;
-border-radius: 4px;
+	width: 23%;
+	height: 54px;
+	line-height: 54px;
+	float: left;
+	margin: 1%;
+	cursor: pointer;
+	border-radius: 4px;
 }
+
 #sectionPhotoProfil{
     width: 180px;
     height: 180px;
@@ -1537,7 +1442,26 @@ border-radius: 4px;
     -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .3);
     display: inline-block;
 }
-/*CREER EVENEMENT*/
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+														CREER EVENEMENT
+*/
+
+#descriptionE{
+	border-bottom: 1px solid;
+}
+
 #sky-form5 label {
 	font-size: 2em;
 }
@@ -1545,6 +1469,7 @@ border-radius: 4px;
 #sky-form5 .form-control{
 	margin:auto;
 }
+
 #sky-form5 .btn-u {
 	border: 0;
 	color: #fff;
@@ -1568,6 +1493,7 @@ border-radius: 4px;
 #sectionPhotoProfil1 img,#sectionPhotoProfil2 img,#sectionPhotoProfil3 img{
 	max-width: 100%;
 }
+
 #sky-form5{
 	background-color: white;
 	width: 50%;
@@ -1581,6 +1507,7 @@ border-radius: 4px;
 .prev,.next,.switch,.day,.month,.year{
 	cursor: pointer;
 }
+
 .datepicker table tr td span{
 	display: block;
 	width: 23%;
@@ -1591,6 +1518,7 @@ border-radius: 4px;
 	cursor: pointer;
 	border-radius: 4px;
 }
+
 #sectionPhotoEvent1{
 	width: 180px;
 	height: 180px;
@@ -1599,6 +1527,7 @@ border-radius: 4px;
 	-webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .3);
 	display: inline-block;
 }
+
 #sectionPhotoEvent2{
 	width: 180px;
 	height: 180px;
@@ -1607,6 +1536,7 @@ border-radius: 4px;
 	-webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .3);
 	display: inline-block;
 }
+
 #sectionPhotoEvent3{
 	width: 180px;
 	height: 180px;
@@ -1725,7 +1655,7 @@ Resolution d'ecran à 320px minimum
 }
 #contactSection form{
     color:black;
-        margin-top: 70px;
+	margin-top: 70px;
 }
 
 #contactSection form textarea {
@@ -1792,33 +1722,34 @@ Resolution d'ecran à 320px minimum
 @media screen and (max-width:320px) {
 	
 	#sky-form4{
-	background-color: white;
-	width: 100%;
-	margin: auto;
+		background-color: white;
+		width: 100%;
+		margin: auto;
 	}
+
 	#sectionPhotoProfil {
-    position: relative;
-    width: 16rem;
-    height: 13rem;
+    	position: relative;
+    	width: 16rem;
+		height: 13rem;
 	}
+
 	#sandbox-container label{
 		width: 16rem;
 	}
-
 
 }
 
 @media screen and (min-width:320px) {
 	
 	#sky-form4{
-	background-color: white;
-	width: 100%;
-	margin: auto;
+		background-color: white;
+		width: 100%;
+		margin: auto;
 	}
 	#sectionPhotoProfil {
-    position: relative;
-    width: 16rem;
-    height: 13rem;
+		position: relative;
+    	width: 16rem;
+    	height: 13rem;
 	}
 	#sandbox-container label{
 		width: 100%;
@@ -1829,14 +1760,14 @@ Resolution d'ecran à 320px minimum
 @media screen and (min-width:700px) {
 	
 	#sky-form4{
-	background-color: white;
-	width: 50%;
-	margin: auto;
+		background-color: white;
+		width: 50%;
+		margin: auto;
 	}
 	#sectionPhotoProfil {
-    position: relative;
-    width: 16rem;
-    height: 13rem;
+    	position: relative;
+    	width: 16rem;
+    	height: 13rem;
 	}
 	#sandbox-container label{
 		width: 100%;

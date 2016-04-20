@@ -64,6 +64,10 @@ class MembreController extends Controller
     }
 
 
+    /*
+     * Inscription d'un membre :
+     */
+
     public function afficherInscription()
     {
         if (isset($_POST['envoi-inscription'])) {
@@ -74,23 +78,38 @@ class MembreController extends Controller
 
                 $utilisateur['date_de_naissance'] = $this->convertDateUs($utilisateur['date_de_naissance']);
                 $utilisateur['admin'] = 'off';
-                if ($this->membre->emailExists($utilisateur['email']) && $this->membre->usernameExists($utilisateur['pseudo'])) {
-                    $this->redirectToRoute('inscription_msg', ['msg' => 'error_email']);
-                } else {
-                   if ($utilisateur['mot_de_passe'] === $utilisateur['password_confirm']){
-                        $utilisateur['mot_de_passe'] = password_hash($utilisateur['mot_de_passe'], PASSWORD_DEFAULT);
-                        $info['debug']=$utilisateur;
-                        $this->show('debug',$info);
-                        //$sess_utilisateur = $this->membre->insertNotPassword($utilisateur); //TODO: Voir comment tester les deux mots de pass
-                        //$this->remplirSession($sess_utilisateur);
-                        //$this->redirectToRoute('profil');
-                   }else {
-                       $this->redirectToRoute('inscription_msg', ['msg' => 'error_password']);
-                   }
+
+                if (preg_match('/@/', $utilisateur['email'])) {
+
+                    if ($this->membre->emailExists($utilisateur['email']) && $this->membre->usernameExists($utilisateur['pseudo'])) {
+
+                        $this->redirectToRoute('inscription_msg', ['msg' => 'error_email']);
+
+                    } else {
+
+                        if ($utilisateur['mot_de_passe'] == $utilisateur['password_confirm']) {
+
+                            $utilisateur['mot_de_passe'] = password_hash($utilisateur['mot_de_passe'], PASSWORD_DEFAULT);
+
+                            if (isset($utilisateur['password_confirm'])) unset($utilisateur['password_confirm']);
+
+                            $sess_utilisateur = $this->membre->insert($utilisateur);
+
+                            $this->remplirSession($sess_utilisateur);
+
+                            $this->redirectToRoute('profil');
+
+                        } else {
+
+                            $this->redirectToRoute('inscription_msg', ['msg' => 'error_password']);
+                        }
+                    }
+                }else {
+
+                    $this->redirectToRoute('inscription_msg', ['msg' => 'error_email_2']);
                 }
             }
         }
-
         $this->show('membre/inscription');
     }
 
@@ -105,6 +124,10 @@ class MembreController extends Controller
                 $infos['msg'] = 'Désolé les deux mots de pass ne sont pas identiques';
                 $infos['classe'] = 'alert-danger';
                 break;
+            case 'error_email_2' :
+                $infos['msg'] = 'Désolé l\'adresse email n\'est pas conforme';
+                $infos['classe'] = 'alert-danger';
+                break;
             default :
                 $infos['msg'] = '';
         }
@@ -113,22 +136,22 @@ class MembreController extends Controller
 
     public function afficherConnexion()
     {
-        if (isset($_POST['envoi-connexion'])){
+        if (isset($_POST['envoi-connexion'])){ //TODO:non fonctionnel
             $membre = $this->remplirLesPosts($_POST);
 
-            //if (!empty($membre)){
-                //if ($this->validator->isValidLoginInfo($membre['email'], $membre['mdp'])){
-                    //$session_membre = $this->membre->getUserByUsernameOrEmail($membre['email']);
+            if (!empty($membre)){
+                if ($this->validator->isValidLoginInfo($membre['email'], $membre['mdp'])){
+                    $session_membre = $this->membre->getUserByUsernameOrEmail($membre['email']);
 
-//                    $info['debug'] = $membre;
-//                    $this->show('debug',$info);
+                    $info['debug'] = $membre;
+                    $this->show('debug',$info);
 
-                    //$this->remplirSession($session_membre);
-                    //$this->validator->logUserIn($session_membre);
-                    //$this->show('membre/profil', $membre);
-                    //$this->redirectToRoute('profil');
-               // }
-            //}
+                    $this->remplirSession($session_membre);
+                    $this->validator->logUserIn($session_membre);
+                    $this->show('membre/profil', $membre);
+                    $this->redirectToRoute('profil');
+                }
+            }
         }
         $this->show('membre/connexion');
     }
