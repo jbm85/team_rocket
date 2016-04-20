@@ -1,7 +1,6 @@
 <?php $this->layout('layout', ['title' => 'Events - Connexion', 'id' => 'inscription_page']) ?>
 
 <?php $this->start('principal') ?>
-<?php debug($utilisateur) ?>
 
 <?php if (isset($msg)) : ?>
 <div class="<?= $classe ?>"><?= $msg ?></div>

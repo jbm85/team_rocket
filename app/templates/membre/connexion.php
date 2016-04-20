@@ -5,9 +5,12 @@
 <? debug($session_membre) ?>
 <!--Formulaire de connexion-->
 
-<form method="post" action="<?= $this->url('profil') ?>" id="sky-form6" class="sky-form" >
+<form method="post" action="<?= $this->url('connexion') ?>" id="sky-form6" class="sky-form" >
     <h2>Connexion</h2>
-
+    <?php if (!empty($msg)) {
+         echo $msg;
+    }
+    ?>
     <fieldset>
         <section>
             <label class="input">
