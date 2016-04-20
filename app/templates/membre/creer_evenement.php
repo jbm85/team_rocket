@@ -21,7 +21,6 @@
                     <option value="sport">Sport</option>
                     <option value="musique">Musique</option>
                     <option value="spectacle">Spectacle</option>
-
                 </select>
                 <i></i>
                 </label>
@@ -94,23 +93,46 @@
                 <section class="input-group date col col-6" id="sandbox-container">
                     <label class="input">
 
-                        <input type="text"  name="date" class="form-control datepicker" placeholder="Date evenement">
+                        <input type="text"  name="date_debut" class="form-control datepicker" placeholder="Date début evenement">
 
-                        <b class="tooltip tooltip-bottom-right">Ex: 75020</b>
+                        <b class="tooltip tooltip-bottom-right"></b>
                     </label>
                     <span class="input-group-addon"><i class="glyphicon glyphicon-th"  ></i></span>
                 </section>
 
-                <section class='input-group date col col-6" id="sandbox-container'>
-                            <div class="input">
-                                <div class='input-group date' id='datetimepicker5'>
-                                    <input type='text' class="form-control" />
+                <section class="col col-6 clockpicker">
+                    <label class="input">
+                        <i class="icon-append fa fa-clock-o"></i>
+                    <input type="text" name="heure_debut" class="form-control" value="09:30">
+                        <b class="tooltip tooltip-top-right">A quelle heure on vient ?</b>
+                    </label>
                     <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
+                        <span class="glyphicon glyphicon-time"></span>
                     </span>
-                                </div>
-                            </div>
-                        </section>
+                </section>
+
+                <section class="input-group date col col-6" id="sandbox-container">
+                    <label class="input">
+
+                        <input type="text"  name="date_fin" class="form-control datepicker" placeholder="Date fin evenement">
+
+                        <b class="tooltip tooltip-bottom-right"></b>
+                    </label>
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-th"  ></i></span>
+                </section>
+
+                <section class="col col-6 clockpicker">
+                    <label class="input">
+                        <i class="icon-append fa fa-clock-o"></i>
+                        <input type="text" name="heure_fin" class="form-control" value="09:30">
+                        <b class="tooltip tooltip-top-right">A quelle heure on part ?</b>
+                    </label>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-time"></span>
+                    </span>
+                </section>
+
+
             </div>
 
 

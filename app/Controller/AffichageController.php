@@ -8,25 +8,24 @@ use Manager\EvenementManager;
 
 class AffichageController extends Controller
 {
-    protected $derniers_evenements;
-    protected $details_evenement;
+    protected $evenements;
 
     public function __construct()
     {
-        $this->derniers_evenements = new EvenementManager();
+        $this->evenements = new EvenementManager();
     }
 
     public function afficherDerniersEvenements()
     {
 
-        $infos['derniers_evenements'] = $this->derniers_evenements->findAll('date', 'DESC', 10, 0);
+        $infos['derniers_evenements'] = $this->evenements->findAll('date_debut', 'DESC', 10, 0);
         $this->show('affichage/derniers_evenements', $infos);
     }
 
-    public function afficherEvenement()
+    public function afficherEvenement($id)
     {
-        $infos['details_evenement'] = $this->details_evenement->find($value['id']); //TODO: Voir comment recuperer l'id
-        $this->show('affichage/evenement_description');
+        $infos['details_evenement'] = $this->evenements->find($id);
+        $this->show('affichage/evenement_description', $infos);
     }
 
     public function afficherRecherche()

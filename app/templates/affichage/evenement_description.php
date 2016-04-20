@@ -3,21 +3,24 @@
 <?php $this->start('principal') ?>
 	<h3>Titre de l'évenement</h3>
 	<div class="profil_detail_img"><img src="<?= $this->assetUrl('img/theflash.jpg') ?>" alt="photo de profil"></div>
-
-	<h4>Détail de l'évènement</h4>
+<?php debug($details_evenement) ?>
+	<h4><?= $details_evenement['titre'] ?></h4>
 
 	<ul>
-		<li>Date</li>
-		<li>Description</li>
-		<li>Localisation</li>
-		<li>Prix</li>
+		<li>Date de début : <?= $details_evenement['date_debut'] ?> à <?= $details_evenement['heure_debut'] ?></li>
+		<li>Date de fin : <?= $details_evenement['date_fin'] ?> à <?= $details_evenement['heure_fin'] ?></li>
+		<li>Description : <?= $details_evenement['descriptif'] ?></li>
+		<li>Adresse : <?= $details_evenement['adresse'] ?></li>
+		<li>Ville : <?= $details_evenement['ville'] ?></li>
+		<li>Code postal : <?= $details_evenement['code_postal'] ?></li>
+		<li>Prix : <?= $details_evenement['prix'] ?> €</li>
 	</ul>
 
 		<!-- photo du lieu de l'évènement -->
 	<article>
-		<div class="event_description_img"><img src="<?= $this->assetUrl('img/evenement1_img1.jpg') ?>" alt="description de l'evenement"></div>
-		<div class="event_description_img"><img src="<?= $this->assetUrl('img/evenement1_img2.jpg') ?>" alt="description de l'evenement"></div>
-		<div class="event_description_img"><img src="<?= $this->assetUrl('img/evenement1_img3.jpg') ?>" alt="description de l'evenement"></div>
+		<div class="event_description_img"><img src="<?= $this->assetUrl('img/' . $details_evenement['photo_1']) ?>" alt="description de l'evenement"></div>
+		<div class="event_description_img"><img src="<?= $this->assetUrl('img/' . $details_evenement['photo_2']) ?>" alt="description de l'evenement"></div>
+		<div class="event_description_img"><img src="<?= $this->assetUrl('img/' . $details_evenement['photo_3']) ?>" alt="description de l'evenement"></div>
 	</article>
 
 
