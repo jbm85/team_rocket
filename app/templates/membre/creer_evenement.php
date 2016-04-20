@@ -21,7 +21,6 @@
                     <option value="sport">Sport</option>
                     <option value="musique">Musique</option>
                     <option value="spectacle">Spectacle</option>
-
                 </select>
                 <i></i>
                 </label>

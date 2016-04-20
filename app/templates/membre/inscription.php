@@ -22,7 +22,7 @@
             <section>
                 <label class="input">
                     <i class="icon-append fa fa-envelope"></i>
-                    <input type="email" name="email" placeholder="Votre Email">
+                    <input type="text" name="email" placeholder="Votre Email">
                     <b class="tooltip tooltip-bottom-right">Pour vous contacter et vous connecter</b>
                 </label>
             </section>
