@@ -2,7 +2,6 @@
     'id' => 'last_events_page',]) ?>
 <?php $this->start('principal') ?>
         <h2>Vos évènements et vos avis</h2>
-        <?php var_dump($derniers_evenements) ?>
         <!--Presentation des evenements-->
         <section>
             <h3>Titre de l'évenement 1</h3>

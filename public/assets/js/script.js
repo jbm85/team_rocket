@@ -75,6 +75,8 @@ $(document).ready(function(){
         format: "dd/mm/yyyy",
         language: "fr"
     });
+
+    $('.clockpicker').clockpicker();
     // Detection de scroll :
 
 

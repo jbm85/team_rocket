@@ -5,17 +5,31 @@
 
 <?php var_dump($coco); ?>
 <!--Formulaire de connexion-->
-        <form action="<?= $this->url('profil') ?>" method="post">
 
-            <label for="email-user">Email :</label>
-            <input type="text" id="email-user" name="email" onblur="checkEmail(this)">
 
-            <label for="password-user">Mot de pass :</label>
-            <input type="text" id="password-user" name="mdp" onblur="checkPassword(this)">
-            <a href="#">Oubli de votre mot de pass ?</a>
+<form method="post" action="<?= $this->url('profil') ?>" id="sky-form6" class="sky-form" >
+    <h2>Connexion</h2>
 
-            <input type="submit" name='envoi-connexion' value="Se connecter">
+    <fieldset>
+        <section>
+            <label class="input">
+                <i class="icon-append fa fa-user"></i>
+                <input type="email" name="email" placeholder="Votre Email">
+                <b class="tooltip tooltip-bottom-right">Pour vous reconnaitre</b>
+            </label>
+        </section>
 
-        </form>
+        <section>
+            <label class="input">
+                <i class="icon-append fa fa-lock"></i>
+                <input type="password" id="password-user" name="mdp" placeholder="Votre mot de passe">
+                <b class="tooltip tooltip-bottom-right">Le mot de passe lié à votre Email</b>
+            </label>
+        </section>
+    </fieldset>
+    <section>
+        <button type="submit" name="connexion" class="btn-u">Envoyer</button>
+    </section>
+</form>
 
 <?php $this->stop('principal') ?>
