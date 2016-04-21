@@ -5,12 +5,10 @@
         <table class="table table-responsive">
             <thead>
                 <tr>
-                    <th>Titre</th>
-                    <th>Description</th>
-                    <th>Date</th>
-                    <th>Localisation</th>
-                    <th>Tarif unitaire (TTC)</th>
-                    <th>Quantité</th>
+                    <th><?php echo $value['titre']; ?></th>
+                    <th><?php echo $value['descriptif']; ?></th>
+                    <th><?php echo $value['date_debut']; ?></th>
+                    <th><?php echo $value['adresse']; ?> , <?php echo $value['code_postal']; ?><?php echo $value['ville']; ?></th>
                     <th>Modifier</th>
                     <th>Supprimer</th>
                 </tr>

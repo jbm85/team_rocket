@@ -29,7 +29,7 @@
         </section>
     </fieldset>
     <section>
-        <button type="submit" name="connexion" class="btn-u">Envoyer</button>
+        <a href="#" class="btn btn-primary active" name="connexion" role="button">Se connecter</a>
     </section>
 </form>
 

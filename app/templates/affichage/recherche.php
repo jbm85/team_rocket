@@ -38,7 +38,7 @@
                 </fieldset>
 
             <section>
-                    <button type="submit" name="envoi-inscription" class="btn-u">Envoyer</button>
+                <a href="#" class="btn btn-primary active" name="rechercher" role="button">Rechercher</a>
                 </section>
             </form>
 
