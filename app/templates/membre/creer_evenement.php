@@ -29,10 +29,10 @@
             <section>
                 <label class="select">
                     <select name="public" id="public">
-                        <option value="all_public">Tous Public</option>
-                        <option value="major">Adulte</option>
-                        <option value="female">Féminin</option>
-                        <option value="male">Masculin</option>
+                        <option value="tous public">Tous Public</option>
+                        <option value="adulte">Adulte</option>
+                        <option value="feminin">Féminin</option>
+                        <option value="masculin">Masculin</option>
                     </select>
                     <i></i>
                 </label>
@@ -169,7 +169,7 @@
 
         </fieldset>
         <section>
-            <button type="submit" name="envoi-evenement" class="btn-u">Envoyer</button>
+            <button type="submit" name="creer-evenement" class="btn-u">Envoyer</button>
         </section>
     </form>
 

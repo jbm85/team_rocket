@@ -194,8 +194,17 @@ class MembreController extends Controller
      * Affichage du formulaire pour créer un évènement
      */
 
-    public function afficherCreerEvenement()
+    public function afficherCreerEvenement() //TODO : Terminer les tests pour la creation d'un evenement
     {
+        if (isset($_POST['creer-evenement'])){
+            $evenement = ToolsController::remplirLesPosts($_POST);
+
+            if (!empty($evenement['titre']) && !empty($evenement['theme']) && !empty($evenement['public']) && !empty($evenement['descriptif']) && !empty($evenement['adresse']) && !empty($evenement['ville']) && !empty($evenement['code_postal']) && !empty($evenement['capacite']) && !empty($evenement['prix']) && !empty($evenement['date_debut']) && !empty($evenement['heure_debut']) && !empty($evenement['heure_fin'])){
+                
+                $evenement['date_debut'] = ToolsController::convertDateUs($evenement['date_debut']);
+                
+            }
+        }
         $this->show('membre/creer_evenement');
     }
 }
