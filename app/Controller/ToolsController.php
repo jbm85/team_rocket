@@ -37,8 +37,14 @@ class ToolsController extends Controller
     {
         $utilisateur = array();
         foreach ($posts as $key => $value) {
-            if ($key !== 'envoi-inscription' && $key !== 'envoi-connexion' && $key !== 'photo_profil' && $key !== 'envoi-recherche')
-                $utilisateur[$key] = !empty($value) ? strip_tags(trim($value)) : '';
+            if ($key !== 'envoi-inscription' && $key !== 'envoi-connexion' && $key !== 'photo_profil' && $key !== 'envoi-recherche'){
+                if ($key == 'nom' && $key == 'prenom'){
+                    $utilisateur[$key] = !empty($value) ? strip_tags(trim(ucfirst($value))) : '';
+                } else {
+                    $utilisateur[$key] = !empty($value) ? strip_tags(trim($value)) : '';
+                }
+            }
+                
         }
         return $utilisateur; // on renvoi un tableau qui contient les posts sinon on renvoi un tableau vide
     }

@@ -16,12 +16,12 @@
         <!-- Affichage des informations personnelles -->
         <div class="view-profil-info">
           <ul>
-            <li><?= $_SESSION['membre']['pseudo']; ?></li>
-            <li><?= $_SESSION['membre']['prenom']; ?></li>
-            <li><?= $_SESSION['membre']['nom']; ?></li>
-            <li><?= $_SESSION['membre']['date_de_naissance']; ?></li>
-            <li><?= $_SESSION['membre']['email']; ?></li>
-            <li><?= $_SESSION['membre']['telephone']; ?></li>
+            <li>Votre pseudo : <strong><?= $_SESSION['user']['pseudo']; ?></strong></li>
+            <li>Prénom : <strong><?= $_SESSION['user']['prenom']; ?></strong></li>
+            <li>Nom : <strong><?= $_SESSION['user']['nom']; ?></strong></li>
+            <li>Date de naissance : <strong><?= $_SESSION['user']['date_de_naissance']; ?></strong></li>
+            <li>Votre adresse email : <strong><?= $_SESSION['user']['email']; ?></strong></li>
+            <li>Votre numéro de téléphone : <strong><?= $_SESSION['user']['telephone']; ?></strong></li>
           </ul>
           <a href="<?= $this->url('modifier_profil') ?>" class="btn btn-primary btn-lg active" role="button">Modifiez vos informations personnelles</a>
         </div>

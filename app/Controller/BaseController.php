@@ -24,9 +24,9 @@ class BaseController extends Controller
 	public function afficherAccueil()
 	{
 		// je stock le resultat de SELECT * FROM evenements dans $infos['evenements']
-		$infos['evenements'] = $this->evenement->findAll($id);
+		$infos['evenements'] = $this->evenement->showLastEvents();
 		foreach($infos['evenements'] as $key => $value) {
-			$infos['evenements'][$key]['date'] = ToolsController::dateHeureEnFr($value['date_debut']);
+			$infos['evenements'][$key]['date'] = ToolsController::dateEnFr($value['date_debut']);
 		}
 
 

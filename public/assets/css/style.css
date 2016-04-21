@@ -275,8 +275,13 @@ footer em{
 	padding: 1rem;
 }
 
+#index_page section p:first-of-type{
+	margin-top: 3rem;
+}
+
 #index_page section p{
 	font-size: 1.4rem;
+	margin-top: .6rem;
 }
 
 #index_page section h3{
@@ -318,8 +323,13 @@ footer em{
 		font-size: 2.4rem;
 	}
 
+	#index_page section p:first-of-type{
+		margin-top: 4rem;
+	}
+
 	#index_page section p{
 		font-size: 1.6rem;
+		margin-top: .8rem;
 	}
 
 	#index_page section h3{
@@ -360,9 +370,15 @@ footer em{
 		margin: 2.5rem;
 	}
 
-	#index_page section p{
-		font-size: 1.6rem;
+	#index_page section p:first-of-type{
+		margin-top: 5rem;
 	}
+
+	#index_page section p{
+		font-size: 1.8rem;
+		margin-top: 1rem;
+	}
+
 
 	#index_page section h3{
 		font-size: 2.2rem;
@@ -446,8 +462,13 @@ footer em{
 	padding: 1rem;
 }
 
+#search_page section p:first-of-type{
+	margin-top: 3rem;
+}
+
 #search_page section p{
 	font-size: 1.4rem;
+	margin-top: .6rem;
 }
 
 #search_page section h3{
@@ -515,8 +536,13 @@ footer em{
 		margin-top: 8rem;
 	}
 
+	#search_page section p:first-of-type{
+		margin-top: 4rem;
+	}
+
 	#search_page section p{
 		font-size: 1.6rem;
+		margin-top: .8rem;
 	}
 
 	#search_page section h3{
@@ -577,8 +603,13 @@ footer em{
 		margin: 2.5rem;
 	}
 
+	#search_page section p:first-of-type{
+		margin-top: 5rem;
+	}
+
 	#search_page section p{
 		font-size: 1.8rem;
+		margin-top: 1rem;
 	}
 
 	#search_page section h3{
@@ -632,8 +663,13 @@ footer em{
 	padding: 1rem;
 }
 
+#last_events_page section p:first-of-type{
+	margin-top: 3rem;
+}
+
 #last_events_page section p{
-	font-size: 1.2rem;
+	font-size: 1.4rem;
+	margin-top: .6rem;
 }
 
 #last_events_page section h3{
@@ -671,8 +707,13 @@ footer em{
 		font-size: 2.2rem;
 	}
 
+	#last_events_page section p:first-of-type{
+		margin-top: 4rem;
+	}
+
 	#last_events_page section p{
-		font-size: 1.4rem;
+		font-size: 1.6rem;
+		margin-top: .8rem;
 	}
 
 	#last_events_page section h3{
@@ -705,12 +746,18 @@ footer em{
 
 	#last_events_page section{
 		display: inline-block;
+		vertical-align: top;
 		width: 40%;
 		margin: 2.5rem;
 	}
 
+	#last_events_page section p:first-of-type{
+		margin-top: 5rem;
+	}
+
 	#last_events_page section p{
-		font-size: 1.6rem;
+		font-size: 1.8rem;
+		margin-top: 1rem;
 	}
 
 	#last_events_page section h3{

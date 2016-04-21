@@ -14,7 +14,7 @@ class MembreController extends Controller
 
     /*
      * Constructor
-     * */
+     */
 
     public function __construct()
     {
@@ -130,8 +130,8 @@ class MembreController extends Controller
     public function afficherConnexion()
     {
         if (isset($_POST['envoi-connexion'])){
-            $membre = ToolsController::remplirLesPosts($_POST);
 
+            $membre = ToolsController::remplirLesPosts($_POST);
 
             if (!empty($membre)){ //Test si le tableau $membre n'est pas vide
 

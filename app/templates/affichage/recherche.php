@@ -1,6 +1,8 @@
 <?php $this->layout('layout', ['title' => 'Events - Recherche',
-    'id' => 'search_page',]) ?>
+    'id' => 'search_page']) ?>
+
 <?php $this->start('principal') ?>
+
 
         <!--Formulaire de recherche-->
         <form action="<?php $this->url('recherche') ?>" method="post">
@@ -16,6 +18,13 @@
             <input type="submit" value="Rechercher" name="envoi-recherche">
 
         </form>
+
+
+<?php debug($results_search) ?>
+
+        <?php if (isset($msg)) : ?>
+            <div class="<?= $classe ?>"><?= $msg ?></div>
+        <?php endif; ?>
 
         <h2>Résultats de votre recherche :</h2>
         <em>Nous avons trouvé 4 correspondances pour votre recherche.</em>

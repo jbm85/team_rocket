@@ -1,4 +1,4 @@
-<?php $this->layout('layout', ['title' => 'Events - Evenements', 'id' => 'event_description_page',]) ?>
+<?php $this->layout('layout', ['title' => 'Events - Evenements', 'id' => 'event_description_page']) ?>
 
 <?php $this->start('principal') ?>
 	<h3>Titre de l'évenement</h3>
