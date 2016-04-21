@@ -12,7 +12,7 @@
             <div class="last_events_img"><img src="<?= $this->assetUrl('img/' . $value['photo_2']) ?>" alt="description de l'evenement"></div>
             <div class="last_events_img"><img src="<?= $this->assetUrl('img/' . $value['photo_3']) ?>" alt="description de l'evenement"></div>
 
-            <p>Date de l'évènement : <?= $value['date'] ?></p>
+            <p>Date de l'évènement : <?= $value['date_debut'] ?></p>
             <p>Nombre de places maximum : <?= $value['capacite'] ?></p>
             <p>Description de l'évènement : <?= $value['descriptif'] ?></p>
             <p>Nombre de participants actuels : <?= $value['nb_participants'] ?></p>

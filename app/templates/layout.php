@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-	<meta charset="utf-8">
+	<meta charset="UTF-8">
 	<title><?= $this->e($title) ?></title>
 	<meta name="viewport" content="width=device-width, user-scalable=no">
 	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin">
@@ -108,7 +108,7 @@
 <script type="text/javascript" src="<?= $this->assetUrl('js/bootstrap-clockpicker.min.js') ?>" ></script>
 <script type="text/javascript" src="<?= $this->assetUrl('js/bootstrap-datepicker.js') ?>" ></script>
 <script type="text/javascript" src="<?= $this->assetUrl('js/profil.js') ?>" ></script>
-<script type="text/javascript" src="<?= $this->assetUrl('verification_formulaire.js') ?>"></script>
+<script type="text/javascript" src="<?= $this->assetUrl('js/verification_formulaire.js') ?>"></script>
 <script type="text/javascript" src="<?= $this->assetUrl('js/script.js') ?>" ></script>
 </body>
 
