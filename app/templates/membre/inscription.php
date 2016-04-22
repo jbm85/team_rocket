@@ -89,10 +89,10 @@
             <section id="sectionPhotoProfil" class="preview">
                 
             </section>
-
         </fieldset>
+
         <section>
-            <button class="btn btn-primary active" name="envoi-inscription" type="submit">Envoyer</button>
+            <button type="submit" name="envoi-inscription" class="btn btn-primary active">Envoyer</button>
         </section>
     </form>
 <?php $this->stop('principal') ?>

@@ -68,4 +68,7 @@ class EvenementManager extends Manager
         return $sth->fetchAll();
 
     }
+    /*
+     * Requete de création d'évenements :
+     */
 }
