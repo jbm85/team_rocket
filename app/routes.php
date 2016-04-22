@@ -6,9 +6,11 @@
 
 		['GET|POST', '/connexion', 'Membre#afficherConnexion', 'connexion'],
 
+		['POST', '/connexion', 'Membre#mdpRecup', 'mdp_recup'],
+
 		['GET|POST', '/deconnexion', 'Membre#deconnexionMembre', 'deconnexion'],
 
-		['GET', '/creer_evenement', 'Membre#afficherCreerEvenement', 'creer_evenement'],
+		['GET|POST', '/creer_evenement', 'Membre#afficherCreerEvenement', 'creer_evenement'],
 
 		['GET|POST', '/inscription', 'Membre#afficherInscription', 'inscription'],
 		['GET', '/inscription/[:msg]', 'Membre#afficherInscriptionMsg', 'inscription_msg'],
