@@ -20,7 +20,7 @@
         </form>
 
 
-<?php debug($results_search) ?>
+<?php debug($results_search); ?>
 
         <?php if (isset($msg)) : ?>
             <div class="<?= $classe ?>"><?= $msg ?></div>

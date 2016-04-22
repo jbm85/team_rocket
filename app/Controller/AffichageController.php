@@ -153,6 +153,8 @@ class AffichageController extends Controller
                 }
             }
         }
+
+        $this->show('affichage/recherche');
     }
 
 }
