@@ -134,8 +134,7 @@ class MembreController extends Controller
             $membre = ToolsController::remplirLesPosts($_POST);
 
             if (!empty($membre)){ //Test si le tableau $membre n'est pas vide
-
-
+                
                 if ($this->validator->isValidLoginInfo($membre['email'], $membre['mot_de_passe'])){
 
                     $session_membre = $this->membre->getUserByUsernameOrEmail($membre['email']);
@@ -147,11 +146,12 @@ class MembreController extends Controller
                 else
                 {
                     $this->redirectToRoute('connexionMsg', ['msg' => 'error_identifiant']);
+
                 }
             }
         }
         $this->show('membre/connexion');
-    }
+    } //TODO : Voir les problèmes de connexion avec Ziad
     
     
     /*

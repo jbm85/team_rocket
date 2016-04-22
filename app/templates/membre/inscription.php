@@ -89,8 +89,8 @@
             <section id="sectionPhotoProfil" class="preview">
                 
             </section>
-
         </fieldset>
+
         <section>
             <button type="submit" name="envoi-inscription" class="btn btn-primary active">Envoyer</button>
         </section>

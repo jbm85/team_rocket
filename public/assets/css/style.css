@@ -23,7 +23,7 @@ body
 li{
 	list-style-type: none;
 }
-a{
+a, .btn-primary{
 	color: white;
 	font-family: bangers;
 }

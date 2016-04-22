@@ -93,8 +93,8 @@ class AffichageController extends Controller
             $recherche = ToolsController::remplirLesPosts($_POST);
 
             $re_date = '/^[0-9]{2}[\/\\\-][0-9]{2}[\/\\\-][0-9]{4}$/';
-            $re_theme = '/^[a-z]$/i';
-            $re_ville = '/^[a-z-]$/i';
+            //$re_theme = '/^[a-z]$/i'; // TODO : Check les regex
+            //$re_ville = '/^[a-z-]$/i';
 
             if (!empty($recherche['date'])) {
 
@@ -111,46 +111,47 @@ class AffichageController extends Controller
                     }
 
                 } else {
-                    $this->redirectToRoute('recherche_msg', ['msg' => 'error_date_1']);
+                   $this->redirectToRoute('recherche_msg', ['msg' => 'error_date_1']);
                 }
-//                $info['debug'] = $nb_recherche;
-//                $this->show('debug',$info);
+
             }
 
             else if (!empty($recherche['theme'])) {
 
-                if (preg_match($re_theme, $recherche['theme'])) {
+                //if (preg_match($re_theme, $recherche['theme'])) {
 
                     $results_search = $this->evenements->findTheme($recherche['theme']);
                     $nb_recherche = count($results_search);
-
+//                    $info['debug'] = $nb_recherche;
+//                    $this->show('debug',$info);
                     if ($nb_recherche > 0) {
-                        $this->show('affichage/recherche');
+                        //$this->show('affichage/recherche');
                     } else {
                         $this->redirectToRoute('recherche_msg', ['msg' => 'error_search']);
                     }
 
-                } else {
-                    $this->redirectToRoute('recherche_msg', ['msg' => 'error_theme_1']);
-                }
+                //} else {
+                    //$this->redirectToRoute('recherche_msg', ['msg' => 'error_theme_1']);
+                //}
             }
 
             else if (!empty($recherche['ville'])) {
 
-                if (preg_match($re_ville, $recherche['ville'])) {
+                //if (preg_match($re_theme, $recherche['ville'])) {
 
                     $results_search = $this->evenements->findCity($recherche['ville']);
                     $nb_recherche = count($results_search);
+                    $info['debug'] = $nb_recherche;
+                    $this->show('debug',$info);
+//                    if ($nb_recherche > 0) {
+//                        $this->show('affichage/recherche');
+//                    } else {
+//                        $this->redirectToRoute('recherche_msg', ['msg' => 'error_search']);
+//                    }
 
-                    if ($nb_recherche > 0) {
-                        $this->show('affichage/recherche');
-                    } else {
-                        $this->redirectToRoute('recherche_msg', ['msg' => 'error_search']);
-                    }
-
-                } else {
-                    $this->redirectToRoute('recherche_msg', ['msg' => 'error_ville_1']);
-                }
+                //} //else {
+//                    $this->redirectToRoute('recherche_msg', ['msg' => 'error_ville_1']);
+//                }
             }
         }
 
