@@ -10,7 +10,7 @@
     <div class="col-md-4 col-sm-6 col-xs-12">
       <div class="info-profil">
         <div class="text-center" id="previewImage">
-          <img src="" alt="photo profil" class="img-thumbnail">
+          <img src="<?= $_SESSION['membre']['photo_profil']; ?>" alt="photo profil" class="img-thumbnail">
         </div>
 
         <!-- Affichage des informations personnelles -->

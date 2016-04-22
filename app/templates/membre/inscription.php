@@ -1,7 +1,6 @@
 <?php $this->layout('layout', ['title' => 'Events - Inscription', 'id' => 'inscription_page']) ?>
 
 <?php $this->start('principal') ?>
-<?php debug($utilisateur) ?>
 
 <?php if (isset($msg)) : ?>
 <div class="<?= $classe ?>"><?= $msg ?></div>
@@ -93,7 +92,7 @@
 
         </fieldset>
         <section>
-            <button type="submit" name="envoi-inscription" class="btn-u">Envoyer</button>
+            <a href="#" class="btn btn-primary active" name="envoi-inscription" role="button">Envoyer</a>
         </section>
     </form>
 <?php $this->stop('principal') ?>

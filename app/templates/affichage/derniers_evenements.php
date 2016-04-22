@@ -13,7 +13,7 @@
             <!-- Titre de l'évenement-->
             <h3><?= $value['titre'] ?></h3>
 
-
+            
             <!--Affichage des photos de l'évenement-->
             <?php if (!empty($value['photo_1'])) : ?>
                 <div class="last_events_img"><img src="<?= $this->assetUrl('img/'. $value['photo_1']) ?>" alt="description de l'evenement"></div>

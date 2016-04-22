@@ -23,7 +23,6 @@ class MembreController extends Controller
     }
 
 
-
     /*
      * Créer une session
      */
@@ -45,6 +44,7 @@ class MembreController extends Controller
 
     public function afficherInscription()
     {
+        // SI le $_POST ['envoi-inscription'] existe
         if (isset($_POST['envoi-inscription'])) {
 
             $utilisateur = ToolsController::remplirLesPosts($_POST);
@@ -139,11 +139,14 @@ class MembreController extends Controller
                 if ($this->validator->isValidLoginInfo($membre['email'], $membre['mdp'])){
 
                     $session_membre = $this->membre->getUserByUsernameOrEmail($membre['email']);
-
                     $this->remplirSession($session_membre);
                     $this->validator->logUserIn($session_membre);
- 
                     $this->redirectToRoute('profil');
+                }
+
+                else
+                {
+                    $this->redirectToRoute('connexionMsg', ['msg' => 'error_identifiant']);
                 }
             }
         }
@@ -164,6 +167,14 @@ class MembreController extends Controller
     /*
      * Affichage d'un formulaire pour modifier son profil
      */
+
+    public function connexionMsg($msg)
+    {
+        if ($msg == 'error_identifiant'){
+            $infos['msg'] = 'Désolé, vos identifiants sont incorrects!';
+        }
+        $this->show('membre/connexion',$infos);
+    }
 
     public function afficherModifierProfil()
     {
@@ -206,5 +217,6 @@ class MembreController extends Controller
             }
         }
         $this->show('membre/creer_evenement');
+
     }
 }

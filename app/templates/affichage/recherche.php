@@ -3,87 +3,109 @@
 
 <?php $this->start('principal') ?>
 
-
-        <!--Formulaire de recherche-->
-        <form action="<?php $this->url('recherche') ?>" method="post">
-            <label for="theme-search">Recherche par thème :</label>
-            <input type="text" id="theme-search" name="theme">
-
-            <label for="date-search">Recherche par date :</label>
-            <input type="text" id="date-search" name="date">
-
-            <label for="city-search">Recherche par ville :</label>
-            <input type="text" id="city-search" name="ville">
-
-            <input type="submit" value="Rechercher" name="envoi-recherche">
-
-        </form>
-
-
 <?php debug($results_search); ?>
 
-        <?php if (isset($msg)) : ?>
-            <div class="<?= $classe ?>"><?= $msg ?></div>
-        <?php endif; ?>
+<?php if (isset($msg)) : ?>
+    <div class="<?= $classe ?>"><?= $msg ?></div>
+<?php endif; ?>
 
-        <h2>Résultats de votre recherche :</h2>
-        <em>Nous avons trouvé 4 correspondances pour votre recherche.</em>
-        <!--Presentation des evenements-->
-        <section>
-            <h3>Titre de l'évenement 1</h3>
-            <div class="search_img"><img src="<?= $this->assetUrl('img/evenement1_img1.jpg') ?>" alt="description de l'evenement"></div>
-            <div class="search_img"><img src="<?= $this->assetUrl('img/evenement1_img2.jpg') ?>" alt="description de l'evenement"></div>
-            <div class="search_img"><img src="<?= $this->assetUrl('img/evenement1_img3.jpg') ?>" alt="description de l'evenement"></div>
-            <p>Date</p>
-            <p>Capacite</p>
-            <p>Description</p>
-            <p>Nombre de participants</p>
-            <a href="<?= $this->url('evenement_description') ?>"><i class="fa fa-info-circle"></i><span>Plus de détails</span></a>
-            <a href="<?= $this->url('inscription') ?>"><i class="fa fa-sign-in"></i><span>S'inscrire</span></a>
-            <a href="<?= $this->url ('panier') ?>"><i class="fa fa-check-circle"></i><span>Participer</span></a>
-        </section>
+        <form method="post" action="<?php $this->url('recherche') ?>" id="sky-form7" class="sky-form" >
+            <h2>Formulaire de Recherche</h2>
 
-        <section>
-            <h3>Titre de l'évenement 2</h3>
-            <div class="search_img"><img src="<?= $this->assetUrl('img/evenement2_img1.jpg') ?>" alt="description de l'evenement"></div>
-            <div class="search_img"><img src="<?= $this->assetUrl('img/evenement2_img2.jpg') ?>" alt="description de l'evenement"></div>
-            <div class="search_img"><img src="<?= $this->assetUrl('img/evenement2_img3.jpg') ?>" alt="description de l'evenement"></div>
-            <p>Date</p>
-            <p>Capacite</p>
-            <p>Description</p>
-            <p>Nombre de participants</p>
-            <a href="<?= $this->url('evenement_description') ?>"><i class="fa fa-info-circle"></i><span>Plus de détails</span></a>
-            <a href="<?= $this->url('inscription') ?>"><i class="fa fa-sign-in"></i><span>S'inscrire</span></a>
-            <a href="<?= $this->url ('panier') ?>"><i class="fa fa-check-circle"></i><span>Participer</span></a>
-        </section>
+            <fieldset>
+                <section>
+                    <label class="select">
+                        <select id="theme-search" name="theme">
+                            <option value="0" selected disabled>Recherche par thème</option>
+                            <option value="sport">Sport</option>
+                            <option value="musique">Musique</option>
+                            <option value="spectacle">Spectacle</option>
+                        </select>
+                        <i></i>
+                    </label>
+                </section>
 
-        <section>
-            <h3>Titre de l'évenement 3</h3>
-            <div class="search_img"><img src="<?= $this->assetUrl('img/evenement1_img1.jpg') ?>" alt="description de l'evenement"></div>
-            <div class="search_img"><img src="<?= $this->assetUrl('img/evenement1_img2.jpg') ?>" alt="description de l'evenement"></div>
-            <div class="search_img"><img src="<?= $this->assetUrl('img/evenement1_img3.jpg') ?>" alt="description de l'evenement"></div>
-            <p>Date</p>
-            <p>Capacite</p>
-            <p>Description</p>
-            <p>Nombre de participants</p>
-            <a href="<?= $this->url('evenement_description') ?>"><i class="fa fa-info-circle"></i><span>Plus de détails</span></a>
-            <a href="<?= $this->url('inscription') ?>"><i class="fa fa-sign-in"></i><span>S'inscrire</span></a>
-            <a href="<?= $this->url ('panier') ?>"><i class="fa fa-check-circle"></i><span>Participer</span></a>
-        </section>
+                <section>
+                    <label class="input">
+                        <i class="icon-append fa fa-building-o"></i>
+                        <input type="text" name="ville" id="city-search" placeholder="Recherche par Ville">
+                        <b class="tooltip tooltip-bottom-right">Ex: Paris, Lille, Caen</b>
+                    </label>
+                </section>
 
-        <section>
-            <h3>Titre de l'évenement 4</h3>
-            <div class="search_img"><img src="<?= $this->assetUrl('img/evenement2_img1.jpg') ?>" alt="description de l'evenement"></div>
-            <div class="search_img"><img src="<?= $this->assetUrl('img/evenement2_img2.jpg') ?>" alt="description de l'evenement"></div>
-            <div class="search_img"><img src="<?= $this->assetUrl('img/evenement2_img3.jpg') ?>" alt="description de l'evenement"></div>
-            <p>Date</p>
-            <p>Capacite</p>
-            <p>Description</p>
-            <p>Nombre de participants</p>
-            <a href="<?= $this->url('evenement_description') ?>"><i class="fa fa-info-circle"></i><span>Plus de détails</span></a>
-            <a href="<?= $this->url('inscription') ?>"><i class="fa fa-sign-in"></i><span>S'inscrire</span></a>
-            <a href="<?= $this->url ('panier') ?>"><i class="fa fa-check-circle"></i><span>Participer</span></a>
-        </section>
+                <div class="row">
+                    <section class="input-group date col col-6" id="sandbox-container">
+                        <label class="input">
+                            <input type="text"  id="date-search" name="date" class="form-control datepicker" placeholder="Recharche par date"></label><span class="input-group-addon"><i class="glyphicon glyphicon-th"  ></i></span>
+                    </section>
+                </div>
+            </fieldset>
 
-        <a href="<?= $this->url("recherche"); ?>" title="nouvelle recherche" class="btn btn-primary active">Nouvelle recherche</a>
+            <section>
+                <a href="#" class="btn btn-primary active" name="envoi-recherche" role="button">Rechercher</a>
+                </section>
+        </form>
+
+        <div id="search-result">
+            <h2>Résultats de votre recherche :</h2>
+            <em>Nous avons trouvé 4 correspondances pour votre recherche.</em>
+            <!--Presentation des evenements-->
+            <section>
+                <h3>Titre de l'évenement 1</h3>
+                <div class="search_img"><img src="<?= $this->assetUrl('img/evenement1_img1.jpg') ?>" alt="description de l'evenement"></div>
+                <div class="search_img"><img src="<?= $this->assetUrl('img/evenement1_img2.jpg') ?>" alt="description de l'evenement"></div>
+                <div class="search_img"><img src="<?= $this->assetUrl('img/evenement1_img3.jpg') ?>" alt="description de l'evenement"></div>
+                <p>Date</p>
+                <p>Capacite</p>
+                <p>Description</p>
+                <p>Nombre de participants</p>
+                <a href="<?= $this->url('evenement_description') ?>"><i class="fa fa-info-circle"></i><span>Plus de détails</span></a>
+                <a href="<?= $this->url('inscription') ?>"><i class="fa fa-sign-in"></i><span>S'inscrire</span></a>
+                <a href="<?= $this->url ('panier') ?>"><i class="fa fa-check-circle"></i><span>Participer</span></a>
+            </section>
+
+            <section>
+                <h3>Titre de l'évenement 2</h3>
+                <div class="search_img"><img src="<?= $this->assetUrl('img/evenement2_img1.jpg') ?>" alt="description de l'evenement"></div>
+                <div class="search_img"><img src="<?= $this->assetUrl('img/evenement2_img2.jpg') ?>" alt="description de l'evenement"></div>
+                <div class="search_img"><img src="<?= $this->assetUrl('img/evenement2_img3.jpg') ?>" alt="description de l'evenement"></div>
+                <p>Date</p>
+                <p>Capacite</p>
+                <p>Description</p>
+                <p>Nombre de participants</p>
+                <a href="<?= $this->url('evenement_description') ?>"><i class="fa fa-info-circle"></i><span>Plus de détails</span></a>
+                <a href="<?= $this->url('inscription') ?>"><i class="fa fa-sign-in"></i><span>S'inscrire</span></a>
+                <a href="<?= $this->url ('panier') ?>"><i class="fa fa-check-circle"></i><span>Participer</span></a>
+            </section>
+
+            <section>
+                <h3>Titre de l'évenement 3</h3>
+                <div class="search_img"><img src="<?= $this->assetUrl('img/evenement1_img1.jpg') ?>" alt="description de l'evenement"></div>
+                <div class="search_img"><img src="<?= $this->assetUrl('img/evenement1_img2.jpg') ?>" alt="description de l'evenement"></div>
+                <div class="search_img"><img src="<?= $this->assetUrl('img/evenement1_img3.jpg') ?>" alt="description de l'evenement"></div>
+                <p>Date</p>
+                <p>Capacite</p>
+                <p>Description</p>
+                <p>Nombre de participants</p>
+                <a href="<?= $this->url('evenement_description') ?>"><i class="fa fa-info-circle"></i><span>Plus de détails</span></a>
+                <a href="<?= $this->url('inscription') ?>"><i class="fa fa-sign-in"></i><span>S'inscrire</span></a>
+                <a href="<?= $this->url ('panier') ?>"><i class="fa fa-check-circle"></i><span>Participer</span></a>
+            </section>
+
+            <section>
+                <h3>Titre de l'évenement 4</h3>
+                <div class="search_img"><img src="<?= $this->assetUrl('img/evenement2_img1.jpg') ?>" alt="description de l'evenement"></div>
+                <div class="search_img"><img src="<?= $this->assetUrl('img/evenement2_img2.jpg') ?>" alt="description de l'evenement"></div>
+                <div class="search_img"><img src="<?= $this->assetUrl('img/evenement2_img3.jpg') ?>" alt="description de l'evenement"></div>
+                <p>Date</p>
+                <p>Capacite</p>
+                <p>Description</p>
+                <p>Nombre de participants</p>
+                <a href="<?= $this->url('evenement_description') ?>"><i class="fa fa-info-circle"></i><span>Plus de détails</span></a>
+                <a href="<?= $this->url('inscription') ?>"><i class="fa fa-sign-in"></i><span>S'inscrire</span></a>
+                <a href="<?= $this->url ('panier') ?>"><i class="fa fa-check-circle"></i><span>Participer</span></a>
+            </section>
+
+            <a href="<?= $this->url("recherche"); ?>" title="nouvelle recherche" class="btn btn-primary active">Nouvelle recherche</a>
+        </div>
 <?php $this->stop('principal') ?>

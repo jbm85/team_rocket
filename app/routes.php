@@ -13,12 +13,13 @@
 		['GET|POST', '/inscription', 'Membre#afficherInscription', 'inscription'],
 		['GET', '/inscription/[:msg]', 'Membre#afficherInscriptionMsg', 'inscription_msg'],
 
+		['GET', '/connexion/[:msg]', 'Membre#connexionMsg', 'connexionMsg'],
+
 		['GET', '/modifier_profil', 'Membre#afficherModifierProfil', 'modifier_profil'],
 
 		['GET|POST', '/profil', 'Membre#afficherProfil', 'profil'],
 
 		['GET', '/panier', 'Membre#afficherPanier', 'panier'],
-
 
 		['GET', '/gestion_membre', 'Admin#afficherGestionMembre', 'gestion_membre'],
 
@@ -28,4 +29,5 @@
 
 		['GET|POST', '/recherche', 'Affichage#afficherRecherche', 'recherche'],
 		['GET', '/recherche/[:msg]', 'Affichage#searchMsgError', 'recherche_msg']
+
 	);

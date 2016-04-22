@@ -14,6 +14,7 @@ var_dump(unserialize('a:3:{i:0;s:10:"photo1.jpg";i:1;s:10:"photo2.jpg";i:2;s:10:
 ?>
 
 <?php debug($evenements) ?>
+
 <?php foreach($evenements as $key => $value) : ?>
 	<section>
 
