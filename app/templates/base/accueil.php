@@ -44,7 +44,7 @@ var_dump(unserialize('a:3:{i:0;s:10:"photo1.jpg";i:1;s:10:"photo2.jpg";i:2;s:10:
 		<p>Description de l'évènement : <strong><?= $value['descriptif'] ?></strong></p>
 
 		<!--Nombre de participants à l'évènement en cours-->
-		<p>Il y a, à l'heure actuel, <strong><?= $value['nb_participant'] ?></strong> participant(e)<?= ($value['nb_participant']) > 1 ? 's' : '' ?> pour cet évènement.</p>
+		<p>Il y a, à l'heure actuel, <strong><?= $value['nb_participants'] ?></strong> participant(e)<?= ($value['nb_participants']) > 1 ? 's' : '' ?> pour cet évènement.</p>
 
 		<!--Liens d'interactions (details, inscription, participation)-->
 		<a href="<?= $this->url('evenement_description',  ['id' => $value['id']]); ?>"><i class="fa fa-info-circle"></i><span>Plus de détails</span></a>

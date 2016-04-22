@@ -37,7 +37,7 @@
             <p>Description de l'évènement : <strong><?= $value['descriptif'] ?></strong></p>
 
             <!--Nombre de participants à l'évènement en cours-->
-            <p>Il y a, à l'heure actuel, <strong><?= $value['nb_participant'] ?></strong> participant(e)<?= ($value['nb_participant']) > 1 ? 's' : '' ?> pour cet évènement.</p>
+            <p>Il y a, à l'heure actuel, <strong><?= $value['nb_participants'] ?></strong> participant(e)<?= ($value['nb_participants']) > 1 ? 's' : '' ?> pour cet évènement.</p>
 
             <a href="<?= $this->url('evenement_description', ['id' => $value['id']]); ?>"><i class="fa fa-info-circle"></i><span>Plus de détails</span></a>
             <a href="<?= $this->url('inscription') ?>"><i class="fa fa-sign-in"></i><span>S'inscrire</span></a>

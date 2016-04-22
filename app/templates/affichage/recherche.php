@@ -3,7 +3,7 @@
 
 <?php $this->start('principal') ?>
 
-<?php debug($results_search); ?>
+<?php debug($results_search) ?>
 
 <?php if (isset($msg)) : ?>
     <div class="<?= $classe ?>"><?= $msg ?></div>
@@ -42,8 +42,8 @@
             </fieldset>
 
             <section>
-                <a href="#" class="btn btn-primary active" name="envoi-recherche" role="button">Rechercher</a>
-                </section>
+                <button class="btn btn-primary active" name="envoi-recherche" type="submit">Rechercher</button>
+            </section>
         </form>
 
         <div id="search-result">

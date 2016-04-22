@@ -24,13 +24,13 @@
         <section>
             <label class="input">
                 <i class="icon-append fa fa-lock"></i>
-                <input type="password" id="password-user" name="mdp" placeholder="Votre mot de passe">
+                <input type="password" id="password-user" name="mot_de_passe" placeholder="Votre mot de passe">
                 <b class="tooltip tooltip-bottom-right">Le mot de passe lié à votre Email</b>
             </label>
         </section>
     </fieldset>
     <section>
-        <a href="#" class="btn btn-primary active" name="envoi-connexion" role="button">Se connecter</a>
+        <button class="btn btn-primary active" name="envoi-connexion" type="submit">Se connecter</button>
     </section>
 </form>
 

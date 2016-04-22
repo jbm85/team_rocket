@@ -92,7 +92,7 @@
 
         </fieldset>
         <section>
-            <a href="#" class="btn btn-primary active" name="envoi-inscription" role="button">Envoyer</a>
+            <button class="btn btn-primary active" name="envoi-inscription" type="submit">Envoyer</button>
         </section>
     </form>
 <?php $this->stop('principal') ?>
