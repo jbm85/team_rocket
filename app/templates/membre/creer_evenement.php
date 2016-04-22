@@ -3,7 +3,7 @@
 <?php $this->start('principal') ?>
     <!--Contenu principal-->
 
-    <form method="post" action="#" id="sky-form5" class="sky-form" >
+    <form method="post" action="<?= $this->url('creer_evenement') ?>" id="sky-form5" class="sky-form" >
         <h2>Ajouter un évenement</h2>
 
         <fieldset>
@@ -29,7 +29,7 @@
             <section>
                 <label class="select">
                     <select name="public" id="public">
-                        <option value="tous public">Tous Public</option>
+                        <option value="tous_public">Tous Public</option>
                         <option value="adulte">Adulte</option>
                         <option value="feminin">Féminin</option>
                         <option value="masculin">Masculin</option>
@@ -72,9 +72,9 @@
         </fieldset>
 
         <fieldset>
-            <div class="row">
 
-                <section class="col col-6">
+
+                <section>
                     <label class="input">
                         <i class="icon-append fa fa-users"></i>
                         <input type="text" name="capacite" placeholder="Capacité">
@@ -82,14 +82,8 @@
                     </label>
                 </section>
 
-                <section class="col col-6">
-                    <label class="input">
-                        <i class="icon-append fa fa-money"></i>
-                        <input type="text" name="prix" placeholder="Prix d'une entrée">
-                        <b class="tooltip tooltip-bottom-right">En euros d'une unique entrée</b>
-                    </label>
-                </section>
 
+                <div class="row">
                 <section class="input-group date col col-6" id="sandbox-container">
                     <label class="input">
 
@@ -169,7 +163,8 @@
 
         </fieldset>
         <section>
-            <button type="submit" name="creer-evenement" class="btn-u">Envoyer</button>
+            <button type="submit" name="creer-evenement" class="btn btn-primary active">Envoyer</button>
+
         </section>
     </form>
 

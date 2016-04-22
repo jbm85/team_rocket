@@ -38,7 +38,7 @@ class ToolsController extends Controller
         $utilisateur = array();
         foreach ($posts as $key => $value) {
             if ($key !== 'envoi-inscription' && $key !== 'envoi-connexion' && $key !== 'photo_profil' && $key !== 'envoi-recherche' && $key !== 'creer-evenement' && $key !== 'photo_1' && $key !== 'photo_2' && $key !== 'photo_3'){
-                if ($key == 'nom' && $key == 'prenom' && $key == 'titre' && $key == 'theme' && $key == 'public' && $key == 'descriptif' && $key == 'adresse' && $key == 'ville'){
+                if ($key == 'nom' || $key == 'prenom' || $key == 'titre' || $key == 'theme' || $key == 'public' || $key == 'descriptif' || $key == 'adresse' || $key == 'ville'){
                     $utilisateur[$key] = !empty($value) ? strip_tags(trim(ucfirst($value))) : '';
                 } else {
                     $utilisateur[$key] = !empty($value) ? strip_tags(trim($value)) : '';

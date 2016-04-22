@@ -136,7 +136,7 @@ class MembreController extends Controller
             if (!empty($membre)){ //Test si le tableau $membre n'est pas vide
 
 
-                if ($this->validator->isValidLoginInfo($membre['email'], $membre['mdp'])){
+                if ($this->validator->isValidLoginInfo($membre['email'], $membre['mot_de_passe'])){
 
                     $session_membre = $this->membre->getUserByUsernameOrEmail($membre['email']);
                     $this->remplirSession($session_membre);
@@ -161,6 +161,46 @@ class MembreController extends Controller
     public function deconnexionMembre(){
         $this->validator->logUserOut();
         $this->redirectToRoute('accueil');
+    }
+
+    /*
+    * Changer mot de passe :
+    */
+
+    public function mdpRecup()
+    {
+        if (isset($_POST['reset-mdp'])){
+
+            $membre = ToolsController::remplirLesPosts($_POST);
+            $check_email = $this->membre->emailExists($membre['email']);
+            if($check_email->rowCount()==0) {
+                $info['debug'] = $check_email;
+                $this->show('debug', $info);
+            }
+            /*if($check_email->rowCount() > 0) { // si je trouve au moins 1 personne dans la BDD avec l'email saisi, le mdp est envoyé
+
+                function random($car) {
+                    $string = "";
+                    $chaine = "abcdefghijklmnpqrstuvwxy";
+                    srand((double)microtime()*1000000);
+
+                    for($i=0; $i<$car; $i++) {
+                        $string .= $chaine[rand()%strlen($chaine)];
+                    }
+
+                    return $string;
+                }
+                $chaine = random(10);
+                $new_mdp = password_hash($chaine, PASSWORD_DEFAULT) ;
+                $this->mdpRecup($membre['email'], $new_mdp );
+
+                $destinataire= $membre['email'];
+                $sujet= "Votre nouveau mot de passe";
+
+                mail($destinataire,$sujet,"Nouveau mot de passe : ".$chaine);
+            }*/
+
+        }
     }
 
 
@@ -210,9 +250,15 @@ class MembreController extends Controller
         if (isset($_POST['creer-evenement'])){
             $evenement = ToolsController::remplirLesPosts($_POST);
 
-            if (!empty($evenement['titre']) && !empty($evenement['theme']) && !empty($evenement['public']) && !empty($evenement['descriptif']) && !empty($evenement['adresse']) && !empty($evenement['ville']) && !empty($evenement['code_postal']) && !empty($evenement['capacite']) && !empty($evenement['prix']) && !empty($evenement['date_debut']) && !empty($evenement['heure_debut']) && !empty($evenement['heure_fin'])){
+            if (!empty($evenement['titre']) && !empty($evenement['theme']) && !empty($evenement['public']) && !empty($evenement['descriptif']) && !empty($evenement['adresse']) && !empty($evenement['ville']) && !empty($evenement['code_postal']) && !empty($evenement['capacite']) && !empty($evenement['date_debut']) && !empty($evenement['heure_debut']) && !empty($evenement['heure_fin'])){
                 
                 $evenement['date_debut'] = ToolsController::convertDateUs($evenement['date_debut']);
+                $this->membre->setTable('evenements');
+                //$info['debug'] = $test;
+                //$this->show('debug',$info);
+                $sess_evenement = $this->membre->insert($evenement);
+
+
                 
             }
         }
