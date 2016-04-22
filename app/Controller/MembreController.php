@@ -11,32 +11,21 @@ class MembreController extends Controller
     protected $membre;
     protected $validator;
 
+
+    /*
+     * Constructor
+     */
+
     public function __construct()
     {
         $this->membre = new MembreManager();
         $this->validator = new AuthentificationManager();
     }
 
-    /**
-     * Page d'accueil par défaut
+
+    /*
+     * Créer une session
      */
-
-
-    public function afficherCreerEvenement()
-    {
-        $this->show('membre/creer_evenement');
-    }
-
-    public function remplirLesPosts(array $posts)
-    {
-        $utilisateur = array();
-        foreach ($posts as $key => $value) {
-            if ($key !== 'envoi-inscription' && $key !== 'connexion' && $key !== 'photo_profil')
-                $utilisateur[$key] = !empty($value) ? trim($value) : '';
-        }
-        return $utilisateur; // on renvoi un tableau qui contient les posts sinon on renvoi un tableau vide
-    }
-
 
     public function remplirSession(array $data)
     {
@@ -44,23 +33,8 @@ class MembreController extends Controller
             if ($key == 'date_de_naissance') {
                 $value = ToolsController::dateEnFr($value);
             }
-            $_SESSION['membre'][$key] = $value;
+            $_SESSION['user'][$key] = $value;
         }
-    }
-
-    // Fonction pour convertir la date au format francais en date anglaise(BDD MySQL) :
-    public function convertDateUs($date_fr)
-    {
-        if (preg_match('/\//', $date_fr)) {
-            $date = explode('/', $date_fr);
-            $date_us = $date[2] . '-' . $date[1] . '-' . $date[0];
-            return $date_us;
-        } else if (preg_match('/-/', $date_fr)) {
-            $date = explode('-', $date_fr);
-            $date_us = $date[2] . '-' . $date[1] . '-' . $date[0];
-            return $date_us;
-        }
-        return false;
     }
 
 
@@ -73,28 +47,29 @@ class MembreController extends Controller
         // SI le $_POST ['envoi-inscription'] existe
         if (isset($_POST['envoi-inscription'])) {
 
-            $utilisateur = $this->remplirLesPosts($_POST);
+            $utilisateur = ToolsController::remplirLesPosts($_POST);
 
-            if (!empty($utilisateur)) {
+            if (!empty($utilisateur['pseudo']) && !empty($utilisateur['email']) && !empty($utilisateur['mot_de_passe']) && !empty($utilisateur['password_confirm']) && !empty($utilisateur['genre']) && !empty($utilisateur['date_de_naissance'])) {
 
-                $utilisateur['date_de_naissance'] = $this->convertDateUs($utilisateur['date_de_naissance']);
+                $utilisateur['date_de_naissance'] = ToolsController::convertDateUs($utilisateur['date_de_naissance']);
+
                 $utilisateur['admin'] = 'off';
+                
+                if (preg_match('/@/', $utilisateur['email'])) {
 
-                if (preg_match('/@/', $utilisateur['email']) && !empty($utilisateur['mot_de_passe'])) {
+                    if ($this->membre->emailExists($utilisateur['email']) || $this->membre->usernameExists($utilisateur['pseudo'])) {
 
-                    if ($this->membre->emailExists($utilisateur['email']) && $this->membre->usernameExists($utilisateur['pseudo'])) {
-
-                        $this->redirectToRoute('inscription_msg', ['msg' => 'error_email']);
+                        $this->redirectToRoute('inscription_msg', ['msg' => 'error_email_pseudo']);
 
                     } else {
 
                         if ($utilisateur['mot_de_passe'] == $utilisateur['password_confirm']) {
-
                             $utilisateur['mot_de_passe'] = password_hash($utilisateur['mot_de_passe'], PASSWORD_DEFAULT);
 
                             if (isset($utilisateur['password_confirm'])) unset($utilisateur['password_confirm']);
 
                             $sess_utilisateur = $this->membre->insert($utilisateur);
+
 
                             $this->remplirSession($sess_utilisateur);
 
@@ -107,26 +82,38 @@ class MembreController extends Controller
                     }
                 }else {
 
-                    $this->redirectToRoute('inscription_msg', ['msg' => 'error_email_2']);
+                    $this->redirectToRoute('inscription_msg', ['msg' => 'error_email']);
+
                 }
+            }else{
+                $this->redirectToRoute('inscription_msg', ['msg' => 'error_champs']);
             }
         }
         $this->show('membre/inscription');
     }
 
+
+    /*
+     * Afficher un message d'erreur à l'utilisateur :
+     */
+
     public function afficherInscriptionMsg($msg)
     {
         switch ($msg) {
+            case 'error_champs' :
+                $infos['msg'] = 'Pour vous inscrire, nous avons besoin au minimum d\'un pseudo, d\'une adresse email, d\'un mot de pass, de votre date de naissance et de votre genre afin de pouvoir vous orienté au mieux sur le site';
+                $infos['classe'] = 'alert-danger';
+                break;
+            case 'error_email_pseudo' :
+                $infos['msg'] = 'Désolé, cet email ou ce pseudo sont déjà pris, essayez en un autre.';
+                $infos['classe'] = 'alert-danger';
+                break;
             case 'error_email' :
-                $infos['msg'] = 'Désolé cet email est déjà pris, essayez en un autre.';
+                $infos['msg'] = 'Désolé l\'adresse email n\'est pas conforme';
                 $infos['classe'] = 'alert-danger';
                 break;
             case 'error_password' :
                 $infos['msg'] = 'Désolé les deux mots de pass ne sont pas identiques';
-                $infos['classe'] = 'alert-danger';
-                break;
-            case 'error_email_2' :
-                $infos['msg'] = 'Veuillez vérifiez votre email et votre mot de passe';
                 $infos['classe'] = 'alert-danger';
                 break;
             default :
@@ -135,15 +122,23 @@ class MembreController extends Controller
         $this->show('membre/inscription', $infos);
     }
 
+
+    /*
+     * Affichage de la connexion :
+     */
+
     public function afficherConnexion()
     {
-        if (isset($_POST['connexion'])){
-            $membre = $this->remplirLesPosts($_POST);
+        if (isset($_POST['envoi-connexion'])){
 
-            if (!empty($membre)){
+            $membre = ToolsController::remplirLesPosts($_POST);
+
+            if (!empty($membre)){ //Test si le tableau $membre n'est pas vide
+
+
                 if ($this->validator->isValidLoginInfo($membre['email'], $membre['mdp'])){
-                    $session_membre = $this->membre->getUserByUsernameOrEmail($membre['email']);
 
+                    $session_membre = $this->membre->getUserByUsernameOrEmail($membre['email']);
                     $this->remplirSession($session_membre);
                     $this->validator->logUserIn($session_membre);
                     $this->redirectToRoute('profil');
@@ -157,6 +152,21 @@ class MembreController extends Controller
         }
         $this->show('membre/connexion');
     }
+    
+    
+    /*
+     * Déconnexion d'un membre :
+     */
+    
+    public function deconnexionMembre(){
+        $this->validator->logUserOut();
+        $this->redirectToRoute('accueil');
+    }
+
+
+    /*
+     * Affichage d'un formulaire pour modifier son profil
+     */
 
     public function connexionMsg($msg)
     {
@@ -171,19 +181,42 @@ class MembreController extends Controller
         $this->show('membre/modifier_profil');
     }
 
+
+    /*
+     * Affichage du panier :
+     */
     public function afficherPanier()
     {
         $this->show('membre/panier');
     }
 
+
+    /*
+     * Affichage du profil
+     */
+
     public function afficherProfil()
     {
         $this->show('membre/profil');
     }
-    
-    public function deconnexion()
+
+
+    /*
+     * Affichage du formulaire pour créer un évènement
+     */
+
+    public function afficherCreerEvenement() //TODO : Terminer les tests pour la creation d'un evenement
     {
-        $this->validator->logUserOut();
-        $this->redirectToRoute('connexion');
+        if (isset($_POST['creer-evenement'])){
+            $evenement = ToolsController::remplirLesPosts($_POST);
+
+            if (!empty($evenement['titre']) && !empty($evenement['theme']) && !empty($evenement['public']) && !empty($evenement['descriptif']) && !empty($evenement['adresse']) && !empty($evenement['ville']) && !empty($evenement['code_postal']) && !empty($evenement['capacite']) && !empty($evenement['prix']) && !empty($evenement['date_debut']) && !empty($evenement['heure_debut']) && !empty($evenement['heure_fin'])){
+                
+                $evenement['date_debut'] = ToolsController::convertDateUs($evenement['date_debut']);
+                
+            }
+        }
+        $this->show('membre/creer_evenement');
+
     }
 }

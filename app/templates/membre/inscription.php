@@ -1,4 +1,4 @@
-<?php $this->layout('layout', ['title' => 'Events - Connexion', 'id' => 'inscription_page']) ?>
+<?php $this->layout('layout', ['title' => 'Events - Inscription', 'id' => 'inscription_page']) ?>
 
 <?php $this->start('principal') ?>
 

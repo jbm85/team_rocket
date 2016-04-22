@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title><?= $this->e($title) ?></title>
-	<meta name="viewport" content="width=device-width, user-scalable=no">
+
 	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -24,13 +24,15 @@
 		<ul id="nav_hide">
 			<li><a href="<?= $this->url('accueil') ?>">Accueil</a></li>
 			<li><a href="<?= $this->url('derniers_evenements') ?>">Derniers évènements</a></li>
-			<li><a href="<?= $this->url('inscription') ?>">Inscription</a></li>
-			<?php if (isset($_SESSION['membre']) && !empty($_SESSION['membre'])) : ?>
-			<li><a href="<?= $this->url('deconnexion') ?>">Deconnexion</a></li>
-			<?php else : ?>
-				<li><a href="<?= $this->url('connexion') ?>">Connexion</a></li>
-			<?php endif; ?>
 			<li><a href="<?= $this->url('recherche') ?>">Recherche</a></li>
+
+			<?php if (!isset($_SESSION['user'])) : ?>
+				<li><a href="<?= $this->url('inscription') ?>">Inscription</a></li>
+				<li><a href="<?= $this->url('connexion') ?>">Connexion</a></li>
+			<?php else: ?>
+				<li><a href="<?= $this->url('creer_evenement') ?>">Créer un évènement</a></li>
+				<li><a href="<?= $this->url('deconnexion') ?>">Deconnexion</a></li>
+			<?php endif; ?>
 		</ul>
 	</nav>
 

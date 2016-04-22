@@ -2,10 +2,11 @@
                     ['title' => 'Events - Connexion', 'id' => 'connexion_page']) ?>
 <?php $this->start('principal') ?>
 <!--Contenu principal-->
-<? debug($session_membre) ?>
+
 <!--Formulaire de connexion-->
 
 <form method="post" action="<?= $this->url('connexion') ?>" id="sky-form6" class="sky-form" >
+
     <h2>Connexion</h2>
     <?php if (!empty($msg)) {
          echo $msg;
@@ -29,7 +30,7 @@
         </section>
     </fieldset>
     <section>
-        <a href="#" class="btn btn-primary active" name="connexion" role="button">Se connecter</a>
+        <a href="#" class="btn btn-primary active" name="envoi-connexion" role="button">Se connecter</a>
     </section>
 </form>
 
