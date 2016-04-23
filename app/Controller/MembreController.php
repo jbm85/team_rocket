@@ -24,7 +24,7 @@ class MembreController extends Controller
 
 
     /*
-     * Créer une session
+     * Créer une session pour l'utilisateur :
      */
 
     public function remplirSession(array $data)
@@ -33,7 +33,7 @@ class MembreController extends Controller
             if ($key == 'date_de_naissance') {
                 $value = ToolsController::dateEnFr($value);
             }
-            $_SESSION['user'][$key] = $value;
+            $_SESSION['user'][$key] = trim(strip_tags($value));
         }
     }
 
@@ -177,35 +177,35 @@ class MembreController extends Controller
                 $info['debug'] = $check_email;
                 $this->show('debug', $info);
             }
-            /*if($check_email->rowCount() > 0) { // si je trouve au moins 1 personne dans la BDD avec l'email saisi, le mdp est envoyé
-
-                function random($car) {
-                    $string = "";
-                    $chaine = "abcdefghijklmnpqrstuvwxy";
-                    srand((double)microtime()*1000000);
-
-                    for($i=0; $i<$car; $i++) {
-                        $string .= $chaine[rand()%strlen($chaine)];
-                    }
-
-                    return $string;
-                }
-                $chaine = random(10);
-                $new_mdp = password_hash($chaine, PASSWORD_DEFAULT) ;
-                $this->mdpRecup($membre['email'], $new_mdp );
-
-                $destinataire= $membre['email'];
-                $sujet= "Votre nouveau mot de passe";
-
-                mail($destinataire,$sujet,"Nouveau mot de passe : ".$chaine);
-            }*/
+//            if($check_email->rowCount() > 0) { // si je trouve au moins 1 personne dans la BDD avec l'email saisi, le mdp est envoyé
+//
+//                function random($car) {
+//                    $string = "";
+//                    $chaine = "abcdefghijklmnpqrstuvwxy";
+//                    srand((double)microtime()*1000000);
+//
+//                    for($i=0; $i<$car; $i++) {
+//                        $string .= $chaine[rand()%strlen($chaine)];
+//                    }
+//
+//                    return $string;
+//                }
+//                $chaine = random(10);
+//                $new_mdp = password_hash($chaine, PASSWORD_DEFAULT) ;
+//                $this->membre->envoiMdp($membre['email'], $new_mdp);
+//
+//                $destinataire= $membre['email'];
+//                $sujet= "Votre nouveau mot de passe";
+//
+//                mail($destinataire,$sujet,"Nouveau mot de passe : ".$chaine);
+//            }
 
         }
-    }
+    } //TODO : Non fonctionnelle
 
 
     /*
-     * Affichage d'un formulaire pour modifier son profil
+     * Affichage d'un message d'erreur si la connexion n'est pas valide :
      */
 
     public function connexionMsg($msg)
@@ -216,9 +216,48 @@ class MembreController extends Controller
         $this->show('membre/connexion',$infos);
     }
 
-    public function afficherModifierProfil()
+
+    /*
+     * Affichage d'un formulaire pour modifier son profil
+     */
+
+    public function afficherModifierProfil() //TODO : A terminer
     {
-        $this->show('membre/modifier_profil');
+
+        if (isset($_SESSION['user'])){
+
+            if (isset($_POST['sauvegarder'])){
+
+                $modif_profil = ToolsController::remplirLesPosts($_POST);
+
+                if ( !empty($_FILES['photo']['name']) ) {
+
+                    if (ToolsController::checkExtensionImg($_FILES['photo']['name'])) {
+
+                        $photo = ( !empty($_FILES['photo']['name']) ) ? strToLower(
+                            $_SESSION['user']['id']. '_' . $_SESSION['user']['nom'] . '_' . $_FILES['photo']['name']) : '';
+                        $source_photo = $_FILES['photo']['tmp_name'];
+                        $destination_photo = '/Applications/MAMP/htdocs/team_rocket/public/assets/img/photo_profil';
+
+                        if(!empty($source_photo)){
+
+
+                            copy($source_photo, $destination_photo); // je copie la photo temporaire de $_FILES dans mon dossier de photo de profil
+                            $this->membre->modifPhotoProfil($photo, $_SESSION['user']['id']);
+                            //$info['debug'] = $source_photo;
+                            //$this->show('debug', $info);
+                        }
+
+                    }
+                }
+            }
+
+
+            $this->show('membre/modifier_profil');
+        }else{
+            $this->showForbidden();
+        }
+
     }
 
 
@@ -237,8 +276,13 @@ class MembreController extends Controller
 
     public function afficherProfil()
     {
-        $this->show('membre/profil');
-    }
+        if (isset($_SESSION['user'])){
+            $this->show('membre/profil');
+        }else{
+            $this->showForbidden();
+        }
+
+    } // TODO : Ameliorer le style de la page
 
 
     /*

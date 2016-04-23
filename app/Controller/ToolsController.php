@@ -68,4 +68,20 @@ class ToolsController extends Controller
         return false;
     }
 
+
+    /*
+     * Fonction pour valider l'extension des images à insérer en BDD (MySQL) :
+     */
+
+    public static function checkExtensionImg($img)
+    {
+
+        $extension = strRchr($img, '.');
+        $extension = strToLower($extension);
+        $extension = subStr($extension, 1);
+        $extensions_valides = ['jpg', 'jpeg', 'png', 'gif'];
+        $verif_extension = in_array($extension, $extensions_valides);
+        return $verif_extension; // si y'a autre chose que les extensions du tableau, il retournera false, sinon il retournera true
+    }
+
 }

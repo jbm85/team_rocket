@@ -21,4 +21,14 @@ class MembreManager extends UserManager
 
         return $sth->fetch();
     }
+
+    public function modifPhotoProfil($photo_name, $id)
+    {
+        $sql = 'UPDATE ' . $this->table . ' SET photo_profil = ' . $photo_name . ' WHERE id= :id';
+        $sth = $this->dbh->prepare($sql);
+        $sth->bindValue(':id', $id);
+        $sth->execute();
+
+        return $sth->fetch();
+    }
 }

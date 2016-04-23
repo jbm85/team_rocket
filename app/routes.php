@@ -17,7 +17,7 @@
 
 		['GET', '/connexion/[:msg]', 'Membre#connexionMsg', 'connexionMsg'],
 
-		['GET', '/modifier_profil', 'Membre#afficherModifierProfil', 'modifier_profil'],
+		['GET|POST', '/modifier_profil', 'Membre#afficherModifierProfil', 'modifier_profil'],
 
 		['GET|POST', '/profil', 'Membre#afficherProfil', 'profil'],
 

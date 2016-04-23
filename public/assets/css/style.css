@@ -1271,6 +1271,12 @@ Resolution d'ecran à 320px minimum
 #profil_modif h2 {
     margin-top: 2rem;
 	color: white;
+	padding-bottom: 32rem;
+}
+
+#profil_modif .img-thumbnail{
+	height: 100%;
+	width: 100%;
 }
 
 #profil_modif .form-group {
