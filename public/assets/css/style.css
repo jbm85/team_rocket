@@ -883,13 +883,13 @@ Resolution d'ecran à 320px minimum
 }
 
 
-#event_description_page iframe{
+#event_description_page #map{
 	width: 90%;
 	height: 30rem;
 	margin: 2rem auto;
 }
 
-iframe~a{
+#map~a{
 	margin: 2rem auto;
 }
 
@@ -933,13 +933,13 @@ iframe~a{
 		margin: auto;
 	}
 
-	#event_description_page iframe{
+	#event_description_page #map{
 		display: block;
 		width: 90%;
 		height: 50rem;
 	}
 
-	#event_description_page iframe~a{
+	#event_description_page #map~a{
 		font-size: 2rem;
 	}
 
@@ -974,12 +974,12 @@ iframe~a{
 		margin: 5rem 1rem;
 	}
 
-	#event_description_page iframe{
+	#event_description_page #map{
 		width: 90%;
 		height: 40rem;
 	}
 
-	#event_description_page iframe~a{
+	#event_description_page #map~a{
 		font-size: 2.4rem;
 	}
 
@@ -1009,7 +1009,7 @@ iframe~a{
 		margin: 5rem 1rem;
 	}
 
-	#event_description_page iframe{
+	#event_description_page #map{
 		width: 50%;
 		height: 70rem;
 	}
