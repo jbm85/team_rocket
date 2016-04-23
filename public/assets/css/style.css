@@ -16,7 +16,7 @@ body
 {
 	text-align: center;
 	font-size: 62.5%;
-	font-family: 'Yantramanav';
+	font-family:'Yantramanav', 'sans-serif';
 	background-color: #2d2c2a;
 }
 
@@ -26,7 +26,7 @@ li{
 
 a, .btn-primary{
 	color: white;
-	font-family: bangers;
+	font-family: 'Bangers', 'sans-serif', 'sans-serif';
 }
 
 em{
@@ -60,7 +60,7 @@ h1{
 	margin-top: 2rem;
 	margin-left: 2rem;
 	color: white;
-	font-family: bangers;
+	font-family: 'Bangers', 'sans-serif';
 }
 
 h1~a{
@@ -301,7 +301,7 @@ footer em{
 
 #index_page section h3{
 	font-size: 1.8rem;
-	font-family: bangers;
+	font-family: 'Bangers', 'sans-serif';
 }
 
 .index_img{
@@ -350,7 +350,7 @@ footer em{
 
 	#index_page section h3{
 		font-size: 2.2rem;
-		font-family: bangers;
+		font-family: 'Bangers', 'sans-serif';
 	}
 
 	.index_img{
@@ -397,7 +397,7 @@ footer em{
 
 	#index_page section h3{
 		font-size: 2.2rem;
-		font-family: bangers;
+		font-family: 'Bangers', 'sans-serif';
 	}
 
 	.index_img{
@@ -711,7 +711,7 @@ Resolution d'ecran à 320px minimum
 
 #last_events_page section h3{
 	font-size: 1.8rem;
-	font-family: bangers;
+	font-family: 'Bangers', 'sans-serif';
 }
 
 
@@ -753,7 +753,7 @@ Resolution d'ecran à 320px minimum
 	#last_events_page section p{
 		margin-top: .8rem;
 		font-size: 1.4rem;
-		font-family: bangers;
+		font-family: 'Bangers', 'sans-serif';
 	}
 
 
@@ -802,7 +802,7 @@ Resolution d'ecran à 320px minimum
 
 	#last_events_page section h3{
 		font-size: 2.2rem;
-		font-family: bangers;
+		font-family: 'Bangers', 'sans-serif';
 	}
 
 	.last_events_img{
@@ -847,7 +847,7 @@ Resolution d'ecran à 320px minimum
 
 #event_description_page h3{
 	font-size: 1.8rem;
-	font-family: bangers;
+	font-family: 'Bangers', 'sans-serif';
 }
 
 #event_description_page h4{
@@ -900,7 +900,7 @@ iframe~a{
 
 	#event_description_page h3{
 		font-size: 1.8rem;
-		font-family: bangers;
+		font-family: 'Bangers', 'sans-serif';
 	}
 
 	#event_description_page h4{
@@ -951,7 +951,7 @@ iframe~a{
 
 	#event_description_page h3{
 		font-size: 1.8rem;
-		font-family: bangers;
+		font-family: 'Bangers', 'sans-serif';
 	}
 
 	#event_description_page h4{
