@@ -1,9 +1,12 @@
 <?php $this->layout('layout', ['title' => 'Events - Modification du profil', 'id' => 'profil_modif']) ?>
 
 <?php $this->start('principal') ?>
-
+<?php debug($_SESSION['user']) ?>
 <div class="container" style="padding-top: 60px;">
-  
+  <?php if (!empty($msg)) {
+    echo $msg;
+  }
+  ?>
   <div class="row">
     <!-- left column -->
     <div class="col-md-4 col-sm-6 col-xs-12">
@@ -15,7 +18,7 @@
           <p>No photo</p>
         <?php endif; ?>
       </div>
-        <p>Modifier la photo profil</p>
+        <p>Modifier la photo profil (Taille : 1Mo max et format pris en charge : jpg, jpeg, png ou gif) :</p>
         <input type="file" class="text-center center-block well well-sm" name="photo">
     </div>
     <!-- edit form column -->

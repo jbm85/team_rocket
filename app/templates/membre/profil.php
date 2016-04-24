@@ -13,7 +13,7 @@
 
         <div class="text-center" id="previewImage">
           <?php if (!empty($_SESSION['user']['photo_profil'])) : ?>
-          <img src="<?= $this->assetUrl('img/' . $_SESSION['user']['photo_profil']) ?>" alt="photo profil" class="img-thumbnail">
+          <img src="<?= $this->assetUrl('img/photo_profil/' . $_SESSION['user']['photo_profil']) ?>" alt="photo profil" class="img-thumbnail">
           <?php else: ?>
           <p>No photo</p>
           <?php endif; ?>

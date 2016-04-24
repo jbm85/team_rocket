@@ -13,22 +13,24 @@ class MembreManager extends UserManager
 {
     public function envoiMdp($email, $mdp)
     {
-        $sql = 'UPDATE ' . $this->table . ' SET mot_de_passe="'.$mdp.'" WHERE email = :email';
+        $sql = 'UPDATE ' . $this->table . ' SET mot_de_passe= :mdp WHERE email = :email';
 
         $sth = $this->dbh->prepare($sql);
         $sth->bindValue(":email", $email);
+        $sth->bindValue(":mdp", $mdp);
         $sth->execute();
 
         return $sth->fetch();
     }
 
-    public function modifPhotoProfil($photo_name, $id)
+    public function modifPhotoProfil($photo_name, $id) // TODO : probleme avec le fetch
     {
-        $sql = 'UPDATE ' . $this->table . ' SET photo_profil = ' . $photo_name . ' WHERE id= :id';
+        $sql = 'UPDATE ' . $this->table . ' SET photo_profil = :photo_name WHERE id = :id';
+
         $sth = $this->dbh->prepare($sql);
+        $sth->bindValue(':photo_name', $photo_name);
         $sth->bindValue(':id', $id);
         $sth->execute();
 
-        return $sth->fetch();
     }
 }

@@ -19,6 +19,8 @@
 
 		['GET|POST', '/modifier_profil', 'Membre#afficherModifierProfil', 'modifier_profil'],
 
+		['GET|POST', '/modifier_profil/[:msg]', 'Membre#modifProfilMsgError', 'modifier_profil_msg'],
+
 		['GET|POST', '/profil', 'Membre#afficherProfil', 'profil'],
 
 		['GET', '/panier', 'Membre#afficherPanier', 'panier'],
