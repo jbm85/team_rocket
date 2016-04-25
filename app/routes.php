@@ -26,7 +26,8 @@
 
 		['GET', '/panier', 'Membre#afficherPanier', 'panier'],
 
-		['GET', '/gestion_membre', 'Admin#afficherGestionMembre', 'gestion_membre'],
+		['GET|POST', '/gestion_membre', 'Membre#afficherGestionMembre', 'gestion_membre'],
+		['GET|POST', '/gestion_membre/[:id]', 'Membre#supprimeGestionMembre', 'gestion_membre_id'],
 
 		['GET', '/derniers_evenements', 'Affichage#afficherDerniersEvenements', 'derniers_evenements'],
 
@@ -34,5 +35,6 @@
 
 		['GET|POST', '/recherche', 'Affichage#afficherRecherche', 'recherche'],
 		['GET', '/recherche/[:msg]', 'Affichage#searchMsgError', 'recherche_msg']
+		
 
 	);
