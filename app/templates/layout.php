@@ -31,6 +31,7 @@
 				<li><a href="<?= $this->url('connexion') ?>">Connexion</a></li>
 			<?php else: ?>
 				<li><a href="<?= $this->url('creer_evenement') ?>">Créer un évènement</a></li>
+				<li><a href="<?= $this->url('profil') ?>">Profil</a></li>
 				<li><a href="<?= $this->url('deconnexion') ?>">Deconnexion</a></li>
 			<?php endif; ?>
 		</ul>
@@ -40,7 +41,7 @@
 </header>
 
 <!-- Contenu principal -->
-<main id="<?= $this->e($id) ?>">
+<main id="<?= (!empty($id)) ? $this->e($id) : '' ?>">
 
 	<?= $this->section('principal') ?>
 

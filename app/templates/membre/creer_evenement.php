@@ -3,10 +3,14 @@
 <?php $this->start('principal') ?>
     <!--Contenu principal-->
 <?php if (isset($msg)) : ?>
-    <div class="<?= $classe ?>"><?= $msg ?></div>
+    <?= $msg ?>
 <?php endif; ?>
-    <form method="post" action="<?= $this->url('creer_evenement') ?>" id="sky-form5" class="sky-form" >
+    <form method="post" action="<?= $this->url('creer_evenement') ?>" enctype="multipart/form-data" id="sky-form5" class="sky-form" >
         <h2>Ajouter un évenement</h2>
+
+        <?php if (isset($msg)) : ?>
+            <p style="color: red"><?= $msg ?></p>
+        <?php endif; ?>
 
         <fieldset>
             <section>
@@ -31,7 +35,7 @@
             <section>
                 <label class="select">
                     <select name="public" id="public">
-                        <option value="tous_public">Tous Public</option>
+                        <option value="tous public">Tous Public</option>
                         <option value="adulte">Adulte</option>
                         <option value="feminin">Féminin</option>
                         <option value="masculin">Masculin</option>

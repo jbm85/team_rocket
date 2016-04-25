@@ -16,15 +16,15 @@
             
             <!--Affichage des photos de l'évenement-->
             <?php if (!empty($value['photo_1'])) : ?>
-                <div class="last_events_img"><img src="<?= $this->assetUrl('img/'. $value['photo_1']) ?>" alt="description de l'evenement"></div>
+                <div class="last_events_img"><img src="<?= $this->assetUrl('img/photo_evenement/'. $value['photo_1']) ?>" alt="description de l'evenement"></div>
             <?php endif; ?>
 
             <?php if (!empty($value['photo_2'])) : ?>
-                <div class="last_events_img"><img src="<?= $this->assetUrl('img/'. $value['photo_2']) ?>" alt="description de l'evenement"></div>
+                <div class="last_events_img"><img src="<?= $this->assetUrl('img/photo_evenement/'. $value['photo_2']) ?>" alt="description de l'evenement"></div>
             <?php endif; ?>
 
             <?php if (!empty($value['photo_3'])) : ?>
-                <div class="last_events_img"><img src="<?= $this->assetUrl('img/'. $value['photo_3']) ?>" alt="description de l'evenement"></div>
+                <div class="last_events_img"><img src="<?= $this->assetUrl('img/photo_evenement/'. $value['photo_3']) ?>" alt="description de l'evenement"></div>
             <?php endif; ?>
 
             <!--Affichage de la date et les horaires de l'évenement-->

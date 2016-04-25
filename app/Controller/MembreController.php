@@ -44,7 +44,6 @@ class MembreController extends Controller
 
     public function afficherInscription()
     {
-        // SI le $_POST ['envoi-inscription'] existe
         if (isset($_POST['envoi-inscription'])) {
 
             $utilisateur = ToolsController::remplirLesPosts($_POST);
@@ -57,11 +56,14 @@ class MembreController extends Controller
 
                 if (preg_match('/@/', $utilisateur['email'])) {
 
+
+
                     if ($this->membre->emailExists($utilisateur['email']) || $this->membre->usernameExists($utilisateur['pseudo'])) {
 
-                        $this->redirectToRoute('inscription_msg', ['msg' => 'error_email_pseudo']);
+                        $this->show('membre/inscription', ['msg' => 'Désolé, cet email ou ce pseudo sont déjà pris, essayez en un autre.']);
 
                     } else {
+
 
                         if ($utilisateur['mot_de_passe'] == $utilisateur['password_confirm']) {
                             $utilisateur['mot_de_passe'] = password_hash($utilisateur['mot_de_passe'], PASSWORD_DEFAULT);
@@ -70,93 +72,52 @@ class MembreController extends Controller
 
                             $sess_utilisateur = $this->membre->insert($utilisateur);
 
-
                             $this->remplirSession($sess_utilisateur);
 
-                            if ( !empty($_FILES['photo']['name']) && $_FILES['photo']['size'] < 1048576) {
+                        } else {
+
+                            $this->show('membre/inscription', ['msg' => 'Désolé les deux mots de pass ne sont pas identiques']);
+                        }
+
+
+                        if ( !empty($_FILES['photo']['name'])) {
+
+                            if ($_FILES['photo']['size'] < 2097152){
 
                                 if (ToolsController::checkExtensionImg($_FILES['photo']['name'])) {
 
-                                    $photo = ( !empty($_FILES['photo']['name']) ) ? strToLower(
-                                        $_SESSION['user']['id']. '_' . $_SESSION['user']['nom'] . '_' . $_FILES['photo']['name']) : '';
+                                    $photo = (!empty($_FILES['photo']['name'])) ? strToLower($_SESSION['user']['id'] . '_' . $_SESSION['user']['nom'] . '_' . $_FILES['photo']['name']) : '';
                                     $source_photo = $_FILES['photo']['tmp_name'];
-                                    $destination_photo = '/Applications/MAMP/htdocs/team_rocket/public/assets/img/photo_profil/' . $photo;
+                                    $destination_photo = 'C:/wamp/www/team_rocket/public/assets/img/photo_profil/' . $photo;
 
-                                    if(!empty($source_photo)){
+                                    if (!empty($source_photo)) {
 
                                         copy($source_photo, $destination_photo);
                                         $this->membre->modifPhotoProfil($photo, $_SESSION['user']['id']);
 
                                     }
 
-                                }else {
-                                    $this->redirectToRoute('inscription_msg', ['msg' => 'error_extend']);
+                                } else {
+                                    $this->show('membre/inscription', ['msg' => 'Le format de votre photo n\'est pas conforme. Veuillez entré une photo au format jpg, jpeg, png ou gif']);
                                 }
-                            }else{
-                                $this->redirectToRoute('inscription_msg', ['msg' => 'error_size']);
+                            } else{
+                                $this->show('membre/inscription', ['msg' => 'La taille de votre fichier est trop lourde ! Veuillez ne pas dépasser 2 Mo pour votre photo.']);
+
                             }
-
-                            $this->redirectToRoute('profil');
-
-                        } else {
-
-                            $this->redirectToRoute('inscription_msg', ['msg' => 'error_password']);
                         }
+
+                        $this->redirectToRoute('profil');
                     }
                 } else {
 
-                    $this->redirectToRoute('inscription_msg', ['msg' => 'error_email']);
+                    $this->show('membre/inscription', ['msg' => 'Désolé, le format de l\'adresse email n\'est pas conforme']);
 
                 }
             } else {
-                $this->redirectToRoute('inscription_msg', ['msg' => 'error_champs']);
+                $this->show('membre/inscription', ['msg' => 'Pour vous inscrire, nous avons besoin au minimum d\'un pseudo, d\'une adresse email, d\'un mot de pass, de votre date de naissance et de votre genre afin de pouvoir vous orienté au mieux sur le site']);
             }
         }
         $this->show('membre/inscription');
-    }
-
-
-    /*
-     * Afficher un message d'erreur à l'utilisateur :
-     */
-
-    public function afficherInscriptionMsg($msg)
-    {
-        switch ($msg) {
-            case 'error_champs' :
-                $infos['msg'] = 'Pour vous inscrire, nous avons besoin au minimum d\'un pseudo, d\'une adresse email, d\'un mot de pass, de votre date de naissance et de votre genre afin de pouvoir vous orienté au mieux sur le site';
-                $infos['classe'] = 'alert-danger';
-                break;
-
-            case 'error_email_pseudo' :
-                $infos['msg'] = 'Désolé, cet email ou ce pseudo sont déjà pris, essayez en un autre.';
-                $infos['classe'] = 'alert-danger';
-                break;
-
-            case 'error_email' :
-                $infos['msg'] = 'Désolé l\'adresse email n\'est pas conforme';
-                $infos['classe'] = 'alert-danger';
-                break;
-
-            case 'error_password' :
-                $infos['msg'] = 'Désolé les deux mots de pass ne sont pas identiques';
-                $infos['classe'] = 'alert-danger';
-                break;
-
-            case 'error_size' :
-                $infos['msg'] = 'La taille de votre fichier est trop lourde ! Veuillez ne pas dépasser 2 Mo pour votre photo.';
-                $infos['classe'] = 'alert-danger';
-                break;
-
-            case 'error_extend' :
-                $infos['msg'] = 'Le format de votre photo n\'est pas conforme. Veuillez entré une photo au format jpg, jpeg, png ou gif';
-                $infos['classe'] = 'alert-danger';
-                break;
-
-            default :
-                $infos['msg'] = '';
-        }
-        $this->show('membre/inscription', $infos);
     }
 
 
@@ -172,14 +133,15 @@ class MembreController extends Controller
 
             if (!empty($membre)) { //Test si le tableau $membre n'est pas vide
 
+                // $this->show('debug', ['debug' => $this->validator->isValidLoginInfo($membre['email'], $membre['mot_de_passe'])]);
                 if ($this->validator->isValidLoginInfo($membre['email'], $membre['mot_de_passe'])) {
 
                     $session_membre = $this->membre->getUserByUsernameOrEmail($membre['email']);
-                    $this->remplirSession($session_membre);
                     $this->validator->logUserIn($session_membre);
+
                     $this->redirectToRoute('profil');
                 } else {
-                    $this->redirectToRoute('connexionMsg', ['msg' => 'error_identifiant']);
+                    $this->show('membre/connexion', ['msg' => 'Désolé, vos identifiants sont incorrects!']);
 
                 }
             }
@@ -208,7 +170,7 @@ class MembreController extends Controller
 
             $membre = ToolsController::remplirLesPosts($_POST);
             $check_email = $this->membre->emailExists($membre['email']);
-            if ($check_email->rowCount() == 0) {
+            if ($check_email !== false) {
                 $info['debug'] = $check_email;
                 $this->show('debug', $info);
             }
@@ -238,58 +200,12 @@ class MembreController extends Controller
         }
     } //TODO : Non fonctionnelle
 
-
-    /*
-     * Affichage d'un message d'erreur si la connexion n'est pas valide :
-     */
-
-    public function connexionMsg($msg)
-    {
-        if ($msg == 'error_identifiant') {
-            $infos['msg'] = 'Désolé, vos identifiants sont incorrects!';
-        }
-        $this->show('membre/connexion', $infos);
-    }
-
-
-    /*
-     * Afficher un message d'erreur lors de la modification du profil :
-     */
-    
-    public function modifProfilMsgError($msg)
-    {
-        switch ($msg) {
-            case 'error_size' :
-                $infos['msg'] = 'La taille de votre fichier est trop lourde ! Veuillez ne pas dépasser 2 Mo pour votre photo.';
-                $infos['classe'] = 'alert-danger';
-                break;
-
-            case 'error_extend' :
-                $infos['msg'] = 'Le format de votre photo n\'est pas conforme. Veuillez entré une photo au format jpg, jpeg, png ou gif';
-                $infos['classe'] = 'alert-danger';
-                break;
-
-            case 'error_email_pseudo' :
-                $infos['msg'] = 'Ce pseudo ou email est déjà existant. Veuillez choisir de nouveaux identifiants';
-                $infos['classe'] = 'alert-danger';
-                break;
-
-            case 'error_email' :
-                $infos['msg'] = 'Le format de votre adresse email n\'est pas conforme.';
-                $infos['classe'] = 'alert-danger';
-                break;
-
-            default :
-                $infos['msg'] = '';
-        }
-        $this->show('membre/modifier_profil', $infos);
-    }
     
     /*
      * Affichage d'un formulaire pour modifier son profil
      */
 
-    public function afficherModifierProfil() //TODO : Probleme avec rowCount
+    public function afficherModifierProfil()
     {
 
         if (isset($_SESSION['user'])){
@@ -300,32 +216,33 @@ class MembreController extends Controller
 
                 $modif_profil = ToolsController::remplirLesPosts($_POST);
 
-                if ( !empty($_FILES['photo']['name']) && $_FILES['photo']['size'] < 1048576) {
+                if ( !empty($_FILES['photo']['name'])) {
 
-                    if (ToolsController::checkExtensionImg($_FILES['photo']['name'])) {
+                    if ($_FILES['photo']['size'] < 2097152){
 
-                        $photo = ( !empty($_FILES['photo']['name']) ) ? strToLower(
-                            $_SESSION['user']['id']. '_' . $_SESSION['user']['nom'] . '_' . $_FILES['photo']['name']) : '';
-                        $source_photo = $_FILES['photo']['tmp_name'];
-                        $destination_photo = '/Applications/MAMP/htdocs/team_rocket/public/assets/img/photo_profil/' . $photo;
+                        if (ToolsController::checkExtensionImg($_FILES['photo']['name'])) {
 
-                        if(!empty($source_photo)){
+                            $photo = (!empty($_FILES['photo']['name'])) ? strToLower($_SESSION['user']['id'] . '_' . $_SESSION['user']['nom'] . '_' . $_FILES['photo']['name']) : '';
+                            $source_photo = $_FILES['photo']['tmp_name'];
+                            $destination_photo = 'C:/wamp/www/team_rocket/public/assets/img/photo_profil/' . $photo;
 
-                            copy($source_photo, $destination_photo);
-                            $this->membre->modifPhotoProfil($photo, $_SESSION['user']['id']);
+                            if (!empty($source_photo)) {
 
+                                copy($source_photo, $destination_photo);
+                                $this->membre->modifPhotoProfil($photo, $_SESSION['user']['id']);
+
+                            }
+
+                        } else {
+                            $this->show('membre/modifier_profil', ['msg' => 'Le format de votre photo n\'est pas conforme. Veuillez entré une photo au format jpg, jpeg, png ou gif']);
                         }
+                    } else{
+                        $this->show('membre/modifier_profil', ['msg' => 'La taille de votre fichier est trop lourde ! Veuillez ne pas dépasser 2 Mo pour votre photo.']);
 
-                    }else {
-                        $this->redirectToRoute('modifier_profil_msg', ['msg' => 'error_extend']);
                     }
-                }else{
-                    $this->redirectToRoute('modifier_profil_msg', ['msg' => 'error_size']);
                 }
 
                 if (!empty($modif_profil)){
-                    
-                    $modif_profil['date_de_naissance'] = ToolsController::convertDateUs($modif_profil['date_de_naissance']);
 
                     $modif_profil_sql = $this->membre->update($modif_profil, $_SESSION['user']['id'], ['strip_tags']); //TODO : Permet l'enregistrement d'une adresse email déja existente en BDD
                     if ($modif_profil_sql !== false){
@@ -335,7 +252,7 @@ class MembreController extends Controller
 
                     } else {
 
-                        $this->redirectToRoute('modifier_profil_msg', ['msg' => 'error_email_pseudo']);
+                        $this->show('membre/modifier_profil', ['msg' => 'Ce pseudo ou email est déjà existant. Veuillez choisir de nouveaux identifiants']);
                     }
 
 
@@ -391,51 +308,63 @@ class MembreController extends Controller
         if (isset($_POST['creer-evenement'])) {
             $evenement = ToolsController::remplirLesPosts($_POST);
 
-            if (!empty($evenement['titre']) && !empty($evenement['theme']) && !empty($evenement['public']) && !empty($evenement['descriptif']) && !empty($evenement['adresse']) && !empty($evenement['ville']) && !empty($evenement['code_postal']) && !empty($evenement['capacite']) && !empty($evenement['date_debut']) && !empty($evenement['heure_debut']) && !empty($evenement['heure_fin'])) {
+//            $info['debug'] = $evenement;
+//            $this->show('debug',$info);
+
+            if (!empty($evenement['titre']) && !empty($evenement['theme']) && !empty($evenement['public']) && !empty($evenement['descriptif']) && !empty($evenement['adresse']) && !empty($evenement['ville']) && !empty($evenement['code_postal']) && !empty($evenement['capacite']) && !empty($evenement['date_debut']) && !empty($evenement['date_fin']) && !empty($evenement['heure_debut']) && !empty($evenement['heure_fin'])) {
                 if ((strlen($_POST['code_postal']) === 5) && (is_numeric($_POST['code_postal']))) {
                     if (is_numeric($_POST['capacite'])) {
 
                         $evenement['date_debut'] = ToolsController::convertDateUs($evenement['date_debut']);
+                        $evenement['date_fin'] = ToolsController::convertDateUs($evenement['date_fin']);
                         $this->membre->setTable('evenements');
-                        //$info['debug'] = $test;
-                        //$this->show('debug',$info);
+
                         $sess_evenement = $this->membre->insert($evenement);
+//                        $info['debug'] = $sess_evenement;
+//                        $this->show('debug',$info);
 
                     } else {
-                        $this->redirectToRoute('creer_evenement_msg', ['msg' => 'error_capacite']);
+                        $this->show('membre/creer_evenement', ['msg' => 'La capacité doit être numérique']);
                     }
 
 
                 }else {
-                    $this->redirectToRoute('creer_evenement_msg', ['msg' => 'error_code_postal']);
+                    $this->show('membre/creer_evenement', ['msg' =>'Le code postal doit être constitué uniquement de chiffre et ne pas dépassé 5 chiffres']);
                 }
+
+
             } else {
-                $this->redirectToRoute('creer_evenement_msg', ['msg' => 'error_champs_obli']);
+                $this->show('membre/creer_evenement', ['msg' => 'Désolé, tous les champs sauf les photos sont obligatoires']);
             }
+
+            for ($i = 1; $i < 4; $i++) :
+            if ( !empty($_FILES['photo_'.$i]['name'])) {
+
+                if ($_FILES['photo_'.$i]['size'] < 2097152){
+
+                    if (ToolsController::checkExtensionImg($_FILES['photo_'.$i]['name'])) {
+
+                        $photo = (!empty($_FILES['photo_'.$i]['name'])) ? strToLower($i . '_' . $evenement['titre'] . '_' . $_FILES['photo_'.$i]['name']) : '';
+                        $source_photo = $_FILES['photo_'.$i]['tmp_name'];
+                        $destination_photo = 'C:/wamp/www/team_rocket/public/assets/img/photo_evenement/' . $photo;
+
+                        if (!empty($source_photo)) {
+
+                            copy($source_photo, $destination_photo);
+                            $this->membre->insertPhotoEvenement($photo, $sess_evenement['id'], $i);
+
+                        }
+
+                    } else {
+                        $this->show('membre/creer_evenement', ['msg' => 'Désolé l\'extension de vos images ou photos n\'est pas conforme']);
+                    }
+                } else{
+                    $this->show('membre/creer_evenement', ['msg' => 'Désolé, la taille de vos images ou photos est trop lourde (2 Mo Max.)']);
+
+                }
+            }
+            endfor;
         }
         $this->show('membre/creer_evenement');
-
-    }
-
-
-    public function afficherCreerEvenementMsg($msg)
-    {
-        switch ($msg) {
-            case 'error_code_postal' :
-                $infos['msg'] = 'le code postal doit être constitué uniquement de chiffre, et ne pas dépassé 5 caractères';
-                $infos['classe'] = 'alert-danger';
-                break;
-            case 'error_champs_obli' :
-                $infos['msg'] = 'Désolé, tous les champs sauf les photos sont obligatoire';
-                $infos['classe'] = 'alert-danger';
-                break;
-            case 'error_capacite' :
-                $infos['msg'] = 'capacité';
-                $infos['classe'] = 'alert-danger';
-                break;
-            default :
-                $infos['msg'] = '';
-        }
-        $this->show('membre/creer_evenement', $infos);
     }
 }

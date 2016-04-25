@@ -11,16 +11,10 @@
 		['GET|POST', '/deconnexion', 'Membre#deconnexionMembre', 'deconnexion'],
 
 		['GET|POST', '/creer_evenement', 'Membre#afficherCreerEvenement', 'creer_evenement'],
-		['GET', '/creer_evenement[:msg]', 'Membre#afficherCreerEvenementMsg', 'creer_evenement_msg'],
 
 		['GET|POST', '/inscription', 'Membre#afficherInscription', 'inscription'],
-		['GET', '/inscription/[:msg]', 'Membre#afficherInscriptionMsg', 'inscription_msg'],
-
-		['GET', '/connexion/[:msg]', 'Membre#connexionMsg', 'connexionMsg'],
 
 		['GET|POST', '/modifier_profil', 'Membre#afficherModifierProfil', 'modifier_profil'],
-
-		['GET|POST', '/modifier_profil/[:msg]', 'Membre#modifProfilMsgError', 'modifier_profil_msg'],
 
 		['GET|POST', '/profil', 'Membre#afficherProfil', 'profil'],
 
@@ -32,7 +26,6 @@
 
 		['GET', '/evenement_description/[:id]', 'Affichage#afficherEvenement', 'evenement_description'],
 
-		['GET|POST', '/recherche', 'Affichage#afficherRecherche', 'recherche'],
-		['GET', '/recherche/[:msg]', 'Affichage#searchMsgError', 'recherche_msg']
+		['GET|POST', '/recherche', 'Affichage#afficherRecherche', 'recherche']
 
 	);

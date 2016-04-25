@@ -49,39 +49,6 @@ class AffichageController extends Controller
     }
 
 
-
-    /*
-     * Fonction pour afficher un message à l'utilisateur en cas d'erreur dans la page recherche :
-     */
-
-    public function searchMsgError($msg)
-    {
-        switch ($msg) {
-            case 'error_date_1' :
-                $infos['msg'] = 'Le format de la date entrée n\'est pas conforme.';
-                $infos['classe'] = 'alert-danger';
-                break;
-
-            case 'error_search' :
-                $infos['msg'] = 'Désolé aucune recherche ne correspond à votre demande.';
-                break;
-
-            case 'error_theme_1' :
-                $infos['msg'] = 'Le format du thème n\'est pas conforme.';
-                $infos['classe'] = 'alert-danger';
-                break;
-
-            case 'error_ville_1' :
-                $infos['msg'] = 'Le format de la ville entré n\'est pas conforme.';
-                $infos['classe'] = 'alert-danger';
-                break;
-
-            default :
-                $infos['msg'] = '';
-        }
-    }
-
-
     /*
      * Recherche d'un évènement :
      */
@@ -110,11 +77,11 @@ class AffichageController extends Controller
                         endforeach;
                         $this->show('affichage/recherche', $infos);
                     } else {
-                        $this->redirectToRoute('recherche_msg', ['msg' => 'error_search']);
+                        $this->show('affichage/recherche', ['msg' =>'Désolé aucune recherche ne correspond à votre demande.']);
                     }
 
                 } else {
-                   $this->redirectToRoute('recherche_msg', ['msg' => 'error_date_1']);
+                    $this->show('affichage/recherche', ['msg' =>'Le format de la date entrée n\'est pas conforme.']);
                 }
 
             }
@@ -133,7 +100,7 @@ class AffichageController extends Controller
                         endforeach;
                         $this->show('affichage/recherche', $infos);
                     } else {
-                        $this->redirectToRoute('recherche_msg', ['msg' => 'error_search']);
+                        $this->show('affichage/recherche', ['msg' =>'Désolé aucune recherche ne correspond à votre demande.']);
                     }
 
                 /*} else {
@@ -155,7 +122,7 @@ class AffichageController extends Controller
                         endforeach;
                         $this->show('affichage/recherche', $infos);
                     } else {
-                        $this->redirectToRoute('recherche_msg', ['msg' => 'error_search']);
+                        $this->show('affichage/recherche', ['msg' =>'Désolé aucune recherche ne correspond à votre demande.']);
                     }
 
                 /*} else {
