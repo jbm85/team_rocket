@@ -80,7 +80,9 @@ class MembreController extends Controller
                                     $photo = ( !empty($_FILES['photo']['name']) ) ? strToLower(
                                         $_SESSION['user']['id']. '_' . $_SESSION['user']['nom'] . '_' . $_FILES['photo']['name']) : '';
                                     $source_photo = $_FILES['photo']['tmp_name'];
+
                                     $destination_photo = '/Applications/MAMP/htdocs/projetprojet/team_rocket/public/assets/img/photo_profil/' . $photo;
+
 
                                     if(!empty($source_photo)){
 
@@ -307,7 +309,7 @@ class MembreController extends Controller
                         $photo = ( !empty($_FILES['photo']['name']) ) ? strToLower(
                             $_SESSION['user']['id']. '_' . $_SESSION['user']['nom'] . '_' . $_FILES['photo']['name']) : '';
                         $source_photo = $_FILES['photo']['tmp_name'];
-                        $destination_photo = '/Applications/MAMP/htdocs/team_rocket/public/assets/img/photo_profil/' . $photo;
+                        $destination_photo = 'C:/wamp/www/team_rocket/public/assets/img/photo_profil/' . $photo;
 
                         if(!empty($source_photo)){
 
@@ -326,9 +328,11 @@ class MembreController extends Controller
                 if (!empty($modif_profil)){
                     
                     $modif_profil['date_de_naissance'] = ToolsController::convertDateUs($modif_profil['date_de_naissance']);
+                    $infos['debug'] = $modif_profil['date_de_naissance'];
+                    $this->show('debug', $infos);
 
-                    $modif_profil_sql = $this->membre->update($modif_profil, $_SESSION['user']['id'], ['strip_tags']); //TODO : Permet l'enregistrement d'une adresse email déja existente en BDD
-                    if ($modif_profil_sql->rowCount()>0){
+                    $modif_profil_sql = $this->membre->update($modif_profil, $_SESSION['user']['id']); //TODO : Permet l'enregistrement d'une adresse email déja existente en BDD
+                    if ($modif_profil_sql !== false){
 
                         $this->validator->refreshUser();
                         $this->redirectToRoute('profil');
