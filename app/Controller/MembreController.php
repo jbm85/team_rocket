@@ -80,7 +80,9 @@ class MembreController extends Controller
                                     $photo = ( !empty($_FILES['photo']['name']) ) ? strToLower(
                                         $_SESSION['user']['id']. '_' . $_SESSION['user']['nom'] . '_' . $_FILES['photo']['name']) : '';
                                     $source_photo = $_FILES['photo']['tmp_name'];
-                                    $destination_photo = 'C:/wamp/www/team_rocket/public/assets/img/photo_profil/' . $photo;
+
+                                    $destination_photo = '/Applications/MAMP/htdocs/projetprojet/team_rocket/public/assets/img/photo_profil/' . $photo;
+
 
                                     if(!empty($source_photo)){
 
@@ -393,11 +395,12 @@ class MembreController extends Controller
         if (isset($_POST['creer-evenement'])) {
             $evenement = ToolsController::remplirLesPosts($_POST);
 
-            if (!empty($evenement['titre']) && !empty($evenement['theme']) && !empty($evenement['public']) && !empty($evenement['descriptif']) && !empty($evenement['adresse']) && !empty($evenement['ville']) && !empty($evenement['code_postal']) && !empty($evenement['capacite']) && !empty($evenement['date_debut']) && !empty($evenement['heure_debut']) && !empty($evenement['heure_fin'])) {
+            if (!empty($evenement['titre']) && !empty($evenement['theme']) && !empty($evenement['public']) && !empty($evenement['descriptif']) && !empty($evenement['adresse']) && !empty($evenement['ville']) && !empty($evenement['code_postal']) && !empty($evenement['capacite']) && !empty($evenement['date_debut']) && !empty($evenement['heure_debut']) && !empty($evenement['date_fin']) && !empty($evenement['heure_fin'])) {
                 if ((strlen($_POST['code_postal']) === 5) && (is_numeric($_POST['code_postal']))) {
                     if (is_numeric($_POST['capacite'])) {
 
                         $evenement['date_debut'] = ToolsController::convertDateUs($evenement['date_debut']);
+                        $evenement['date_fin'] = ToolsController::convertDateUs($evenement['date_fin']);
                         $this->membre->setTable('evenements');
                         //$info['debug'] = $test;
                         //$this->show('debug',$info);
@@ -439,5 +442,24 @@ class MembreController extends Controller
                 $infos['msg'] = '';
         }
         $this->show('membre/creer_evenement', $infos);
+    }
+
+    public function afficherGestionMembre()
+    {
+        $tabMembre = $this->membre->recupInfoMembre();
+
+
+        $info['tabmembre'] = $tabMembre;
+        //$this->show('debug',$info);
+            
+        $this->show('admin/gestion_membre', $info);
+
+    }
+    public function supprimeGestionMembre($id)
+    {
+        $suppr = $this->membre->delete($id);
+        if($suppr > 0){
+            $this->show('admin/gestion_membre');
+        }
     }
 }

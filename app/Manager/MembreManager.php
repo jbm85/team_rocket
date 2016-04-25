@@ -33,4 +33,23 @@ class MembreManager extends UserManager
         $sth->execute();
 
     }
+    public function recupInfoMembre()
+    {
+        $sql = 'SELECT id, nom, prenom, email, pseudo, genre, admin, photo_profil FROM ' . $this->table;
+
+        $sth = $this->dbh->prepare($sql);
+        $sth->execute();
+
+        return $sth->fetchAll();
+    }
+
+    public function deleteMembre($iddel)
+    {
+        $id_suppr = $_GET['id_suppr'];
+        $sql = 'DELETE FROM ' . $this->table . ' WHERE id = :id';
+        $sth = $this->dbh->prepare($sql);
+        $sth->bindValue(":id", $iddel);
+        $sth->execute();
+        return $sth->execute();
+    }
 }

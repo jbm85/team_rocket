@@ -1386,7 +1386,20 @@ Resolution d'ecran à 320px minimum
 /*
 									Page GESTION MEMBRE(Recuperation du code depuis Bootstrap)
 */
+#manage_member_page p{
+	font-size: 20px;
+	color: white;
+}
+#manage_member_page td img{
+	max-width: 8rem;
+}
+#manage_member_page table{
+	color:white;
+}
 
+#manage_member_page table th{
+	color:#92A8BB;
+}
 #manage_member_page article p{
 	font-size: 1.4rem;
 }
@@ -1498,6 +1511,7 @@ Resolution d'ecran à 320px minimum
 	#manage_member_page th, #manage_member_page td{
 		font-size: 1.6rem;
 		height: 7rem;
+		width: 10rem;
 	}
 
 }
@@ -1914,4 +1928,54 @@ Resolution d'ecran à 320px minimum
 
 #resetmdp p{
 	font-size: 2rem;
+}
+b{
+	font-size: 3rem;
+	color: white;
+}
+
+.materialboxed {
+	display: block;
+	cursor: -webkit-zoom-in;
+	cursor: zoom-in;
+	position: relative;
+	transition: opacity .4s;
+}
+
+.materialboxed:hover {
+	will-change: left, top, width, height;
+}
+
+.materialboxed:hover:not(.active) {
+	opacity: .8;
+}
+
+.materialboxed.active {
+	cursor: -webkit-zoom-out;
+	cursor: zoom-out;
+}
+
+#materialbox-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #292929;
+	z-index: 1000;
+	will-change: opacity;
+}
+
+.materialbox-caption {
+	position: fixed;
+	display: none;
+	color: #fff;
+	line-height: 50px;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+	padding: 0% 15%;
+	height: 50px;
+	z-index: 1000;
+	-webkit-font-smoothing: antialiased;
 }
