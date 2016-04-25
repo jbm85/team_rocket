@@ -2,7 +2,9 @@
 
 <?php $this->start('principal') ?>
     <!--Contenu principal-->
-
+<?php if (isset($msg)) : ?>
+    <div class="<?= $classe ?>"><?= $msg ?></div>
+<?php endif; ?>
     <form method="post" action="<?= $this->url('creer_evenement') ?>" id="sky-form5" class="sky-form" >
         <h2>Ajouter un évenement</h2>
 

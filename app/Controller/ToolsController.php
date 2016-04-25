@@ -68,4 +68,17 @@ class ToolsController extends Controller
         return false;
     }
 
+    public static function checkExtensionPhoto() {
+	//debug($_FILES['photo']['name']);
+	$extension = strRchr($_FILES['photo']['name'], '.'); // cette fonction trouve le dernier caractère indiqué et donne la chaine de caractère qui reste, à partir de celui-ci
+	//debug($extension); // .jpeg, .png
+	$extension = strToLower($extension); // passage en minuscule
+	$extension = subStr($extension, 1); // tu me donne le jpg sans le point
+	$extensions_valides = ['jpg', 'jpeg', 'png', 'gif']; // je créé un tableau qui contient toutes les extensions valides
+	//debug($extension); // jpg etc...
+	//debug($extensions_valides);
+	$verif_extension = in_array($extension, $extensions_valides); // cette fonction trouve ce qu'on lui donne en 1er argument dans ce qu'on lui donne en 2eme argument
+	return $verif_extension; // si y'a autre chose que les extensions du tableau, il retournera false, sinon il retournera true
+}
+
 }

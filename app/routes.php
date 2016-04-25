@@ -11,6 +11,7 @@
 		['GET|POST', '/deconnexion', 'Membre#deconnexionMembre', 'deconnexion'],
 
 		['GET|POST', '/creer_evenement', 'Membre#afficherCreerEvenement', 'creer_evenement'],
+		['GET', '/creer_evenement[:msg]', 'Membre#afficherCreerEvenementMsg', 'creer_evenement_msg'],
 
 		['GET|POST', '/inscription', 'Membre#afficherInscription', 'inscription'],
 		['GET', '/inscription/[:msg]', 'Membre#afficherInscriptionMsg', 'inscription_msg'],

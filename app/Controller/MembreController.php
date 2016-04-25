@@ -54,7 +54,7 @@ class MembreController extends Controller
                 $utilisateur['date_de_naissance'] = ToolsController::convertDateUs($utilisateur['date_de_naissance']);
 
                 $utilisateur['admin'] = 'off';
-                
+
                 if (preg_match('/@/', $utilisateur['email'])) {
 
                     if ($this->membre->emailExists($utilisateur['email']) || $this->membre->usernameExists($utilisateur['pseudo'])) {
@@ -80,12 +80,12 @@ class MembreController extends Controller
                             $this->redirectToRoute('inscription_msg', ['msg' => 'error_password']);
                         }
                     }
-                }else {
+                } else {
 
                     $this->redirectToRoute('inscription_msg', ['msg' => 'error_email']);
 
                 }
-            }else{
+            } else {
                 $this->redirectToRoute('inscription_msg', ['msg' => 'error_champs']);
             }
         }
@@ -129,22 +129,19 @@ class MembreController extends Controller
 
     public function afficherConnexion()
     {
-        if (isset($_POST['envoi-connexion'])){
+        if (isset($_POST['envoi-connexion'])) {
 
             $membre = ToolsController::remplirLesPosts($_POST);
 
-            if (!empty($membre)){ //Test si le tableau $membre n'est pas vide
-                
-                if ($this->validator->isValidLoginInfo($membre['email'], $membre['mot_de_passe'])){
+            if (!empty($membre)) { //Test si le tableau $membre n'est pas vide
+
+                if ($this->validator->isValidLoginInfo($membre['email'], $membre['mot_de_passe'])) {
 
                     $session_membre = $this->membre->getUserByUsernameOrEmail($membre['email']);
                     $this->remplirSession($session_membre);
                     $this->validator->logUserIn($session_membre);
                     $this->redirectToRoute('profil');
-                }
-
-                else
-                {
+                } else {
                     $this->redirectToRoute('connexionMsg', ['msg' => 'error_identifiant']);
 
                 }
@@ -152,13 +149,14 @@ class MembreController extends Controller
         }
         $this->show('membre/connexion');
     } //TODO : Voir les problèmes de connexion avec Ziad
-    
-    
+
+
     /*
      * Déconnexion d'un membre :
      */
-    
-    public function deconnexionMembre(){
+
+    public function deconnexionMembre()
+    {
         $this->validator->logUserOut();
         $this->redirectToRoute('accueil');
     }
@@ -169,11 +167,11 @@ class MembreController extends Controller
 
     public function mdpRecup()
     {
-        if (isset($_POST['reset-mdp'])){
+        if (isset($_POST['reset-mdp'])) {
 
             $membre = ToolsController::remplirLesPosts($_POST);
             $check_email = $this->membre->emailExists($membre['email']);
-            if($check_email->rowCount()==0) {
+            if ($check_email->rowCount() == 0) {
                 $info['debug'] = $check_email;
                 $this->show('debug', $info);
             }
@@ -210,10 +208,10 @@ class MembreController extends Controller
 
     public function connexionMsg($msg)
     {
-        if ($msg == 'error_identifiant'){
+        if ($msg == 'error_identifiant') {
             $infos['msg'] = 'Désolé, vos identifiants sont incorrects!';
         }
-        $this->show('membre/connexion',$infos);
+        $this->show('membre/connexion', $infos);
     }
 
     public function afficherModifierProfil()
@@ -247,22 +245,54 @@ class MembreController extends Controller
 
     public function afficherCreerEvenement() //TODO : Terminer les tests pour la creation d'un evenement
     {
-        if (isset($_POST['creer-evenement'])){
+        if (isset($_POST['creer-evenement'])) {
             $evenement = ToolsController::remplirLesPosts($_POST);
 
-            if (!empty($evenement['titre']) && !empty($evenement['theme']) && !empty($evenement['public']) && !empty($evenement['descriptif']) && !empty($evenement['adresse']) && !empty($evenement['ville']) && !empty($evenement['code_postal']) && !empty($evenement['capacite']) && !empty($evenement['date_debut']) && !empty($evenement['heure_debut']) && !empty($evenement['heure_fin'])){
-                
-                $evenement['date_debut'] = ToolsController::convertDateUs($evenement['date_debut']);
-                $this->membre->setTable('evenements');
-                //$info['debug'] = $test;
-                //$this->show('debug',$info);
-                $sess_evenement = $this->membre->insert($evenement);
+            if (!empty($evenement['titre']) && !empty($evenement['theme']) && !empty($evenement['public']) && !empty($evenement['descriptif']) && !empty($evenement['adresse']) && !empty($evenement['ville']) && !empty($evenement['code_postal']) && !empty($evenement['capacite']) && !empty($evenement['date_debut']) && !empty($evenement['heure_debut']) && !empty($evenement['heure_fin'])) {
+                if ((strlen($_POST['code_postal']) === 5) && (is_numeric($_POST['code_postal']))) {
+                    if (is_numeric($_POST['capacite'])) {
+
+                        $evenement['date_debut'] = ToolsController::convertDateUs($evenement['date_debut']);
+                        $this->membre->setTable('evenements');
+                        //$info['debug'] = $test;
+                        //$this->show('debug',$info);
+                        $sess_evenement = $this->membre->insert($evenement);
+
+                    } else {
+                        $this->redirectToRoute('creer_evenement_msg', ['msg' => 'error_capacite']);
+                    }
 
 
-                
+                }else {
+                    $this->redirectToRoute('creer_evenement_msg', ['msg' => 'error_code_postal']);
+                }
+            } else {
+                $this->redirectToRoute('creer_evenement_msg', ['msg' => 'error_champs_obli']);
             }
         }
         $this->show('membre/creer_evenement');
 
+    }
+
+
+    public function afficherCreerEvenementMsg($msg)
+    {
+        switch ($msg) {
+            case 'error_code_postal' :
+                $infos['msg'] = 'le code postal doit être constitué uniquement de chiffre, et ne pas dépassé 5 caractères';
+                $infos['classe'] = 'alert-danger';
+                break;
+            case 'error_champs_obli' :
+                $infos['msg'] = 'Désolé, tous les champs sauf les photos sont obligatoire';
+                $infos['classe'] = 'alert-danger';
+                break;
+            case 'error_capacite' :
+                $infos['msg'] = 'capacité';
+                $infos['classe'] = 'alert-danger';
+                break;
+            default :
+                $infos['msg'] = '';
+        }
+        $this->show('membre/creer_evenement', $infos);
     }
 }
