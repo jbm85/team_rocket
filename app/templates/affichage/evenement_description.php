@@ -8,30 +8,35 @@
 
 
 		<ul>
-			<li>Date de début : <?= $details_evenement['date_debut'] ?> à <?= $details_evenement['heure_debut'] ?></li>
-			<li>Date de fin : <?= $details_evenement['date_fin'] ?> à <?= $details_evenement['heure_fin'] ?></li>
-			<li>Description : <?= $details_evenement['descriptif'] ?></li>
-			<li>Adresse : <?= $details_evenement['adresse'] ?></li>
-			<li>Ville : <?= $details_evenement['ville'] ?></li>
-			<li>Code postal : <?= $details_evenement['code_postal'] ?></li>
-			<li>Prix : <?= $details_evenement['prix'] ?> €</li>
+			<li>Date de début : <strong><?= $details_evenement['date_debut'] ?></strong> à <strong><?= $details_evenement['heure_debut'] ?></strong></li>
+			<li>Date de fin : <strong><?= $details_evenement['date_fin'] ?></strong> à <strong><?= $details_evenement['heure_fin'] ?></strong></li>
+			<li>Description : <strong><?= $details_evenement['descriptif'] ?></strong></li>
+			<li>Type de public concerné : <strong><?= $details_evenement['public'] ?></strong></li>
+			<li>Localisation : <strong id="geocode_loc"><?= $details_evenement['adresse'] ?> <?= $details_evenement['ville'] ?> <?= $details_evenement['code_postal'] ?></strong></li>
 		</ul>
 
-		<!-- photo du lieu de l'évènement -->
+		<!--Affichage des photos de l'évenement-->
 		<article>
-			<div class="event_description_img"><img src="<?= $this->assetUrl('img/' . $details_evenement['photo_1']) ?>" alt="description de l'evenement"></div>
-			<div class="event_description_img"><img src="<?= $this->assetUrl('img/' . $details_evenement['photo_2']) ?>" alt="description de l'evenement"></div>
-			<div class="event_description_img"><img src="<?= $this->assetUrl('img/' . $details_evenement['photo_3']) ?>" alt="description de l'evenement"></div>
+
+			<?php if (!empty($value['photo_1'])) : ?>
+				<div class="last_events_img"><img src="<?= $this->assetUrl('img/'. $value['photo_1']) ?>" alt="description de l'evenement"></div>
+			<?php endif; ?>
+
+			<?php if (!empty($value['photo_2'])) : ?>
+				<div class="last_events_img"><img src="<?= $this->assetUrl('img/'. $value['photo_2']) ?>" alt="description de l'evenement"></div>
+			<?php endif; ?>
+
+			<?php if (!empty($value['photo_3'])) : ?>
+				<div class="last_events_img"><img src="<?= $this->assetUrl('img/'. $value['photo_3']) ?>" alt="description de l'evenement"></div>
+			<?php endif; ?>
+
 		</article>
 
 
 		<!-- google map view -->
-		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3313.2757235953122!2d151.21310801520983!3d-33.856784380659604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12ae665e892fdd%3A0x3133f8d75a1ac251!2sOp%C3%A9ra+de+Sydney!5e0!3m2!1sfr!2sfr!4v1460027006326" frameborder="0" allowfullscreen></iframe>
+		<div id="map"></div>
 
 	</section>
-
-
-
 
 	<a href="#" class="btn btn-primary active" role="button">Participer à l'évènement</a>
 

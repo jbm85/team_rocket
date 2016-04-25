@@ -33,7 +33,7 @@
     <section>
         <button type="submit" name="envoi-connexion" class="btn btn-primary active">Se connecter</button>
     </section>
-    <a href="" data-toggle="modal" data-target="#resetmdpModal">mot de passe oublié ?</a>
+    <a href="#" data-toggle="modal" data-target="#resetmdpModal">mot de passe oublié ?</a>
 </form>
 
 
