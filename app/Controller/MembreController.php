@@ -330,7 +330,7 @@ class MembreController extends Controller
                     $modif_profil['date_de_naissance'] = ToolsController::convertDateUs($modif_profil['date_de_naissance']);
 
                     $modif_profil_sql = $this->membre->update($modif_profil, $_SESSION['user']['id'], ['strip_tags']); //TODO : Permet l'enregistrement d'une adresse email déja existente en BDD
-                    if ($modif_profil_sql->rowCount()>0){
+                    if ($modif_profil_sql !== false){
 
                         $this->validator->refreshUser();
                         $this->redirectToRoute('profil');
