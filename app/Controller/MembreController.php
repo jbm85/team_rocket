@@ -348,8 +348,10 @@ class MembreController extends Controller
                         if (!empty($source_photo)) {
 
                             copy($source_photo, $destination_photo);
-                            $this->membre->insertPhotoEvenement($photo, $sess_evenement['id'], $i);
 
+                            $this->membre->insertPhotoEvenement($photo, $sess_evenement['id'], $i);
+//                            $info['debug'] = $copy;
+//                            $this->show('debug', $info);
                         }
 
                     } else {
@@ -365,7 +367,7 @@ class MembreController extends Controller
         $this->show('membre/creer_evenement');
     }
 
-    
+
     public function afficherGestionMembre()
     {
         $tabMembre = $this->membre->recupInfoMembre();
