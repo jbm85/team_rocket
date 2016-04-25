@@ -71,8 +71,6 @@ class ToolsController extends Controller
         }
         return false;
     }
-
-
     /*
      * Fonction pour valider l'extension des images à insérer en BDD (MySQL) :
      * @param : string, nom complet de l'image
@@ -89,5 +87,6 @@ class ToolsController extends Controller
         $verif_extension = in_array($extension, $extensions_valides);
         return $verif_extension;
     }
+
 
 }
