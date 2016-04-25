@@ -244,7 +244,8 @@ class MembreController extends Controller
 
                 if (!empty($modif_profil)){
 
-                    $modif_profil_sql = $this->membre->update($modif_profil, $_SESSION['user']['id'], ['strip_tags']); //TODO : Permet l'enregistrement d'une adresse email déja existente en BDD
+                    $modif_profil_sql = $this->membre->update($modif_profil, $_SESSION['user']['id'], ['strip_tags']);
+
                     if ($modif_profil_sql !== false){
 
                         $this->validator->refreshUser();
@@ -308,10 +309,8 @@ class MembreController extends Controller
         if (isset($_POST['creer-evenement'])) {
             $evenement = ToolsController::remplirLesPosts($_POST);
 
-//            $info['debug'] = $evenement;
-//            $this->show('debug',$info);
+            if (!empty($evenement['titre']) && !empty($evenement['theme']) && !empty($evenement['public']) && !empty($evenement['descriptif']) && !empty($evenement['adresse']) && !empty($evenement['ville']) && !empty($evenement['code_postal']) && !empty($evenement['capacite']) && !empty($evenement['date_debut']) && !empty($evenement['heure_debut']) && !empty($evenement['date_fin']) && !empty($evenement['heure_fin'])) {
 
-            if (!empty($evenement['titre']) && !empty($evenement['theme']) && !empty($evenement['public']) && !empty($evenement['descriptif']) && !empty($evenement['adresse']) && !empty($evenement['ville']) && !empty($evenement['code_postal']) && !empty($evenement['capacite']) && !empty($evenement['date_debut']) && !empty($evenement['date_fin']) && !empty($evenement['heure_debut']) && !empty($evenement['heure_fin'])) {
                 if ((strlen($_POST['code_postal']) === 5) && (is_numeric($_POST['code_postal']))) {
                     if (is_numeric($_POST['capacite'])) {
 
@@ -320,8 +319,6 @@ class MembreController extends Controller
                         $this->membre->setTable('evenements');
 
                         $sess_evenement = $this->membre->insert($evenement);
-//                        $info['debug'] = $sess_evenement;
-//                        $this->show('debug',$info);
 
                     } else {
                         $this->show('membre/creer_evenement', ['msg' => 'La capacité doit être numérique']);
@@ -366,5 +363,26 @@ class MembreController extends Controller
             endfor;
         }
         $this->show('membre/creer_evenement');
+    }
+
+    
+    public function afficherGestionMembre()
+    {
+        $tabMembre = $this->membre->recupInfoMembre();
+
+
+        $info['tabmembre'] = $tabMembre;
+        //$this->show('debug',$info);
+            
+        $this->show('admin/gestion_membre', $info);
+
+    }
+
+    public function supprimeGestionMembre($id)
+    {
+        $suppr = $this->membre->delete($id);
+        if($suppr > 0){
+            $this->show('admin/gestion_membre');
+        }
     }
 }

@@ -1259,13 +1259,18 @@ Resolution d'ecran à 320px minimum
     display: inline-block;
 }
 
+#info_profil a:first-of-type{
+	width: 20rem;
+}
+
 #profil_modif ul {
 	margin-top: 1rem;
 	margin-bottom: 1rem;
 }
 
 #profil_modif li {
-	font-size: 1rem;
+	font-size: 1.5rem;
+	color: white;
 }
 
 #profil_modif h2 {
@@ -1280,14 +1285,14 @@ Resolution d'ecran à 320px minimum
 }
 
 #profil_modif .form-group {
-    padding: 0.3rem;
+    padding: 1.5rem;
 }
 
 #profil_modif .list-add-events, #profil_modif .list-past-events {
 	cursor: pointer;
 	border: 0.1rem solid white;
 	padding: 1rem 0;
-	margin: 2rem auto;
+	margin: 3rem auto;
 	background-color: aliceblue;
 	width: 77%;
 	font-size: 1rem;
@@ -1311,6 +1316,11 @@ Resolution d'ecran à 320px minimum
 #profil_modif .btn-primary {
 	font-size: 1rem;
 	margin-bottom: 2rem;
+	width: 18rem;
+}
+
+#profil_modif tbody{
+	background-color: white;
 }
 
 @media screen and (min-width:700px){
@@ -1352,22 +1362,21 @@ Resolution d'ecran à 320px minimum
 
 #profil_modif p {
 	margin: 1rem 0 10px;
-	font-size: 1rem;
+	font-size: 1.5rem;
+	color: white;
 }
 
 .control-label {
-	font-size: 1rem;
+	font-size: 1.5rem;
+	color: white;
 }
 
-#profil_modif .btn-default {
-	font-size: 1rem;
-	margin-bottom: 2rem;
-	color: #fff;
-	background-color: #337ab7;
-	border-color: #2e6da4;
+#profil_modif a {
+	font-size: 1.4rem;
+	display: block;
+	width: 18rem;
+	margin: auto;
 }
-
-
 
 
 
@@ -1377,7 +1386,20 @@ Resolution d'ecran à 320px minimum
 /*
 									Page GESTION MEMBRE(Recuperation du code depuis Bootstrap)
 */
+#manage_member_page p{
+	font-size: 20px;
+	color: white;
+}
+#manage_member_page td img{
+	max-width: 8rem;
+}
+#manage_member_page table{
+	color:white;
+}
 
+#manage_member_page table th{
+	color:#92A8BB;
+}
 #manage_member_page article p{
 	font-size: 1.4rem;
 }
@@ -1489,6 +1511,7 @@ Resolution d'ecran à 320px minimum
 	#manage_member_page th, #manage_member_page td{
 		font-size: 1.6rem;
 		height: 7rem;
+		width: 10rem;
 	}
 
 }
@@ -1905,4 +1928,54 @@ Resolution d'ecran à 320px minimum
 
 #resetmdp p{
 	font-size: 2rem;
+}
+b{
+	font-size: 3rem;
+	color: white;
+}
+
+.materialboxed {
+	display: block;
+	cursor: -webkit-zoom-in;
+	cursor: zoom-in;
+	position: relative;
+	transition: opacity .4s;
+}
+
+.materialboxed:hover {
+	will-change: left, top, width, height;
+}
+
+.materialboxed:hover:not(.active) {
+	opacity: .8;
+}
+
+.materialboxed.active {
+	cursor: -webkit-zoom-out;
+	cursor: zoom-out;
+}
+
+#materialbox-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #292929;
+	z-index: 1000;
+	will-change: opacity;
+}
+
+.materialbox-caption {
+	position: fixed;
+	display: none;
+	color: #fff;
+	line-height: 50px;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+	padding: 0% 15%;
+	height: 50px;
+	z-index: 1000;
+	-webkit-font-smoothing: antialiased;
 }

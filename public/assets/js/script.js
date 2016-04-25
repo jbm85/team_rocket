@@ -77,7 +77,8 @@ $(document).ready(function(){
     });
 
     $('.clockpicker').clockpicker();
-    // Detection de scroll :
+
+    
 
 
 });

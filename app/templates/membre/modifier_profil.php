@@ -1,7 +1,7 @@
 <?php $this->layout('layout', ['title' => 'Events - Modification du profil', 'id' => 'profil_modif']) ?>
 
 <?php $this->start('principal') ?>
-<?php debug($_SESSION['user']) ?>
+<?php // debug($_SESSION['user']) ?>
 <div class="container" style="padding-top: 60px;">
 
   <?php if (isset($msg)) : ?>
@@ -25,7 +25,6 @@
     <!-- edit form column -->
     <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
       <p>Mettez à jour vos informations personnelles</p>
-
 
         <div class="form-group">
           <label class="col-lg-3 control-label">Prénom:</label>
@@ -63,19 +62,17 @@
         </div>
 
         <div class="form-group">
-          <label class="col-md-3 control-label">Pseudo:</label>
+          <label class="col-lg-3 control-label">Pseudo:</label>
           <div class="col-lg-8">
             <input class="form-control" name="pseudo" placeholder="theflash" type="text" value="<?= !empty($_SESSION['user']['pseudo']) ? $_SESSION['user']['pseudo'] : ''?>">
           </div>
         </div>
 
-        <a href="#" data-toggle="modal" data-target="#resetmdpModal">Envie de changer de mot de pass ?</a>
-
         <div class="form-group">
-          <label class="col-md-3 control-label"></label>
+          <!-- <label class="col-md-3 control-label"></label> -->
           <div class="save-cancel">
             <button type="submit" name="sauvegarder" class="btn btn-primary btn-lg active">Sauvegarder</button>
-            <button type="submit" name="annuler" class="btn btn-default btn-lg active">Annuler</button>
+            <button type="submit" name="annuler" class="btn btn-primary btn-lg active">Annuler</button>
           </div>
         </div>
       </form>
@@ -83,6 +80,8 @@
   </div>
 
   <a href="<?= $this->url('creer_evenement') ?>" class="btn btn-primary btn-lg active" role="button">Ajouter un événement</a>
+
+  <a href="#" data-toggle="modal" data-target="#resetmdpModal">Envie de changer de mot de passe ?</a>
   </div>
 </div>
 

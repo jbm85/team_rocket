@@ -18,7 +18,7 @@
 <header>
 	<!-- Menu de navigation pour le format smartphone -->
 	<nav id="main_nav">
-		<h1>Events</h1>
+		<h1><a href="<?= $this->url('accueil') ?>">events</a></h1>
 		<a href="#" title="Menu de navigation"><i class="fa fa-bars"></i></a>
 
 		<ul id="nav_hide">
@@ -118,6 +118,7 @@
 <script type="text/javascript" src="<?= $this->assetUrl('js/bootstrap-datepicker.js') ?>" ></script>
 <script type="text/javascript" src="<?= $this->assetUrl('js/profil.js') ?>" ></script>
 <script type="text/javascript" src="<?= $this->assetUrl('js/verification_formulaire.js') ?>"></script>
+<script type="text/javascript" src="<?= $this->assetUrl('js/materialize.js') ?>"></script>
 <script type="text/javascript" src="<?= $this->assetUrl('js/script.js') ?>" ></script>
 </body>
 
