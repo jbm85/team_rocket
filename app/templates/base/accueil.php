@@ -23,15 +23,15 @@ var_dump(unserialize('a:3:{i:0;s:10:"photo1.jpg";i:1;s:10:"photo2.jpg";i:2;s:10:
 
 		<!--Affichage des photos de l'évenement-->
 		<?php if (!empty($value['photo_1'])) : ?>
-			<div class="index_img"><img src="<?= $this->assetUrl('img/'. $value['photo_1']) ?>" alt="description de l'evenement"></div>
+			<div class="index_img"><img src="<?= $this->assetUrl('img/photo_evenement/'. $value['photo_1']) ?>" alt="description de l'evenement"></div>
 		<?php endif; ?>
 
 		<?php if (!empty($value['photo_2'])) : ?>
-			<div class="index_img"><img src="<?= $this->assetUrl('img/'. $value['photo_2']) ?>" alt="description de l'evenement"></div>
+			<div class="index_img"><img src="<?= $this->assetUrl('img/photo_evenement/'. $value['photo_2']) ?>" alt="description de l'evenement"></div>
 		<?php endif; ?>
 
 		<?php if (!empty($value['photo_3'])) : ?>
-			<div class="index_img"><img src="<?= $this->assetUrl('img/'. $value['photo_3']) ?>" alt="description de l'evenement"></div>
+			<div class="index_img"><img src="<?= $this->assetUrl('img/photo_evenement/'. $value['photo_3']) ?>" alt="description de l'evenement"></div>
 		<?php endif; ?>
 
 		<!--Affichage de la date et les horaires de l'évenement-->

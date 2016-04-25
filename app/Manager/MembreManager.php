@@ -23,7 +23,7 @@ class MembreManager extends UserManager
         return $sth->fetch();
     }
 
-    public function modifPhotoProfil($photo_name, $id) // TODO : probleme avec le fetch
+    public function modifPhotoProfil($photo_name, $id)
     {
         $sql = 'UPDATE ' . $this->table . ' SET photo_profil = :photo_name WHERE id = :id';
 
@@ -31,8 +31,18 @@ class MembreManager extends UserManager
         $sth->bindValue(':photo_name', $photo_name);
         $sth->bindValue(':id', $id);
         $sth->execute();
-
     }
+
+    public function insertPhotoEvenement($photo_name, $id, $i)
+    {
+        $sql = 'UPDATE evenements SET photo_' . $i . ' = :photo_name WHERE id = :id';
+
+        $sth = $this->dbh->prepare($sql);
+        $sth->bindValue(':photo_name', $photo_name);
+        $sth->bindValue(':id', $id);
+        $sth->execute();
+    }
+
     public function recupInfoMembre()
     {
         $sql = 'SELECT id, nom, prenom, email, pseudo, genre, admin, photo_profil FROM ' . $this->table;
@@ -46,10 +56,13 @@ class MembreManager extends UserManager
     public function deleteMembre($iddel)
     {
         $id_suppr = $_GET['id_suppr'];
+
         $sql = 'DELETE FROM ' . $this->table . ' WHERE id = :id';
+
         $sth = $this->dbh->prepare($sql);
         $sth->bindValue(":id", $iddel);
         $sth->execute();
+        
         return $sth->execute();
     }
 }

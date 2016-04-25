@@ -3,16 +3,20 @@
 
 <?php $this->start('principal') ?>
 
-<?php debug($search_results);
-    $nb_search = count($search_results); ?>
+<?php if(!empty($search_results)){
+    $nb_search = count($search_results);
+}else{
+    $search_results = '';
+}
+     ?>
 
-<?php if (isset($msg)) : ?>
-    <div class="<?= $classe ?>"><?= $msg ?></div>
-<?php endif; ?>
 
         <form method="post" action="" id="sky-form7" class="sky-form" >
             <h2>Formulaire de Recherche</h2>
-
+            <?php if (isset($msg)) :
+                        echo $msg;
+            endif;
+            ?>
             <fieldset>
                 <section>
                     <label class="select">
@@ -46,7 +50,7 @@
                 <button class="btn btn-primary active" name="envoi-recherche" type="submit">Rechercher</button>
             </section>
         </form>
-    <?php if ($nb_search>0) : ?>
+    <?php if (!empty($nb_search) && $nb_search>0) : ?>
         <div id="search-result">
             <h2>Résultats de votre recherche :</h2>
             <em>Nous avons trouvé <strong><?= $nb_search ?></strong> correspondances pour votre recherche.</em>
@@ -58,15 +62,15 @@
 
                 <!--Affichage des photos de l'évenement-->
                 <?php if (!empty($value['photo_1'])) : ?>
-                    <div class="index_img"><img src="<?= $this->assetUrl('img/'. $value['photo_1']) ?>" alt="description de l'evenement"></div>
+                    <div class="index_img"><img src="<?= $this->assetUrl('img/photo_evenement/'. $value['photo_1']) ?>" alt="description de l'evenement"></div>
                 <?php endif; ?>
 
                 <?php if (!empty($value['photo_2'])) : ?>
-                    <div class="index_img"><img src="<?= $this->assetUrl('img/'. $value['photo_2']) ?>" alt="description de l'evenement"></div>
+                    <div class="index_img"><img src="<?= $this->assetUrl('img/photo_evenement/'. $value['photo_2']) ?>" alt="description de l'evenement"></div>
                 <?php endif; ?>
 
                 <?php if (!empty($value['photo_3'])) : ?>
-                    <div class="index_img"><img src="<?= $this->assetUrl('img/'. $value['photo_3']) ?>" alt="description de l'evenement"></div>
+                    <div class="index_img"><img src="<?= $this->assetUrl('img/photo_evenement/'. $value['photo_3']) ?>" alt="description de l'evenement"></div>
                 <?php endif; ?>
 
                 <!--Affichage de la date et les horaires de l'évenement-->

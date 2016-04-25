@@ -3,10 +3,11 @@
 <?php $this->start('principal') ?>
 <?php // debug($_SESSION['user']) ?>
 <div class="container" style="padding-top: 60px;">
-  <?php if (!empty($msg)) {
-    echo $msg;
-  }
-  ?>
+
+  <?php if (isset($msg)) : ?>
+    <p style="color: red"><?= $msg ?></p>
+  <?php endif; ?>
+  
   <div class="row">
     <!-- left column -->
     <div class="col-md-4 col-sm-6 col-xs-12">

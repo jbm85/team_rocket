@@ -8,10 +8,9 @@
 <form method="post" action="<?= $this->url('connexion') ?>" id="sky-form6" class="sky-form" >
 
     <h2>Connexion</h2>
-    <?php if (!empty($msg)) {
-         echo $msg;
-    }
-    ?>
+    <?php if (isset($msg)) : ?>
+        <p style="color: red"><?= $msg ?></p>
+    <?php endif; ?>
     <fieldset>
         <section>
             <label class="input">
