@@ -2,12 +2,12 @@
 
 <?php $this->start('principal') ?>
 
-<?php if (isset($msg)) : ?>
-<div class="<?= $classe ?>"><?= $msg ?></div>
-<?php endif; ?>
-
-    <form method="post" action="<?= $this->url('inscription') ?>" id="sky-form4" class="sky-form" >
+    <form method="post" action="<?= $this->url('inscription') ?>" id="sky-form4" class="sky-form"  enctype="multipart/form-data">
         <h2>Formulaire d'inscription</h2>
+        <?php if (!empty($msg)) {
+            echo $msg;
+        }
+        ?>
 
         <fieldset>
             <section>
@@ -83,7 +83,7 @@
             <section>
                 <label class="input" for="photo">
                     <i class="icon-append fa fa-camera"></i>
-                    <input type="file" id="uploadFile" name="photo_profil" placeholder="Votre photo">
+                    <input type="file" id="uploadFile" name="photo" placeholder="Votre photo">
                 </label>
             </section>
             <section id="sectionPhotoProfil" class="preview">

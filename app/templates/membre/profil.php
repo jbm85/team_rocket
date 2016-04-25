@@ -3,15 +3,22 @@
 
 <?php $this->start('principal') ?>
 
+<?php debug($_SESSION['user']) ?>
 <div class="container" style="padding-top: 60px;">
   
   <div class="row">
     <!-- left column -->
     <div class="col-md-4 col-sm-6 col-xs-12">
       <div class="info-profil">
+
         <div class="text-center" id="previewImage">
-          <img src="<?= $_SESSION['membre']['photo_profil']; ?>" alt="photo profil" class="img-thumbnail">
+          <?php if (!empty($_SESSION['user']['photo_profil'])) : ?>
+          <img src="<?= $this->assetUrl('img/photo_profil/' . $_SESSION['user']['photo_profil']) ?>" alt="photo profil" class="img-thumbnail">
+          <?php else: ?>
+          <p>No photo</p>
+          <?php endif; ?>
         </div>
+
 
         <!-- Affichage des informations personnelles -->
         <div class="view-profil-info">
@@ -144,4 +151,5 @@
               </div>
             </div>
           </div>
+
 <?php $this->stop('principal') ?>

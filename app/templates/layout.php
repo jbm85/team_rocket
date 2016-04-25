@@ -107,6 +107,12 @@
 <script src="https://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 <!-- JS -->
+
+<!-- Script pour se connecter à l'API Google Maps avec une clé -->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCO9C0bAVc1k1sBsEDKJkIEpUmyUaB-Hf4&libraries=visualization&callback=initMap"></script>
+<!-- Script pour activer Google Maps en JS (sans jQuery) -->
+<script type="text/javascript" src="<?= $this->assetUrl('js/initMap.js') ?>"></script>
+
 <script type="text/javascript" src="<?= $this->assetUrl('js/bootstrap-clockpicker.min.js') ?>" ></script>
 <script type="text/javascript" src="<?= $this->assetUrl('js/bootstrap-datepicker.js') ?>" ></script>
 <script type="text/javascript" src="<?= $this->assetUrl('js/profil.js') ?>" ></script>

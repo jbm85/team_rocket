@@ -14,7 +14,7 @@ class AffichageController extends Controller
     /*
      * Constructor :
      */
-    
+
     public function __construct()
     {
         $this->evenements = new EvenementManager();
@@ -86,7 +86,7 @@ class AffichageController extends Controller
      * Recherche d'un évènement :
      */
 
-    public function afficherRecherche() //TODO : Régler les bugs et afficher en dynamique
+    public function afficherRecherche()
     {
         if (isset($_POST['envoi-recherche'])) {
 
@@ -101,11 +101,14 @@ class AffichageController extends Controller
                 if (preg_match($re_date, $recherche['date'])) {
 
                     $recherche['date'] = ToolsController::convertDateUs($recherche['date']);
-                    $results_search = $this->evenements->findDate($recherche['date']);
-                    $nb_recherche = count($results_search);
+                    $infos['search_results'] = $this->evenements->findDate($recherche['date']);
+                    $nb_recherche = count($infos['search_results']);
 
                     if ($nb_recherche > 0) {
-                        $this->show('affichage/recherche');
+                        foreach ($infos['search_results'] as $key => $value):
+                            $infos['search_results'][$key]['date'] = ToolsController::dateEnFr($value['date_debut']);
+                        endforeach;
+                        $this->show('affichage/recherche', $infos);
                     } else {
                         $this->redirectToRoute('recherche_msg', ['msg' => 'error_search']);
                     }
@@ -118,40 +121,46 @@ class AffichageController extends Controller
 
             else if (!empty($recherche['theme'])) {
 
-                //if (preg_match($re_theme, $recherche['theme'])) {
+                //if (preg_match($re_theme, $recherche['theme'])) { //TODO : A Voir si le temps
 
-                    $results_search = $this->evenements->findTheme($recherche['theme']);
-                    $nb_recherche = count($results_search);
-//                    $info['debug'] = $nb_recherche;
-//                    $this->show('debug',$info);
+                    $infos['search_results'] = $this->evenements->findTheme($recherche['theme']);
+                    $nb_recherche = count($infos['search_results']);
+                    //$info['debug'] = $infos['search_results'];
+                    //$this->show('debug',$info);
                     if ($nb_recherche > 0) {
-                        //$this->show('affichage/recherche');
+                        foreach ($infos['search_results'] as $key => $value):
+                            $infos['search_results'][$key]['date'] = ToolsController::dateEnFr($value['date_debut']);
+                        endforeach;
+                        $this->show('affichage/recherche', $infos);
                     } else {
                         $this->redirectToRoute('recherche_msg', ['msg' => 'error_search']);
                     }
 
-                //} else {
-                    //$this->redirectToRoute('recherche_msg', ['msg' => 'error_theme_1']);
-                //}
+                /*} else {
+                    $this->redirectToRoute('recherche_msg', ['msg' => 'error_theme_1']);
+                }*/
             }
 
             else if (!empty($recherche['ville'])) {
 
-                //if (preg_match($re_theme, $recherche['ville'])) {
+                //if (preg_match($re_theme, $recherche['ville'])) { //TODO : A voir si le temps
 
-                    $results_search = $this->evenements->findCity($recherche['ville']);
-                    $nb_recherche = count($results_search);
-                    $info['debug'] = $nb_recherche;
-                    $this->show('debug',$info);
-//                    if ($nb_recherche > 0) {
-//                        $this->show('affichage/recherche');
-//                    } else {
-//                        $this->redirectToRoute('recherche_msg', ['msg' => 'error_search']);
-//                    }
+                    $infos['search_results'] = $this->evenements->findCity($recherche['ville']);
+                    $nb_recherche = count($infos['search_results']);
+                    //$info['debug'] = $results_search;
+                    //$this->show('debug',$info);
+                    if ($nb_recherche > 0) {
+                        foreach ($infos['search_results'] as $key => $value):
+                            $infos['search_results'][$key]['date'] = ToolsController::dateEnFr($value['date_debut']);
+                        endforeach;
+                        $this->show('affichage/recherche', $infos);
+                    } else {
+                        $this->redirectToRoute('recherche_msg', ['msg' => 'error_search']);
+                    }
 
-                //} //else {
-//                    $this->redirectToRoute('recherche_msg', ['msg' => 'error_ville_1']);
-//                }
+                /*} else {
+                    $this->redirectToRoute('recherche_msg', ['msg' => 'error_ville_1']);
+                }*/
             }
         }
 
