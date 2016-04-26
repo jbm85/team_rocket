@@ -33,7 +33,25 @@ em{
 	color: #636363;
 }
 
+p{
+	color: white;
+}
 
+.message_erreur{
+	font-size: 1.6rem;
+	color: red;
+	font-family: 'Bangers', 'sans-serif';
+}
+
+#mlModal p, #cgvModal p{
+	color: black;
+}
+
+
+
+#planSiteModal a{
+	color: #0e90d2;
+}
 
 
 
@@ -42,13 +60,13 @@ em{
 
 
 /*
-													HEADER
+											HEADER
 */
 
 header{
-background-color: rgba(0, 0, 0, 0.2);
-margin-bottom: 3rem;
-width: 100%;
+	background-color: rgba(0, 0, 0, 0.2);
+	margin-bottom: 3rem;
+	width: 100%;
 	background-image: url('../img/medusa.png');
 }
 
@@ -141,10 +159,6 @@ header p{
 	#nav_hide a{
 		font-size: 3rem;
 		margin-right: 2.4rem;
-	}
-
-	#nav_hide a:hover{
-		color: #2d2c2a;
 	}
 
 	header p{
@@ -432,6 +446,9 @@ footer em{
 /*
 												Page RECHERCHE
 */
+#search_page{
+	margin-bottom: 10rem;
+}
 
 #search_page #search-result{
 	width: 90%;
@@ -495,7 +512,8 @@ footer em{
 
 #search_page #search-result h2~em{
 	display: block;
-	font-size: 1.2rem;
+	font-size: 1.6rem;
+	color: #92A8BB;
 }
 
 [title="nouvelle recherche"]{
@@ -1023,7 +1041,11 @@ Resolution d'ecran à 320px minimum
 												Page CONNEXION
 */
 
-/*CREER EVENEMENT*/
+#connexion_page~footer{
+	position: absolute;
+	bottom: 0;
+}
+
 #sky-form6 label {
 	font-size: 2em;
 }
@@ -1333,12 +1355,20 @@ Resolution d'ecran à 320px minimum
 		width: 100%;
 	}
 
+	#profil_modif~footer{
+		margin-top: 7rem;
+	}
+
 }
 
 @media screen and (min-width:1024px){
 	#profil_modif .show-events, #profil_modif .info-profil{
 		display: inline-block;
 		width: 45%;
+	}
+
+	#profil_modif~footer{
+		margin-top: 5rem;
 	}
 }
 

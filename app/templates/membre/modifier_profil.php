@@ -1,11 +1,11 @@
 <?php $this->layout('layout', ['title' => 'Events - Modification du profil', 'id' => 'profil_modif']) ?>
 
 <?php $this->start('principal') ?>
-<?php // debug($_SESSION['user']) ?>
+
 <div class="container" style="padding-top: 60px;">
 
   <?php if (isset($msg)) : ?>
-    <p style="color: red"><?= $msg ?></p>
+    <p class="message_erreur"><?= $msg ?></p>
   <?php endif; ?>
   
   <div class="row">
@@ -19,7 +19,7 @@
           <p>No photo</p>
         <?php endif; ?>
       </div>
-        <p>Modifier la photo profil (Taille : 1Mo max et format pris en charge : jpg, jpeg, png ou gif) :</p>
+        <p>Modifier la photo profil (Poids : 2Mo max et format pris en charge : jpg, jpeg, png ou gif) :</p>
         <input type="file" class="text-center center-block well well-sm" name="photo">
     </div>
     <!-- edit form column -->

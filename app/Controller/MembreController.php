@@ -333,7 +333,6 @@ class MembreController extends Controller
             } else {
                 $this->show('membre/creer_evenement', ['msg' => 'Désolé, tous les champs sauf les photos sont obligatoires']);
             }
-
             for ($i = 1; $i < 4; $i++) :
             if ( !empty($_FILES['photo_'.$i]['name'])) {
 
@@ -350,8 +349,7 @@ class MembreController extends Controller
                             copy($source_photo, $destination_photo);
 
                             $this->membre->insertPhotoEvenement($photo, $sess_evenement['id'], $i);
-//                            $info['debug'] = $copy;
-//                            $this->show('debug', $info);
+
                         }
 
                     } else {
@@ -363,6 +361,7 @@ class MembreController extends Controller
                 }
             }
             endfor;
+            $this->show('membre/creer_evenement', ['msg' => 'Bravo votre évènement a été publié avec succès !']);
         }
         $this->show('membre/creer_evenement');
     }

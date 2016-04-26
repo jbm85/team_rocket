@@ -4,7 +4,6 @@
 <?php $this->start('principal') ?>
 
         <h2>Vos évènements et vos avis</h2>
-<?php debug($dernier_evenement); ?>
 
         <?php foreach($dernier_evenement AS $key => $value): ?>
 
@@ -41,7 +40,7 @@
 
             <a href="<?= $this->url('evenement_description', ['id' => $value['id']]); ?>"><i class="fa fa-info-circle"></i><span>Plus de détails</span></a>
             <a href="<?= $this->url('inscription') ?>"><i class="fa fa-sign-in"></i><span>S'inscrire</span></a>
-            <a href="<?= $this->url ('panier') ?>"><i class="fa fa-check-circle"></i><span>Participer</span></a>
+            <a href="#"><i class="fa fa-check-circle"></i><span>Participer</span></a>
         </section>
     <?php endforeach; ?>
 

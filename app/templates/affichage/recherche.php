@@ -14,7 +14,7 @@
         <form method="post" action="" id="sky-form7" class="sky-form" >
             <h2>Formulaire de Recherche</h2>
             <?php if (isset($msg)) :
-                        echo $msg;
+                         echo '<p class="message_erreur">' . $msg . '</p>';
             endif;
             ?>
             <fieldset>
@@ -39,11 +39,11 @@
                 </section>
 
 
-                    <section class="input-group date" id="sandbox-container">
-                        <label class="input">
-                            <input type="text" placeholder="Rechercher par date : 12/08/1987" id="date-search" name="date" class="form-control datepicker" placeholder="Recharche par date"></label><span class="input-group-addon"><i class="glyphicon glyphicon-th"  ></i></span>
-                    </section>
-              
+                <section class="input-group date" id="sandbox-container">
+                    <label class="input">
+                        <input type="text" placeholder="Rechercher par date : 12/08/1987" id="date-search" name="date" class="form-control datepicker" placeholder="Recharche par date"></label><span class="input-group-addon"><i class="glyphicon glyphicon-th"  ></i></span>
+                </section>
+
             </fieldset>
 
             <section>
@@ -53,7 +53,7 @@
     <?php if (!empty($nb_search) && $nb_search>0) : ?>
         <div id="search-result">
             <h2>Résultats de votre recherche :</h2>
-            <em>Nous avons trouvé <strong><?= $nb_search ?></strong> correspondances pour votre recherche.</em>
+            <em>Nous avons trouvé <strong><?= $nb_search ?></strong> correspondance<?= ($nb_search > 1) ? 's' : '' ?> pour votre recherche.</em>
             <!--Presentation des evenements-->
             <?php foreach($search_results as $key => $value) :?>
             <section>
@@ -88,7 +88,7 @@
                 <!--Liens d'interactions (details, inscription, participation)-->
                 <a href="<?= $this->url('evenement_description',  ['id' => $value['id']]); ?>"><i class="fa fa-info-circle"></i><span>Plus de détails</span></a>
                 <a href="<?= $this->url('inscription') ?>"><i class="fa fa-sign-in"></i><span>S'inscrire</span></a>
-                <a href="<?= $this->url ('panier') ?>"><i class="fa fa-check-circle"></i><span>Participer</span></a>
+                <a href="#"><i class="fa fa-check-circle"></i><span>Participer</span></a>
 
             </section>
             <?php endforeach; ?>
