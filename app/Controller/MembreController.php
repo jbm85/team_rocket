@@ -383,7 +383,8 @@ class MembreController extends Controller
     {
         $suppr = $this->membre->delete($id);
         if($suppr > 0){
-            $this->show('admin/gestion_membre');
+            $this->redirectToRoute('gestion_membre');
         }
     }
+    
 }

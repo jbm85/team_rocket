@@ -2,7 +2,7 @@
 	
 	$w_routes = array(
 		// si tu m'envoi l'accueil (pas de saisie d'url) en GET, je t'envoi vers BaseController dans la méthode afficherAccueil. Tu as nommé cette route "accueil"
-		['GET', '/', 'Base#afficherAccueil', 'accueil'],
+		['GET|POST', '/', 'Base#afficherAccueil', 'accueil'],
 
 		['GET|POST', '/connexion', 'Membre#afficherConnexion', 'connexion'],
 

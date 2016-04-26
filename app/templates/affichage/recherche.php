@@ -39,10 +39,10 @@
                 </section>
 
 
-                    <section class="input-group date" id="sandbox-container">
-                        <label class="input">
-                            <input type="text" placeholder="Rechercher par date : 12/08/1987" id="date-search" name="date" class="form-control datepicker" placeholder="Recharche par date"></label><span class="input-group-addon"><i class="glyphicon glyphicon-th"  ></i></span>
-                    </section>
+                <section class="input-group date" id="sandbox-container">
+                    <label class="input">
+                        <input type="text" placeholder="Rechercher par date : 12/08/1987" id="date-search" name="date" class="form-control datepicker" placeholder="Recharche par date"></label><span class="input-group-addon"><i class="glyphicon glyphicon-th"  ></i></span>
+                </section>
 
             </fieldset>
 
