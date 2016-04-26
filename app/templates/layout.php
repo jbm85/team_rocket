@@ -34,6 +34,9 @@
 				<li><a href="<?= $this->url('profil') ?>">Profil</a></li>
 				<li><a href="<?= $this->url('deconnexion') ?>">Deconnexion</a></li>
 			<?php endif; ?>
+			<?php if ((isset($_SESSION['user']) && ($_SESSION['user']['admin'] == 'on'))) : ?>
+				<li><a href="<?= $this->url('gestion_membre') ?>">Gestion des membres</a></li>
+			<?php endif; ?>
 		</ul>
 	</nav>
 
@@ -74,11 +77,11 @@
 						<form method="post">
 							<div class="form-group">
 								<label for="Email">Votre adresse email</label>
-								<input type="email" class="form-control" id="Email" name="yourEmail" placeholder="Email">
+								<input type="email" class="form-control" id="Email" name="email" placeholder="Email">
 							</div>
 							<div class="form-group">
 								<label for="Nom">Nom</label>
-								<input type="text" class="form-control" id="Nom" name="yourName" placeholder="Nom">
+								<input type="text" class="form-control" id="Nom" name="name" placeholder="Nom">
 							</div>
 							<div class="form-group">
 								<label for="msg">Votre demande</label>
