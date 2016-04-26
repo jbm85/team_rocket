@@ -1,10 +1,10 @@
 <?php $this->layout('layout', ['title' => 'Events - Evenements', 'id' => 'event_description_page']) ?>
 
 <?php $this->start('principal') ?>
-<?php  debug($details_evenement) ?>
+
 	<section>
 		<h3><?= $details_evenement['titre'] ?> </h3>
-		<div class="profil_detail_img"><img src="<?= $this->assetUrl('img/theflash.jpg') ?>" alt="photo de profil"></div>
+		<div class="profil_detail_img"><img src="<?= $this->assetUrl('img/photo_profil/'.$_SESSION['user']['photo_profil']) ?>" alt="photo de profil"></div>
 
 
 		<ul>

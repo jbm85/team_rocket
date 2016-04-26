@@ -9,7 +9,7 @@
 
     <h2>Connexion</h2>
     <?php if (isset($msg)) : ?>
-        <p style="color: red"><?= $msg ?></p>
+        <p class="message_erreur"><?= $msg ?></p>
     <?php endif; ?>
     <fieldset>
         <section>

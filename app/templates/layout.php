@@ -50,10 +50,10 @@
 <!--Pied de page-->
 <footer>
 	<ul>
-		<li><a href="#">Mentions légales</a></li>
-		<li><a href="#">Conditions Générales de Vente</a></li>
-		<li><a href="#">Plan du site</a></li>
-		<li><a href="#">Imprimer la page</a></li>
+		<li><a href="#" data-toggle="modal" data-target="#mlModal">Mentions légales</a></li>
+		<li><a href="#" data-toggle="modal" data-target="#cgvModal">Conditions Générales de Vente</a></li>
+		<li><a href="#" data-toggle="modal" data-target="#planSiteModal">Plan du site</a></li>
+		<li><a href="#" OnClick="javascript:window.print()">Imprimer la page</a></li>
 		<li><a href="#" data-toggle="modal" data-target="#myModal">Contact</a></li>
 	</ul>
 	<em>Copyright Events - Jean-Baptiste - Jeremy - Mathias - Fabrice</em>
@@ -100,7 +100,144 @@
 			</div>
 		</div>
 	</div>
+	<!-- Modal cgv -->
+	<div class="modal fade" id="cgvModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content" >
+				<div class="modal-header" >
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">Conditions Générales de Vente</h4>
+				</div>
+				<div class="modal-body">
+					<section id="cgv">
+						<p>Le présent service de billetterie est réalisé par la société Digitick SA :</br></br>
 
+							Siège social : 12 rue de Penthièvre 75008 PARIS</br></br>
+
+							Représentant légal : Quentin SCHAEPELYNCK</br></br>
+
+							Hébergeur du site Digitick.com : Colt Telecom 63, bd Bessières 75017 Paris</br></br>
+
+							Capital social : 290 482,40 euros</br></br>
+
+							RCS : 453 942 948</br></br>
+
+							N° Id. TVA : FR72453942948</br></br>
+
+							Téléphone : 0892 700 840 (0,45€ TTC/min)</br></br>
+
+							Télécopie : 04.91.68.30.26</br></br>
+
+							Assurance de responsabilité civile professionnelle (couverture sans limitation géographique) : HISCOX – 12 quai des Queyries – CS 41177 – 33072 Bordeaux</br></br>
+
+							Les présentes conditions générales ont été mises en ligne le 24 Juin 2015.</br></br>
+
+							Il est préalablement précisé que les présentes conditions générales de vente régissent exclusivement les ventes de billets de spectacles ou d'événements (billets d'entrée à des concerts de musique, rencontres sportives, musées, parcs de loisirs, théâtre et festivals) sur le site www.digitick.com.</br></br>
+
+							Digitick intervient comme intermédiaire, en son propre nom mais pour le compte d'organisateurs et/ou Producteurs d'événements ou de spectacles.</br></br>
+
+							En conséquence, les présentes conditions générales de vente concernent uniquement les actes de vente de billetterie et en aucun cas le spectacle ou l'évènement lui-même.</br></br>
+
+							L'utilisation du site Digitick, de toute fonctionnalité du site Digitick disponible à l'adresse www.digitick.com et des applications mobiles Digitick implique l'acceptation expresse, préalable, pleine et entière par le Client des présentes Conditions Générales de Vente.</br></br></p>
+
+					</section>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Fin modal cgv -->
+
+	<!-- Modal mentions legal -->
+	<div class="modal fade" id="mlModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+		<div class="modal-dialog" role="document">
+
+			<div class="modal-content" >
+
+				<div class="modal-header" >
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">Mentions légales</h4>
+				</div>
+
+				<div class="modal-body">
+					<section id="ml">
+						<article>
+							<p>RÉFÉRENCES LÉGALES DE LA SOCIÉTÉ</br></br>
+
+								Le présent site est la propriété de la Société DIGITICK SA :</br>
+								Le siège social de l'entreprise est basé : 12 rue de Penthièvre 75008 PARIS</br>
+								Tél. : 0892 700 840 (0,45 Euro / min)</br>
+								Adresse de courrier électronique : hotline [arobase] digitick.com</br></br>
+
+								Service administratif :</br>
+								Tél : 04 91 05 15 57</br></br>
+
+								Service clients / Service Après-Ventes</br>
+								Tél : 04 91 05 58 52</br></br>
+
+								Infos & Réservations :</br>
+								Tél : 0892 700 840 (0,45 Euro / min)</br></br>
+
+								SA au capital de 290 482,40 Euros Immatriculée au Registre du commerce et des sociétés de PARIS sous le numéro 453 942 948</br>
+								SIRET : 453 942 948 00069</br>
+								N° identifiant TVA FR72453942948</br>
+								Directeur de la publication : Quentin Schaepelynck</br>
+							</p>
+						</article>
+					</section>
+				</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Fin modal mentions legal -->
+
+	<!-- Modal plan site -->
+	<div class="modal fade" id="planSiteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+		<div class="modal-dialog" role="document">
+
+			<div class="modal-content" >
+
+				<div class="modal-header" >
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">Plan site</h4>
+				</div>
+
+				<div class="modal-body">
+					<section id="planSite">
+						<nav>
+							<ul>
+								<li><a href="<?= $this->url('accueil') ?>">Accueil</a></li>
+								<li><a href="<?= $this->url('derniers_evenements') ?>">Derniers évènements</a></li>
+								<li><a href="<?= $this->url('recherche') ?>">Recherche</a></li>
+
+								<?php if (!isset($_SESSION['user'])) : ?>
+									<li><a href="<?= $this->url('inscription') ?>">Inscription</a></li>
+									<li><a href="<?= $this->url('connexion') ?>">Connexion</a></li>
+								<?php else: ?>
+									<li><a href="<?= $this->url('creer_evenement') ?>">Créer un évènement</a></li>
+									<li><a href="<?= $this->url('profil') ?>">Profil</a></li>
+									<li><a href="<?= $this->url('deconnexion') ?>">Deconnexion</a></li>
+								<?php endif; ?>
+							</ul>
+						</nav>
+					</section>
+				</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Fin modal plan site -->
 </footer>
 
 
@@ -118,7 +255,6 @@
 <script type="text/javascript" src="<?= $this->assetUrl('js/bootstrap-datepicker.js') ?>" ></script>
 <script type="text/javascript" src="<?= $this->assetUrl('js/profil.js') ?>" ></script>
 <script type="text/javascript" src="<?= $this->assetUrl('js/verification_formulaire.js') ?>"></script>
-<script type="text/javascript" src="<?= $this->assetUrl('js/materialize.js') ?>"></script>
 <script type="text/javascript" src="<?= $this->assetUrl('js/script.js') ?>" ></script>
 </body>
 

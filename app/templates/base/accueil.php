@@ -13,8 +13,6 @@ var_dump(unserialize('a:3:{i:0;s:10:"photo1.jpg";i:1;s:10:"photo2.jpg";i:2;s:10:
 */
 ?>
 
-<?php debug($evenements) ?>
-
 <?php foreach($evenements as $key => $value) : ?>
 	<section>
 
@@ -49,7 +47,7 @@ var_dump(unserialize('a:3:{i:0;s:10:"photo1.jpg";i:1;s:10:"photo2.jpg";i:2;s:10:
 		<!--Liens d'interactions (details, inscription, participation)-->
 		<a href="<?= $this->url('evenement_description',  ['id' => $value['id']]); ?>"><i class="fa fa-info-circle"></i><span>Plus de détails</span></a>
 		<a href="<?= $this->url('inscription') ?>"><i class="fa fa-sign-in"></i><span>S'inscrire</span></a>
-		<a href="<?= $this->url ('panier') ?>"><i class="fa fa-check-circle"></i><span>Participer</span></a>
+		<a href="#"><i class="fa fa-check-circle"></i><span>Participer</span></a>
 
 	</section>
 

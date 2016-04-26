@@ -5,7 +5,7 @@
     <form method="post" action="<?= $this->url('inscription') ?>" id="sky-form4" class="sky-form"  enctype="multipart/form-data">
         <h2>Formulaire d'inscription</h2>
         <?php if (isset($msg)) : ?>
-            <p style="color: red"><?= $msg ?></p>
+            <p class="message_erreur"><?= $msg ?></p>
         <?php endif; ?>
 
         <fieldset>

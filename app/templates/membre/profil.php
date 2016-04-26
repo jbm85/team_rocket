@@ -3,7 +3,6 @@
 
 <?php $this->start('principal') ?>
 
-<?php debug($_SESSION['user']) ?>
 <div class="container" style="padding-top: 60px;">
   
   <div class="row">
